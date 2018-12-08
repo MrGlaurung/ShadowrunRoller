@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.EdgeRollCheckbox = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.SuccessResultBox = new System.Windows.Forms.TextBox();
+            this.FailureResultBox = new System.Windows.Forms.TextBox();
+            this.NumberOfDiceBox = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.errorText = new System.Windows.Forms.Label();
             this.successText = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.ResultMultilineBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -53,15 +53,15 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // checkBox1
+            // EdgeRollCheckbox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(474, 49);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(129, 29);
-            this.checkBox1.TabIndex = 1;
-            this.checkBox1.Text = "Edge roll";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.EdgeRollCheckbox.AutoSize = true;
+            this.EdgeRollCheckbox.Location = new System.Drawing.Point(474, 49);
+            this.EdgeRollCheckbox.Name = "EdgeRollCheckbox";
+            this.EdgeRollCheckbox.Size = new System.Drawing.Size(129, 29);
+            this.EdgeRollCheckbox.TabIndex = 1;
+            this.EdgeRollCheckbox.Text = "Edge roll";
+            this.EdgeRollCheckbox.UseVisualStyleBackColor = true;
             // 
             // checkBox2
             // 
@@ -92,36 +92,36 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Amount of failures";
             // 
-            // textBox1
+            // SuccessResultBox
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(155, 49);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(69, 31);
-            this.textBox1.TabIndex = 5;
-            this.textBox1.Text = "0";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.SuccessResultBox.Enabled = false;
+            this.SuccessResultBox.Location = new System.Drawing.Point(155, 49);
+            this.SuccessResultBox.Name = "SuccessResultBox";
+            this.SuccessResultBox.Size = new System.Drawing.Size(69, 31);
+            this.SuccessResultBox.TabIndex = 5;
+            this.SuccessResultBox.Text = "0";
+            this.SuccessResultBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBox2
+            // FailureResultBox
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(155, 85);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(69, 31);
-            this.textBox2.TabIndex = 6;
-            this.textBox2.Text = "0";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.FailureResultBox.Enabled = false;
+            this.FailureResultBox.Location = new System.Drawing.Point(155, 85);
+            this.FailureResultBox.Name = "FailureResultBox";
+            this.FailureResultBox.Size = new System.Drawing.Size(69, 31);
+            this.FailureResultBox.TabIndex = 6;
+            this.FailureResultBox.Text = "0";
+            this.FailureResultBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBox3
+            // NumberOfDiceBox
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(48, 46);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(86, 67);
-            this.textBox3.TabIndex = 7;
-            this.textBox3.Text = "5";
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.NumberOfDiceBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NumberOfDiceBox.Location = new System.Drawing.Point(48, 46);
+            this.NumberOfDiceBox.Name = "NumberOfDiceBox";
+            this.NumberOfDiceBox.Size = new System.Drawing.Size(86, 67);
+            this.NumberOfDiceBox.TabIndex = 7;
+            this.NumberOfDiceBox.Text = "5";
+            this.NumberOfDiceBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.NumberOfDiceBox.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // button2
             // 
@@ -160,33 +160,33 @@
             this.successText.Size = new System.Drawing.Size(0, 25);
             this.successText.TabIndex = 11;
             // 
-            // textBox4
+            // ResultMultilineBox
             // 
-            this.textBox4.Enabled = false;
-            this.textBox4.Location = new System.Drawing.Point(48, 269);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox4.Size = new System.Drawing.Size(563, 360);
-            this.textBox4.TabIndex = 12;
+            this.ResultMultilineBox.Enabled = false;
+            this.ResultMultilineBox.Location = new System.Drawing.Point(48, 269);
+            this.ResultMultilineBox.Multiline = true;
+            this.ResultMultilineBox.Name = "ResultMultilineBox";
+            this.ResultMultilineBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.ResultMultilineBox.Size = new System.Drawing.Size(563, 360);
+            this.ResultMultilineBox.TabIndex = 12;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(925, 668);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.ResultMultilineBox);
             this.Controls.Add(this.successText);
             this.Controls.Add(this.errorText);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.NumberOfDiceBox);
+            this.Controls.Add(this.FailureResultBox);
+            this.Controls.Add(this.SuccessResultBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.EdgeRollCheckbox);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -198,18 +198,18 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox EdgeRollCheckbox;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox SuccessResultBox;
+        private System.Windows.Forms.TextBox FailureResultBox;
+        private System.Windows.Forms.TextBox NumberOfDiceBox;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label errorText;
         private System.Windows.Forms.Label successText;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox ResultMultilineBox;
     }
 }
 

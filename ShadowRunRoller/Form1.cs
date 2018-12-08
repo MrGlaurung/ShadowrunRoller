@@ -12,7 +12,7 @@ namespace ShadowRunRoller
 {
     public partial class Form1 : Form
     {
-        private List<Dice> diceList;
+        private DieRoller roller;
 
         public Form1()
         {
@@ -25,19 +25,49 @@ namespace ShadowRunRoller
         {
             diceList = new List<Dice>();
 
-            for (int i = 0; i < Int32.Parse(textBox3.Text); i++)
+            for (int i = 0; i < Int32.Parse(NumberOfDiceBox.Text); i++)
             {
-                Dice oneDie = new Dice(checkBox1.Checked);
-                oneDie.doRoll();
+                Dice oneDie = new Dice(EdgeRollCheckbox.Checked);
+                if (!oneDie.doRoll(rnd))
+                {
+                    throw new ApplicationException("Catastrophic failure with Dice.");
+                }
 
                 diceList.Add(oneDie);
             }
 
-            textBox4.AppendText(diceList.ForEach(x => String.Join(" ", x.ToString())) + Environment.NewLine);
+            diceList.ForEach(x => ResultMultilineBox.AppendText(x.ToString()));
+            ResultMultilineBox.AppendText(Environment.NewLine);
+
+            SuccessResultBox.Text = diceList.Count(x => x.ToInt() > 4).ToString();
+            FailureResultBox.Text = diceList.Count(x => x.ToInt() == 1).ToString();
+
+            checkResults();
+        }
+
+        private void checkResults()
+        {
+            int halfOfDice = Int32.Parse(NumberOfDiceBox.Text) / 2;
+            if (diceList.Count(x => x.ToInt() == 1) > halfOfDice)
+            {
+                if (diceList.Count(x => x.ToInt() > 4) == 0)
+                {
+                    changeInfo(@"Critical failure!!", true);
+                }
+                else
+                {
+                    changeInfo(@"This roll is a Glitch.", true);
+                }
+            }
+            else
+            {
+                changeInfo(@"You have " + diceList.Count(x => x.ToInt() > 4).ToString() + " successes.", false);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            changeInfo(@"", true);
             createDice();
         }
 
@@ -54,10 +84,10 @@ namespace ShadowRunRoller
         {
             int tbValue;
 
-            if (!int.TryParse(textBox3.Text, out tbValue))
+            if (!int.TryParse(NumberOfDiceBox.Text, out tbValue))
             {
                 changeInfo(@"You have to input a number of dice.", true);
-                textBox3.Text = "5";
+                NumberOfDiceBox.Text = "5";
             }
             else
             {

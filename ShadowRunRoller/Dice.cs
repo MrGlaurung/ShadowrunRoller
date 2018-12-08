@@ -25,14 +25,18 @@ namespace ShadowRunRoller
             return Result.ToString();
         }
 
-        public bool doRoll()
+        public int ToInt()
+        {
+            return Result;
+        }
+
+        public bool doRoll(Random rnd)
         {
             if (this.Rolled)
             {
                 return false;
             }
 
-            Random rnd = new Random();
             int shortResult = 0;
 
             do
