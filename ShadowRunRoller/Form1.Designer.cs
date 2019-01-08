@@ -41,6 +41,8 @@
             this.errorText = new System.Windows.Forms.Label();
             this.successText = new System.Windows.Forms.Label();
             this.ResultMultilineBox = new System.Windows.Forms.TextBox();
+            this.OnesResultBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -146,7 +148,7 @@
             // 
             this.errorText.AutoSize = true;
             this.errorText.ForeColor = System.Drawing.Color.DarkRed;
-            this.errorText.Location = new System.Drawing.Point(150, 160);
+            this.errorText.Location = new System.Drawing.Point(157, 179);
             this.errorText.Name = "errorText";
             this.errorText.Size = new System.Drawing.Size(0, 25);
             this.errorText.TabIndex = 10;
@@ -155,7 +157,7 @@
             // 
             this.successText.AutoSize = true;
             this.successText.ForeColor = System.Drawing.Color.Black;
-            this.successText.Location = new System.Drawing.Point(150, 160);
+            this.successText.Location = new System.Drawing.Point(157, 179);
             this.successText.Name = "successText";
             this.successText.Size = new System.Drawing.Size(0, 25);
             this.successText.TabIndex = 11;
@@ -170,11 +172,32 @@
             this.ResultMultilineBox.Size = new System.Drawing.Size(563, 360);
             this.ResultMultilineBox.TabIndex = 12;
             // 
+            // OnesResultBox
+            // 
+            this.OnesResultBox.Enabled = false;
+            this.OnesResultBox.Location = new System.Drawing.Point(155, 122);
+            this.OnesResultBox.Name = "OnesResultBox";
+            this.OnesResultBox.Size = new System.Drawing.Size(69, 31);
+            this.OnesResultBox.TabIndex = 14;
+            this.OnesResultBox.Text = "0";
+            this.OnesResultBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(241, 128);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(144, 25);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Amount of 1:s";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(925, 668);
+            this.Controls.Add(this.OnesResultBox);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.ResultMultilineBox);
             this.Controls.Add(this.successText);
             this.Controls.Add(this.errorText);
@@ -210,6 +233,8 @@
         private System.Windows.Forms.Label errorText;
         private System.Windows.Forms.Label successText;
         private System.Windows.Forms.TextBox ResultMultilineBox;
+        private System.Windows.Forms.TextBox OnesResultBox;
+        private System.Windows.Forms.Label label3;
     }
 }
 
