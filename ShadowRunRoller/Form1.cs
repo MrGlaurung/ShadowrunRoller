@@ -8,6 +8,8 @@ namespace ShadowRunRoller
 {
     public partial class Form1 : Form
     {
+        private Random rnd = new Random();
+
         private DieRoller Roller { get; set; }
 
         public Form1()
@@ -22,6 +24,11 @@ namespace ShadowRunRoller
             changeInfo(@"", true);
             this.Roller = new DieRoller(Int32.Parse(NumberOfDiceBox.Text), EdgeRollCheckbox.Checked);
 
+            this.fixEverything();
+        }
+
+        private void fixEverything()
+        {
             changeInfo(this.Roller.ResultString, this.Roller.SuccessOfRoll);
             ResultMultilineBox.AppendText(this.Roller.NumberResult + Environment.NewLine);
 
@@ -32,11 +39,28 @@ namespace ShadowRunRoller
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            // Add exploding die
+            this.OneMoreDie(true);
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // Add un-exploding die
+            this.OneMoreDie(false);
+        }
+
+        private void OneMoreDie(bool exploding)
+        {
+            Dice myDie = new Dice(exploding);
+            myDie.doRoll(rnd);
+
+            Roller.SumUp(Roller.numberOfDice + 1, myDie);
+
+            this.fixEverything();
+        }
+
         private void label1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
@@ -46,7 +70,7 @@ namespace ShadowRunRoller
             if (!int.TryParse(NumberOfDiceBox.Text, out tbValue))
             {
                 changeInfo(@"You have to input a number of dice.", true);
-                NumberOfDiceBox.Te;
+                NumberOfDiceBox.Text = "5";
             }
             else
             {

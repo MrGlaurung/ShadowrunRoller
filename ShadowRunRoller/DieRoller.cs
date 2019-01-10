@@ -14,6 +14,7 @@ namespace ShadowRunRoller
         public int NumberOfSuccesses { get; private set; }
         public int NumberOfFailures { get; private set; }
         public int NumberOfOnes { get; private set; }
+        public int numberOfDice { get; set; }
 
         private Random rnd { get; set; }
         private List<Dice> diceList { get; set; }
@@ -26,6 +27,7 @@ namespace ShadowRunRoller
 
             this.ResultString = "";
             this.SuccessOfRoll = true;
+            this.numberOfDice = numberOfDice;
             createDice(numberOfDice, edgeRoll);
         }
 
@@ -44,6 +46,17 @@ namespace ShadowRunRoller
                 diceList.Add(oneDie);
             }
 
+            SumUp(numberOfDice);
+        }
+
+        public void SumUp(int numberOfDice, Dice die)
+        {
+            this.diceList.Add(die);
+            this.SumUp(numberOfDice);
+        }
+
+        public void SumUp(int numberOfDice)
+        {
             this.NumberResult = String.Join(", ", this.diceList.Select(x => x.ToString()));
 
             checkResults(numberOfDice);
@@ -76,6 +89,5 @@ namespace ShadowRunRoller
                 this.SuccessOfRoll = true;
             }
         }
-
     }
 }
