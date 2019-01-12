@@ -64,9 +64,10 @@ namespace ShadowRunRoller
 
         private void checkResults(int numberOfDice)
         {
+            this.numberOfDice = numberOfDice;
             int halfOfDice = numberOfDice / 2;
 
-            this.NumberOfSuccesses = diceList.Count(x => x.ToInt() > 4);
+            this.NumberOfSuccesses = diceList.Sum(x => x.Successes);
             this.NumberOfFailures = diceList.Count(x => x.ToInt() < 5);
             this.NumberOfOnes = diceList.Count(x => x.ToInt() == 1);
 
@@ -79,13 +80,13 @@ namespace ShadowRunRoller
                 }
                 else
                 {
-                    this.ResultString = @"This roll is a Glitch.";
+                    this.ResultString = @"This roll is a Glitch with " + NumberOfSuccesses + " successes.";
                     this.SuccessOfRoll = true;
                 }
             }
             else
             {
-                this.ResultString = @"You have " + diceList.Count(x => x.ToInt() > 4).ToString() + " successes.";
+                this.ResultString = @"You have " + NumberOfSuccesses + " successes.";
                 this.SuccessOfRoll = true;
             }
         }
