@@ -97,6 +97,12 @@
   <ItemGroup>
     <Compile Include="DiceRollerTab\Dice.cs" />
     <Compile Include="DiceRollerTab\DieRoller.cs" />
+    <Compile Include="DiceRollerTab\Form1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DiceRollerTab\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main Window\Main Window.cs">
       <SubType>Form</SubType>
     </Compile>
