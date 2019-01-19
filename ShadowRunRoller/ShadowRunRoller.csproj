@@ -109,14 +109,23 @@
     <Compile Include="Main Window\Main Window.Designer.cs">
       <DependentUpon>Main Window.cs</DependentUpon>
     </Compile>
+    <Compile Include="NPCGeneratorTab\NPCGeneratorWindow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NPCGeneratorTab\NPCGeneratorWindow.Designer.cs">
+      <DependentUpon>NPCGeneratorWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\Environment.cs" />
+    <Compile Include="Resources\Globals.cs" />
     <EmbeddedResource Include="DiceRollerTab\DiceWindow.resx">
       <DependentUpon>DiceWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main Window\Main Window.resx">
       <DependentUpon>Main Window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NPCGeneratorTab\NPCGeneratorWindow.resx">
+      <DependentUpon>NPCGeneratorWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

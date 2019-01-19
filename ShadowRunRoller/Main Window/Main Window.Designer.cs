@@ -53,9 +53,9 @@
             this.MainWindowStatusStrip.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.MainWindowStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MainWindowTooltipTextStripLeft});
-            this.MainWindowStatusStrip.Location = new System.Drawing.Point(0, 404);
+            this.MainWindowStatusStrip.Location = new System.Drawing.Point(0, 568);
             this.MainWindowStatusStrip.Name = "MainWindowStatusStrip";
-            this.MainWindowStatusStrip.Size = new System.Drawing.Size(532, 22);
+            this.MainWindowStatusStrip.Size = new System.Drawing.Size(492, 22);
             this.MainWindowStatusStrip.TabIndex = 1;
             this.MainWindowStatusStrip.Text = "MainWindowStatusStrip";
             // 
@@ -74,7 +74,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(532, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(492, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -148,7 +148,7 @@
             this.MainWindowTabControl.Location = new System.Drawing.Point(11, 32);
             this.MainWindowTabControl.Name = "MainWindowTabControl";
             this.MainWindowTabControl.SelectedIndex = 0;
-            this.MainWindowTabControl.Size = new System.Drawing.Size(510, 362);
+            this.MainWindowTabControl.Size = new System.Drawing.Size(470, 526);
             this.MainWindowTabControl.TabIndex = 3;
             // 
             // MainWindowTab1
@@ -156,7 +156,7 @@
             this.MainWindowTab1.Location = new System.Drawing.Point(4, 22);
             this.MainWindowTab1.Name = "MainWindowTab1";
             this.MainWindowTab1.Padding = new System.Windows.Forms.Padding(3);
-            this.MainWindowTab1.Size = new System.Drawing.Size(502, 336);
+            this.MainWindowTab1.Size = new System.Drawing.Size(462, 500);
             this.MainWindowTab1.TabIndex = 0;
             this.MainWindowTab1.Text = "DiceRoller";
             this.MainWindowTab1.UseVisualStyleBackColor = true;
@@ -175,13 +175,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(532, 426);
+            this.ClientSize = new System.Drawing.Size(492, 590);
             this.Controls.Add(this.MainWindowTabControl);
             this.Controls.Add(this.MainWindowStatusStrip);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(540, 360);
+            this.MinimumSize = new System.Drawing.Size(508, 300);
             this.Name = "Main_Window";
             this.Text = "Shadowrun GM Tool";
             this.MainWindowStatusStrip.ResumeLayout(false);

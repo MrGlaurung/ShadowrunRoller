@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ShadowRunRoller.DiceRollerTab;
+using ShadowRunRoller.Resources;
 
 namespace ShadowRunRoller.Main_Window
 {
@@ -18,12 +19,14 @@ namespace ShadowRunRoller.Main_Window
             InitializeComponent();
             MainWindowTab1.Controls.Add(new DiceWindow(MainWindowTooltipTextStripLeft));
             MainWindowTab1.Controls[0].Anchor = ( AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right );
+            MainWindowTab2.Controls.Add(new NPCGeneratorTab.NPCGeneratorWindow(MainWindowTooltipTextStripLeft));
+            MainWindowTab2.Controls[0].Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
             MainWindowTooltipTextStripLeft.Text = @"Program Loaded.";
         }
 
         private void versionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(Resources.Environment.APPLICATION_HELP, Resources.Environment.APPLICATION_NAME + " " + Resources.Environment.APPLICATION_VERSION);
+            MessageBox.Show(Globals.APPLICATION_HELP, Globals.APPLICATION_NAME + " " + Globals.APPLICATION_VERSION);
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)

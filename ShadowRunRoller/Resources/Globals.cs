@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ShadowRunRoller.Resources
 {
-    static class Environment
+    static class Globals
     {
         public const string APPLICATION_NAME = "Shadowrun GM Tool";
         public static readonly string APPLICATION_VERSION = Application.ProductVersion;

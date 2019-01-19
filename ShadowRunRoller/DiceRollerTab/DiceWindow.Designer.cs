@@ -40,9 +40,9 @@
             this.button3 = new System.Windows.Forms.Button();
             this.errorText = new System.Windows.Forms.Label();
             this.successText = new System.Windows.Forms.Label();
-            this.ResultMultilineBox = new System.Windows.Forms.TextBox();
             this.OnesResultBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.ResultMultilineBox = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -73,6 +73,8 @@
             // 
             this.Verbose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Verbose.AutoSize = true;
+            this.Verbose.Checked = true;
+            this.Verbose.CheckState = System.Windows.Forms.CheckState.Checked;
             this.Verbose.Location = new System.Drawing.Point(237, 47);
             this.Verbose.Margin = new System.Windows.Forms.Padding(2);
             this.Verbose.Name = "Verbose";
@@ -184,21 +186,6 @@
             this.successText.Size = new System.Drawing.Size(0, 13);
             this.successText.TabIndex = 11;
             // 
-            // ResultMultilineBox
-            // 
-            this.ResultMultilineBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ResultMultilineBox.Enabled = false;
-            this.ResultMultilineBox.Location = new System.Drawing.Point(24, 140);
-            this.ResultMultilineBox.Margin = new System.Windows.Forms.Padding(2);
-            this.ResultMultilineBox.Multiline = true;
-            this.ResultMultilineBox.Name = "ResultMultilineBox";
-            this.ResultMultilineBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.ResultMultilineBox.Size = new System.Drawing.Size(284, 189);
-            this.ResultMultilineBox.TabIndex = 12;
-            this.ResultMultilineBox.WordWrap = false;
-            // 
             // OnesResultBox
             // 
             this.OnesResultBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -222,13 +209,25 @@
             this.label3.TabIndex = 13;
             this.label3.Text = "Amount of 1:s";
             // 
+            // ResultMultilineBox
+            // 
+            this.ResultMultilineBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ResultMultilineBox.Location = new System.Drawing.Point(24, 140);
+            this.ResultMultilineBox.Name = "ResultMultilineBox";
+            this.ResultMultilineBox.ReadOnly = true;
+            this.ResultMultilineBox.Size = new System.Drawing.Size(284, 342);
+            this.ResultMultilineBox.TabIndex = 15;
+            this.ResultMultilineBox.Text = "";
+            // 
             // DiceWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ResultMultilineBox);
             this.Controls.Add(this.OnesResultBox);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.ResultMultilineBox);
             this.Controls.Add(this.successText);
             this.Controls.Add(this.errorText);
             this.Controls.Add(this.button3);
@@ -242,8 +241,9 @@
             this.Controls.Add(this.EdgeRollCheckbox);
             this.Controls.Add(this.button1);
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimumSize = new System.Drawing.Size(462, 500);
             this.Name = "DiceWindow";
-            this.Size = new System.Drawing.Size(462, 347);
+            this.Size = new System.Drawing.Size(462, 500);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -263,9 +263,9 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label errorText;
         private System.Windows.Forms.Label successText;
-        private System.Windows.Forms.TextBox ResultMultilineBox;
         private System.Windows.Forms.TextBox OnesResultBox;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.RichTextBox ResultMultilineBox;
     }
 }
 
