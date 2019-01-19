@@ -49,7 +49,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\iconfinder_dice_50830.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\DiceIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
@@ -97,11 +97,11 @@
   <ItemGroup>
     <Compile Include="DiceRollerTab\Dice.cs" />
     <Compile Include="DiceRollerTab\DieRoller.cs" />
-    <Compile Include="DiceRollerTab\Form1.cs">
+    <Compile Include="DiceRollerTab\DiceWindow.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="DiceRollerTab\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="DiceRollerTab\DiceWindow.Designer.cs">
+      <DependentUpon>DiceWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Main Window\Main Window.cs">
       <SubType>Form</SubType>
@@ -112,6 +112,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Environment.cs" />
+    <EmbeddedResource Include="DiceRollerTab\DiceWindow.resx">
+      <DependentUpon>DiceWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main Window\Main Window.resx">
       <DependentUpon>Main Window.cs</DependentUpon>
     </EmbeddedResource>
@@ -140,9 +143,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\iconfinder_dice_50830.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
@@ -153,6 +153,10 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DiceIcon.ico" />
+    <Content Include="Resources\DiceIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

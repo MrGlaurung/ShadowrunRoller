@@ -16,7 +16,9 @@ namespace ShadowRunRoller.Main_Window
         public Main_Window()
         {
             InitializeComponent();
-            // MainWindowTab1.Controls.Add(new UserControl1());
+            MainWindowTab1.Controls.Add(new DiceWindow(MainWindowTooltipTextStripLeft));
+            MainWindowTab1.Controls[0].Anchor = ( AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right );
+            MainWindowTooltipTextStripLeft.Text = @"Program Loaded.";
         }
 
         private void versionToolStripMenuItem_Click(object sender, EventArgs e)

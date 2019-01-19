@@ -8,17 +8,25 @@ using ShadowRunRoller.DiceRollerTab;
 
 namespace ShadowRunRoller
 {
-    public partial class Form1 : UserControl
+    public partial class DiceWindow : UserControl
     {
         private Random rnd = new Random();
+        private ToolStripStatusLabel MainStatusLabel;
 
         private DieRoller Roller { get; set; }
 
-        public Form1()
+        public DiceWindow(ToolStripStatusLabel StatusLabel = null)
         {
             InitializeComponent();
+            if(StatusLabel != null) { MainStatusLabel = StatusLabel; }
+        }
 
-            checkBox2.Hide();
+        private void setStatusLabelText(string text)
+        {
+            if (MainStatusLabel != null)
+            {
+                MainStatusLabel.Text = text;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -32,11 +40,14 @@ namespace ShadowRunRoller
         private void fixEverything()
         {
             changeInfo(this.Roller.ResultString, this.Roller.SuccessOfRoll);
-            ResultMultilineBox.AppendText(this.Roller.NumberResult + Environment.NewLine);
+            string resultText = this.Roller.NumberResult;
+            if(Verbose.Checked == true) { resultText += " (" + this.Roller.ResultString + " with " + this.Roller.NumberOfOnes + " 1:s rolled)"; }
+            ResultMultilineBox.AppendText(resultText + Environment.NewLine);
 
             SuccessResultBox.Text = this.Roller.NumberOfSuccesses.ToString();
             FailureResultBox.Text = this.Roller.NumberOfFailures.ToString();
             OnesResultBox.Text = this.Roller.NumberOfOnes.ToString();
+            setStatusLabelText("Roll performed, " + this.Roller.numberOfDice + " dice rolled.");
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -92,11 +103,6 @@ namespace ShadowRunRoller
                 errorText.Text = "";
                 successText.Text = newInfo;
             }
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

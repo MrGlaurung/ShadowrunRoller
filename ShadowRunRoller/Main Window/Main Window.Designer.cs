@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Window));
+            this.MainWindowStatusStrip = new System.Windows.Forms.StatusStrip();
+            this.MainWindowTooltipTextStripLeft = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,20 +43,30 @@
             this.MainWindowTabControl = new System.Windows.Forms.TabControl();
             this.MainWindowTab1 = new System.Windows.Forms.TabPage();
             this.MainWindowTab2 = new System.Windows.Forms.TabPage();
+            this.MainWindowStatusStrip.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.MainWindowTabControl.SuspendLayout();
             this.SuspendLayout();
             // 
-            // statusStrip1
+            // MainWindowStatusStrip
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 654);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(802, 22);
-            this.statusStrip1.TabIndex = 1;
-            this.statusStrip1.Text = "MainWindowStatusStrip";
+            this.MainWindowStatusStrip.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.MainWindowStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MainWindowTooltipTextStripLeft});
+            this.MainWindowStatusStrip.Location = new System.Drawing.Point(0, 404);
+            this.MainWindowStatusStrip.Name = "MainWindowStatusStrip";
+            this.MainWindowStatusStrip.Size = new System.Drawing.Size(532, 22);
+            this.MainWindowStatusStrip.TabIndex = 1;
+            this.MainWindowStatusStrip.Text = "MainWindowStatusStrip";
+            // 
+            // MainWindowTooltipTextStripLeft
+            // 
+            this.MainWindowTooltipTextStripLeft.Name = "MainWindowTooltipTextStripLeft";
+            this.MainWindowTooltipTextStripLeft.Size = new System.Drawing.Size(0, 17);
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
@@ -62,7 +74,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(802, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(532, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -77,7 +89,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -99,14 +111,14 @@
             // diceRollerToolStripMenuItem
             // 
             this.diceRollerToolStripMenuItem.Name = "diceRollerToolStripMenuItem";
-            this.diceRollerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.diceRollerToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.diceRollerToolStripMenuItem.Text = "DiceRoller";
             this.diceRollerToolStripMenuItem.Click += new System.EventHandler(this.diceRollerToolStripMenuItem_Click);
             // 
             // nPCGeneratorToolStripMenuItem
             // 
             this.nPCGeneratorToolStripMenuItem.Name = "nPCGeneratorToolStripMenuItem";
-            this.nPCGeneratorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nPCGeneratorToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.nPCGeneratorToolStripMenuItem.Text = "NPC Generator";
             this.nPCGeneratorToolStripMenuItem.Click += new System.EventHandler(this.nPCGeneratorToolStripMenuItem_Click);
             // 
@@ -121,7 +133,7 @@
             // versionToolStripMenuItem
             // 
             this.versionToolStripMenuItem.Name = "versionToolStripMenuItem";
-            this.versionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.versionToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.versionToolStripMenuItem.Text = "Version";
             this.versionToolStripMenuItem.Click += new System.EventHandler(this.versionToolStripMenuItem_Click);
             // 
@@ -136,7 +148,7 @@
             this.MainWindowTabControl.Location = new System.Drawing.Point(11, 32);
             this.MainWindowTabControl.Name = "MainWindowTabControl";
             this.MainWindowTabControl.SelectedIndex = 0;
-            this.MainWindowTabControl.Size = new System.Drawing.Size(780, 612);
+            this.MainWindowTabControl.Size = new System.Drawing.Size(510, 362);
             this.MainWindowTabControl.TabIndex = 3;
             // 
             // MainWindowTab1
@@ -144,7 +156,7 @@
             this.MainWindowTab1.Location = new System.Drawing.Point(4, 22);
             this.MainWindowTab1.Name = "MainWindowTab1";
             this.MainWindowTab1.Padding = new System.Windows.Forms.Padding(3);
-            this.MainWindowTab1.Size = new System.Drawing.Size(772, 586);
+            this.MainWindowTab1.Size = new System.Drawing.Size(502, 336);
             this.MainWindowTab1.TabIndex = 0;
             this.MainWindowTab1.Text = "DiceRoller";
             this.MainWindowTab1.UseVisualStyleBackColor = true;
@@ -154,7 +166,7 @@
             this.MainWindowTab2.Location = new System.Drawing.Point(4, 22);
             this.MainWindowTab2.Name = "MainWindowTab2";
             this.MainWindowTab2.Padding = new System.Windows.Forms.Padding(3);
-            this.MainWindowTab2.Size = new System.Drawing.Size(770, 412);
+            this.MainWindowTab2.Size = new System.Drawing.Size(502, 336);
             this.MainWindowTab2.TabIndex = 1;
             this.MainWindowTab2.Text = "NPC Generator";
             this.MainWindowTab2.UseVisualStyleBackColor = true;
@@ -163,13 +175,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(802, 676);
+            this.ClientSize = new System.Drawing.Size(532, 426);
             this.Controls.Add(this.MainWindowTabControl);
-            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.MainWindowStatusStrip);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.MinimumSize = new System.Drawing.Size(540, 360);
             this.Name = "Main_Window";
             this.Text = "Shadowrun GM Tool";
+            this.MainWindowStatusStrip.ResumeLayout(false);
+            this.MainWindowStatusStrip.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.MainWindowTabControl.ResumeLayout(false);
@@ -179,7 +195,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.StatusStrip MainWindowStatusStrip;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
@@ -192,5 +208,6 @@
         private System.Windows.Forms.TabControl MainWindowTabControl;
         private System.Windows.Forms.TabPage MainWindowTab1;
         private System.Windows.Forms.TabPage MainWindowTab2;
+        private System.Windows.Forms.ToolStripStatusLabel MainWindowTooltipTextStripLeft;
     }
 }
