@@ -45,7 +45,7 @@
             this.AgilityStatLabel = new System.Windows.Forms.Label();
             this.ReactionStatTextBox = new System.Windows.Forms.TextBox();
             this.ReactionStatLabel = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.StrengthStatTextBox = new System.Windows.Forms.TextBox();
             this.StrengthStatLabel = new System.Windows.Forms.Label();
             this.WillpowerStatTextBox = new System.Windows.Forms.TextBox();
             this.WillpowerStatLabel = new System.Windows.Forms.Label();
@@ -131,6 +131,7 @@
             this.GenerateButton.TabIndex = 6;
             this.GenerateButton.Text = "Generate New NPC";
             this.GenerateButton.UseVisualStyleBackColor = true;
+            this.GenerateButton.Click += new System.EventHandler(this.GenerateButton_Click);
             // 
             // PowerLabel
             // 
@@ -224,7 +225,7 @@
             this.groupBox2.Controls.Add(this.LogicStatLabel);
             this.groupBox2.Controls.Add(this.WillpowerStatTextBox);
             this.groupBox2.Controls.Add(this.WillpowerStatLabel);
-            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Controls.Add(this.StrengthStatTextBox);
             this.groupBox2.Controls.Add(this.StrengthStatLabel);
             this.groupBox2.Controls.Add(this.ReactionStatTextBox);
             this.groupBox2.Controls.Add(this.ReactionStatLabel);
@@ -241,6 +242,7 @@
             // 
             // BodyStatLabel
             // 
+            this.BodyStatLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BodyStatLabel.AutoSize = true;
             this.BodyStatLabel.ForeColor = System.Drawing.Color.DarkRed;
             this.BodyStatLabel.Location = new System.Drawing.Point(6, 22);
@@ -251,6 +253,7 @@
             // 
             // BodyStatTextBox
             // 
+            this.BodyStatTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BodyStatTextBox.Location = new System.Drawing.Point(46, 19);
             this.BodyStatTextBox.MaxLength = 2;
             this.BodyStatTextBox.Name = "BodyStatTextBox";
@@ -259,6 +262,7 @@
             // 
             // AgilityStatTextBox
             // 
+            this.AgilityStatTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.AgilityStatTextBox.Location = new System.Drawing.Point(108, 19);
             this.AgilityStatTextBox.MaxLength = 2;
             this.AgilityStatTextBox.Name = "AgilityStatTextBox";
@@ -267,6 +271,7 @@
             // 
             // AgilityStatLabel
             // 
+            this.AgilityStatLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.AgilityStatLabel.AutoSize = true;
             this.AgilityStatLabel.ForeColor = System.Drawing.Color.Maroon;
             this.AgilityStatLabel.Location = new System.Drawing.Point(68, 22);
@@ -295,14 +300,14 @@
             this.ReactionStatLabel.TabIndex = 4;
             this.ReactionStatLabel.Text = "[R]eact";
             // 
-            // textBox3
+            // StrengthStatTextBox
             // 
-            this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox3.Location = new System.Drawing.Point(234, 19);
-            this.textBox3.MaxLength = 2;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(20, 20);
-            this.textBox3.TabIndex = 7;
+            this.StrengthStatTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.StrengthStatTextBox.Location = new System.Drawing.Point(234, 19);
+            this.StrengthStatTextBox.MaxLength = 2;
+            this.StrengthStatTextBox.Name = "StrengthStatTextBox";
+            this.StrengthStatTextBox.Size = new System.Drawing.Size(20, 20);
+            this.StrengthStatTextBox.TabIndex = 7;
             // 
             // StrengthStatLabel
             // 
@@ -319,7 +324,7 @@
             // WillpowerStatTextBox
             // 
             this.WillpowerStatTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.WillpowerStatTextBox.Location = new System.Drawing.Point(294, 19);
+            this.WillpowerStatTextBox.Location = new System.Drawing.Point(46, 44);
             this.WillpowerStatTextBox.MaxLength = 2;
             this.WillpowerStatTextBox.Name = "WillpowerStatTextBox";
             this.WillpowerStatTextBox.Size = new System.Drawing.Size(20, 20);
@@ -329,7 +334,7 @@
             // 
             this.WillpowerStatLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.WillpowerStatLabel.AutoSize = true;
-            this.WillpowerStatLabel.Location = new System.Drawing.Point(254, 22);
+            this.WillpowerStatLabel.Location = new System.Drawing.Point(6, 47);
             this.WillpowerStatLabel.Name = "WillpowerStatLabel";
             this.WillpowerStatLabel.Size = new System.Drawing.Size(30, 13);
             this.WillpowerStatLabel.TabIndex = 8;
@@ -337,8 +342,8 @@
             // 
             // LogicStatTextBox
             // 
-            this.LogicStatTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.LogicStatTextBox.Location = new System.Drawing.Point(356, 19);
+            this.LogicStatTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.LogicStatTextBox.Location = new System.Drawing.Point(108, 44);
             this.LogicStatTextBox.MaxLength = 2;
             this.LogicStatTextBox.Name = "LogicStatTextBox";
             this.LogicStatTextBox.Size = new System.Drawing.Size(20, 20);
@@ -346,9 +351,9 @@
             // 
             // LogicStatLabel
             // 
-            this.LogicStatLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.LogicStatLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.LogicStatLabel.AutoSize = true;
-            this.LogicStatLabel.Location = new System.Drawing.Point(316, 22);
+            this.LogicStatLabel.Location = new System.Drawing.Point(68, 47);
             this.LogicStatLabel.Name = "LogicStatLabel";
             this.LogicStatLabel.Size = new System.Drawing.Size(39, 13);
             this.LogicStatLabel.TabIndex = 10;
@@ -356,8 +361,8 @@
             // 
             // IntuitionStatTextBox
             // 
-            this.IntuitionStatTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.IntuitionStatTextBox.Location = new System.Drawing.Point(418, 19);
+            this.IntuitionStatTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.IntuitionStatTextBox.Location = new System.Drawing.Point(170, 44);
             this.IntuitionStatTextBox.MaxLength = 2;
             this.IntuitionStatTextBox.Name = "IntuitionStatTextBox";
             this.IntuitionStatTextBox.Size = new System.Drawing.Size(20, 20);
@@ -365,9 +370,9 @@
             // 
             // IntuitionStatLabel
             // 
-            this.IntuitionStatLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.IntuitionStatLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.IntuitionStatLabel.AutoSize = true;
-            this.IntuitionStatLabel.Location = new System.Drawing.Point(378, 22);
+            this.IntuitionStatLabel.Location = new System.Drawing.Point(130, 47);
             this.IntuitionStatLabel.Name = "IntuitionStatLabel";
             this.IntuitionStatLabel.Size = new System.Drawing.Size(31, 13);
             this.IntuitionStatLabel.TabIndex = 12;
@@ -376,7 +381,7 @@
             // textBox4
             // 
             this.textBox4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox4.Location = new System.Drawing.Point(294, 45);
+            this.textBox4.Location = new System.Drawing.Point(418, 44);
             this.textBox4.MaxLength = 2;
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(20, 20);
@@ -387,7 +392,7 @@
             this.MagicResonanceStatLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.MagicResonanceStatLabel.AutoSize = true;
             this.MagicResonanceStatLabel.ForeColor = System.Drawing.Color.Teal;
-            this.MagicResonanceStatLabel.Location = new System.Drawing.Point(254, 48);
+            this.MagicResonanceStatLabel.Location = new System.Drawing.Point(378, 47);
             this.MagicResonanceStatLabel.Name = "MagicResonanceStatLabel";
             this.MagicResonanceStatLabel.Size = new System.Drawing.Size(36, 13);
             this.MagicResonanceStatLabel.TabIndex = 22;
@@ -396,7 +401,7 @@
             // textBox5
             // 
             this.textBox5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox5.Location = new System.Drawing.Point(234, 45);
+            this.textBox5.Location = new System.Drawing.Point(356, 44);
             this.textBox5.MaxLength = 2;
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(20, 20);
@@ -408,7 +413,7 @@
             this.EssenceStatLabel.AutoSize = true;
             this.EssenceStatLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EssenceStatLabel.ForeColor = System.Drawing.Color.Teal;
-            this.EssenceStatLabel.Location = new System.Drawing.Point(192, 48);
+            this.EssenceStatLabel.Location = new System.Drawing.Point(316, 47);
             this.EssenceStatLabel.Name = "EssenceStatLabel";
             this.EssenceStatLabel.Size = new System.Drawing.Size(36, 13);
             this.EssenceStatLabel.TabIndex = 20;
@@ -417,7 +422,7 @@
             // textBox6
             // 
             this.textBox6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox6.Location = new System.Drawing.Point(170, 45);
+            this.textBox6.Location = new System.Drawing.Point(418, 19);
             this.textBox6.MaxLength = 2;
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(20, 20);
@@ -428,7 +433,7 @@
             this.EdgeCurrentLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.EdgeCurrentLabel.AutoSize = true;
             this.EdgeCurrentLabel.ForeColor = System.Drawing.Color.Teal;
-            this.EdgeCurrentLabel.Location = new System.Drawing.Point(130, 48);
+            this.EdgeCurrentLabel.Location = new System.Drawing.Point(378, 22);
             this.EdgeCurrentLabel.Name = "EdgeCurrentLabel";
             this.EdgeCurrentLabel.Size = new System.Drawing.Size(42, 13);
             this.EdgeCurrentLabel.TabIndex = 18;
@@ -436,7 +441,8 @@
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(108, 45);
+            this.textBox7.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.textBox7.Location = new System.Drawing.Point(356, 19);
             this.textBox7.MaxLength = 2;
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(20, 20);
@@ -444,9 +450,10 @@
             // 
             // EdgeStatLabel
             // 
+            this.EdgeStatLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.EdgeStatLabel.AutoSize = true;
             this.EdgeStatLabel.ForeColor = System.Drawing.Color.Teal;
-            this.EdgeStatLabel.Location = new System.Drawing.Point(68, 48);
+            this.EdgeStatLabel.Location = new System.Drawing.Point(316, 22);
             this.EdgeStatLabel.Name = "EdgeStatLabel";
             this.EdgeStatLabel.Size = new System.Drawing.Size(38, 13);
             this.EdgeStatLabel.TabIndex = 16;
@@ -454,7 +461,8 @@
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(46, 45);
+            this.textBox8.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.textBox8.Location = new System.Drawing.Point(234, 46);
             this.textBox8.MaxLength = 2;
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(20, 20);
@@ -462,9 +470,10 @@
             // 
             // CharismaStatLabel
             // 
+            this.CharismaStatLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.CharismaStatLabel.AutoSize = true;
             this.CharismaStatLabel.ForeColor = System.Drawing.Color.Black;
-            this.CharismaStatLabel.Location = new System.Drawing.Point(6, 48);
+            this.CharismaStatLabel.Location = new System.Drawing.Point(194, 48);
             this.CharismaStatLabel.Name = "CharismaStatLabel";
             this.CharismaStatLabel.Size = new System.Drawing.Size(35, 13);
             this.CharismaStatLabel.TabIndex = 14;
@@ -472,18 +481,19 @@
             // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(316, 48);
+            this.label2.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label2.Location = new System.Drawing.Point(6, 74);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 13);
+            this.label2.Size = new System.Drawing.Size(60, 13);
             this.label2.TabIndex = 24;
-            this.label2.Text = "Comp";
+            this.label2.Text = "Composure";
             // 
             // textBox2
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(356, 45);
+            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.textBox2.Location = new System.Drawing.Point(108, 71);
             this.textBox2.MaxLength = 2;
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
@@ -492,18 +502,19 @@
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(378, 48);
+            this.label1.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label1.Location = new System.Drawing.Point(6, 100);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(36, 13);
+            this.label1.Size = new System.Drawing.Size(85, 13);
             this.label1.TabIndex = 26;
-            this.label1.Text = "Judge";
+            this.label1.Text = "Judge Intentions";
             // 
             // textBox1
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(418, 45);
+            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.textBox1.Location = new System.Drawing.Point(108, 97);
             this.textBox1.MaxLength = 2;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
@@ -512,7 +523,7 @@
             // 
             // textBox9
             // 
-            this.textBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBox9.Location = new System.Drawing.Point(418, 71);
             this.textBox9.MaxLength = 2;
             this.textBox9.Name = "textBox9";
@@ -522,7 +533,7 @@
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.SaddleBrown;
@@ -534,7 +545,7 @@
             // 
             // textBox10
             // 
-            this.textBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox10.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBox10.Location = new System.Drawing.Point(356, 71);
             this.textBox10.MaxLength = 2;
             this.textBox10.Name = "textBox10";
@@ -544,7 +555,7 @@
             // 
             // label4
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.SaddleBrown;
@@ -579,7 +590,7 @@
             // textBox13
             // 
             this.textBox13.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox13.Location = new System.Drawing.Point(170, 71);
+            this.textBox13.Location = new System.Drawing.Point(234, 97);
             this.textBox13.MaxLength = 2;
             this.textBox13.Name = "textBox13";
             this.textBox13.ReadOnly = true;
@@ -590,8 +601,8 @@
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label7.Location = new System.Drawing.Point(130, 74);
+            this.label7.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label7.Location = new System.Drawing.Point(193, 100);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(34, 13);
             this.label7.TabIndex = 32;
@@ -599,7 +610,8 @@
             // 
             // textBox14
             // 
-            this.textBox14.Location = new System.Drawing.Point(108, 71);
+            this.textBox14.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.textBox14.Location = new System.Drawing.Point(234, 71);
             this.textBox14.MaxLength = 2;
             this.textBox14.Name = "textBox14";
             this.textBox14.ReadOnly = true;
@@ -608,17 +620,19 @@
             // 
             // label8
             // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label8.Location = new System.Drawing.Point(68, 74);
+            this.label8.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label8.Location = new System.Drawing.Point(131, 74);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(33, 13);
+            this.label8.Size = new System.Drawing.Size(60, 13);
             this.label8.TabIndex = 30;
-            this.label8.Text = "Lift/C";
+            this.label8.Text = "Lift or Carry";
             // 
             // textBox15
             // 
-            this.textBox15.Location = new System.Drawing.Point(46, 71);
+            this.textBox15.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.textBox15.Location = new System.Drawing.Point(170, 97);
             this.textBox15.MaxLength = 2;
             this.textBox15.Name = "textBox15";
             this.textBox15.ReadOnly = true;
@@ -627,9 +641,10 @@
             // 
             // label9
             // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(6, 74);
+            this.label9.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label9.Location = new System.Drawing.Point(131, 100);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(30, 13);
             this.label9.TabIndex = 28;
@@ -673,7 +688,7 @@
         private System.Windows.Forms.Label LogicStatLabel;
         private System.Windows.Forms.TextBox WillpowerStatTextBox;
         private System.Windows.Forms.Label WillpowerStatLabel;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox StrengthStatTextBox;
         private System.Windows.Forms.Label StrengthStatLabel;
         private System.Windows.Forms.TextBox ReactionStatTextBox;
         private System.Windows.Forms.Label ReactionStatLabel;

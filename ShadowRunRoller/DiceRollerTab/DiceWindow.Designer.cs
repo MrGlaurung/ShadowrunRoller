@@ -57,7 +57,7 @@ namespace ShadowRunRoller
             this.button1.TabIndex = 3;
             this.button1.Text = "Roll";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // EdgeRollCheckbox
             // 
@@ -141,8 +141,8 @@ namespace ShadowRunRoller
             this.NumberOfDiceBox.TabIndex = 0;
             this.NumberOfDiceBox.Text = "5";
             this.NumberOfDiceBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.NumberOfDiceBox.TextChanged += new System.EventHandler(this.numberOfDiceBox_TextChanged);
-            this.NumberOfDiceBox.KeyPress += new KeyPressEventHandler(this.numberOfDiceBox_KeyPressed);
+            this.NumberOfDiceBox.TextChanged += new System.EventHandler(this.NumberOfDiceBox_TextChanged);
+            this.NumberOfDiceBox.KeyPress += new KeyPressEventHandler(this.NumberOfDiceBox_KeyPressed);
             // 
             // button2
             // 
@@ -154,7 +154,7 @@ namespace ShadowRunRoller
             this.button2.TabIndex = 4;
             this.button2.Text = "Add exploding d6";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // button3
             // 
@@ -166,7 +166,7 @@ namespace ShadowRunRoller
             this.button3.TabIndex = 5;
             this.button3.Text = "Add normal d6";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
             // errorText
             // 

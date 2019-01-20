@@ -22,7 +22,7 @@ namespace ShadowRunRoller
             if(StatusLabel != null) { MainStatusLabel = StatusLabel; }
         }
 
-        private void setStatusLabelText(string text)
+        private void SetStatusLabelText(string text)
         {
             if (MainStatusLabel != null)
             {
@@ -30,17 +30,17 @@ namespace ShadowRunRoller
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
-            changeInfo(@"", true);
+            ChangeInfo(@"", true);
             this.Roller = new DieRoller(Int32.Parse(NumberOfDiceBox.Text), EdgeRollCheckbox.Checked);
 
-            this.fixEverything();
+            this.FixEverything();
         }
 
-        private void fixEverything()
+        private void FixEverything()
         {
-            changeInfo(this.Roller.ResultString, !this.Roller.SuccessOfRoll);
+            ChangeInfo(this.Roller.ResultString, !this.Roller.SuccessOfRoll);
             string resultText = this.Roller.NumberResult;
             string extraInfo = this.Roller.ResultString + " with " + this.Roller.NumberOfOnes + " 1:s rolled";
             Color col = Color.Black;
@@ -57,16 +57,16 @@ namespace ShadowRunRoller
             FailureResultBox.Text = this.Roller.NumberOfFailures.ToString();
             OnesResultBox.Text = this.Roller.NumberOfOnes.ToString();
 
-            setStatusLabelText("Roll performed, " + this.Roller.numberOfDice + " dice rolled. " + extraInfo);
+            SetStatusLabelText("Roll performed, " + this.Roller.numberOfDice + " dice rolled. " + extraInfo);
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
             // Add exploding die
             this.OneMoreDie(true);
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e)
         {
             // Add un-exploding die
             this.OneMoreDie(false);
@@ -79,21 +79,19 @@ namespace ShadowRunRoller
 
             Roller.SumUp(Roller.numberOfDice + 1, myDie);
 
-            this.fixEverything();
+            this.FixEverything();
         }
 
-        private void numberOfDiceBox_KeyPressed(object sender, EventArgs e)
+        private void NumberOfDiceBox_KeyPressed(object sender, EventArgs e)
         {
 
         }
 
-        private void numberOfDiceBox_TextChanged(object sender, EventArgs e)
+        private void NumberOfDiceBox_TextChanged(object sender, EventArgs e)
         {
-            int tbValue;
-
-            if (!string.IsNullOrEmpty(NumberOfDiceBox.Text) && !int.TryParse(NumberOfDiceBox.Text, out tbValue))
+            if (!string.IsNullOrEmpty(NumberOfDiceBox.Text) && !int.TryParse(NumberOfDiceBox.Text, out int tbValue))
             {
-                changeInfo(@"You have to input a number of dice.", true);
+                ChangeInfo(@"You have to input a number of dice.", true);
                 NumberOfDiceBox.Text = "5";
             }
             else
@@ -102,7 +100,7 @@ namespace ShadowRunRoller
             }
         }
 
-        private void changeInfo(string newInfo, bool isError)
+        private void ChangeInfo(string newInfo, bool isError)
         {
             if (isError)
             {

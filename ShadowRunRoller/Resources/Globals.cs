@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -12,9 +13,16 @@ namespace ShadowRunRoller.Resources
     {
         public const string APPLICATION_NAME = "Shadowrun GM Tool";
         public static readonly string APPLICATION_VERSION = Application.ProductVersion;
-        public const string APPLICATION_HELP = "This is a Shadowrun GM tool to help you with your tasks as a GM. Nothing in this product is 100% rule correct, apart from dice rolling.";
+
+        public const string APPLICATION_HELP =
+            "This is a Shadowrun GM tool to help you with your tasks as a GM. Nothing in this product is 100% rule correct, apart from dice rolling.";
 
         public const string APPLICATION_LOADED = "Program loaded and started.";
+
+        public enum RACE
+        {
+            Human = 1, Elf, Dwarf, Orc, Troll
+        }
 
         public const string STAT = "Stat";
         public const string STAT_EXPLAINED =

@@ -27,28 +27,28 @@ namespace ShadowRunRoller.Main_Window
             MainWindowTooltipTextStripLeft.Text = Globals.APPLICATION_LOADED;
         }
 
-        private void versionToolStripMenuItem_Click(object sender, EventArgs e)
+        private void VersionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show(Globals.APPLICATION_HELP, Globals.APPLICATION_NAME + " " + Globals.APPLICATION_VERSION);
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void diceRollerToolStripMenuItem_Click(object sender, EventArgs e)
+        private void DiceRollerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MainWindowTabControl.SelectedTab = MainWindowTab1;
         }
 
-        private void nPCGeneratorToolStripMenuItem_Click(object sender, EventArgs e)
+        private void NPCGeneratorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MainWindowTabControl.SelectedTab = MainWindowTab2;
         }
 
         // Enable and disable items as appropriate.
-        private void editToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
+        private void EditToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
         {
             FixEditMenuItems();
         }
@@ -86,7 +86,7 @@ namespace ShadowRunRoller.Main_Window
             return this._currentBox != null && this._currentBox == controlObj as TextBoxBase;
         }
 
-        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if(!CheckActiveControl()) { return; }
 
@@ -95,14 +95,14 @@ namespace ShadowRunRoller.Main_Window
             this._currentBox.SelectedText = string.Empty;
         }
 
-        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!CheckActiveControl()) { return; }
 
             Clipboard.SetText(this._currentBox.SelectedText);
         }
 
-        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!CheckActiveControl()) { return; }
 
@@ -112,7 +112,7 @@ namespace ShadowRunRoller.Main_Window
             this._currentBox.Text = this._currentBox.Text.Insert(this._currentBox.SelectionStart, pasteText);
         }
 
-        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!CheckActiveControl()) { return; }
 

@@ -109,12 +109,20 @@
     <Compile Include="Main Window\Main Window.Designer.cs">
       <DependentUpon>Main Window.cs</DependentUpon>
     </Compile>
+    <Compile Include="NPCGeneratorTab\Character.cs" />
+    <Compile Include="NPCGeneratorTab\Contact.cs" />
+    <Compile Include="NPCGeneratorTab\Cybertech.cs" />
+    <Compile Include="NPCGeneratorTab\Equipment.cs" />
+    <Compile Include="NPCGeneratorTab\Generator\FillWindow.cs" />
     <Compile Include="NPCGeneratorTab\NPCGeneratorWindow.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="NPCGeneratorTab\NPCGeneratorWindow.Designer.cs">
       <DependentUpon>NPCGeneratorWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="NPCGeneratorTab\Quality.cs" />
+    <Compile Include="NPCGeneratorTab\Skill.cs" />
+    <Compile Include="NPCGeneratorTab\Spells.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Globals.cs" />
