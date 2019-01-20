@@ -33,8 +33,16 @@
             this.MainWindowTooltipTextStripLeft = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadNPCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveNPCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveNPCGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.diceRollerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nPCGeneratorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -81,23 +89,87 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loadNPCToolStripMenuItem,
+            this.saveNPCToolStripMenuItem,
+            this.saveNPCGroupToolStripMenuItem,
+            this.toolStripSeparator1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
+            // loadNPCToolStripMenuItem
+            // 
+            this.loadNPCToolStripMenuItem.Name = "loadNPCToolStripMenuItem";
+            this.loadNPCToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.loadNPCToolStripMenuItem.Text = "Load Character";
+            // 
+            // saveNPCToolStripMenuItem
+            // 
+            this.saveNPCToolStripMenuItem.Name = "saveNPCToolStripMenuItem";
+            this.saveNPCToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.saveNPCToolStripMenuItem.Text = "Save Character";
+            // 
+            // saveNPCGroupToolStripMenuItem
+            // 
+            this.saveNPCGroupToolStripMenuItem.Name = "saveNPCGroupToolStripMenuItem";
+            this.saveNPCGroupToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.saveNPCGroupToolStripMenuItem.Text = "Save Character Group";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(185, 6);
+            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cutToolStripMenuItem,
+            this.copyToolStripMenuItem,
+            this.pasteToolStripMenuItem,
+            this.deleteToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.DropDownOpening += new System.EventHandler(this.editToolStripMenuItem_DropDownOpening);
+            // 
+            // cutToolStripMenuItem
+            // 
+            this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
+            this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cutToolStripMenuItem.Text = "Cut";
+            this.cutToolStripMenuItem.Click += new System.EventHandler(this.cutToolStripMenuItem_Click);
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.copyToolStripMenuItem.Text = "Copy";
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
+            // 
+            // pasteToolStripMenuItem
+            // 
+            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
+            this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pasteToolStripMenuItem.Text = "Paste";
+            this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem
             // 
@@ -111,14 +183,14 @@
             // diceRollerToolStripMenuItem
             // 
             this.diceRollerToolStripMenuItem.Name = "diceRollerToolStripMenuItem";
-            this.diceRollerToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.diceRollerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.diceRollerToolStripMenuItem.Text = "DiceRoller";
             this.diceRollerToolStripMenuItem.Click += new System.EventHandler(this.diceRollerToolStripMenuItem_Click);
             // 
             // nPCGeneratorToolStripMenuItem
             // 
             this.nPCGeneratorToolStripMenuItem.Name = "nPCGeneratorToolStripMenuItem";
-            this.nPCGeneratorToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.nPCGeneratorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.nPCGeneratorToolStripMenuItem.Text = "NPC Generator";
             this.nPCGeneratorToolStripMenuItem.Click += new System.EventHandler(this.nPCGeneratorToolStripMenuItem_Click);
             // 
@@ -166,7 +238,7 @@
             this.MainWindowTab2.Location = new System.Drawing.Point(4, 22);
             this.MainWindowTab2.Name = "MainWindowTab2";
             this.MainWindowTab2.Padding = new System.Windows.Forms.Padding(3);
-            this.MainWindowTab2.Size = new System.Drawing.Size(502, 336);
+            this.MainWindowTab2.Size = new System.Drawing.Size(462, 500);
             this.MainWindowTab2.TabIndex = 1;
             this.MainWindowTab2.Text = "NPC Generator";
             this.MainWindowTab2.UseVisualStyleBackColor = true;
@@ -209,5 +281,13 @@
         private System.Windows.Forms.TabPage MainWindowTab1;
         private System.Windows.Forms.TabPage MainWindowTab2;
         private System.Windows.Forms.ToolStripStatusLabel MainWindowTooltipTextStripLeft;
+        private System.Windows.Forms.ToolStripMenuItem loadNPCToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveNPCToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveNPCGroupToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem cutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
     }
 }

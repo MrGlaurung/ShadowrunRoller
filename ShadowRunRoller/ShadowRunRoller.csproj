@@ -49,7 +49,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\DiceIcon.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Icons\DiceIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
@@ -165,7 +165,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DiceIcon.ico" />
-    <Content Include="Resources\DiceIcon.ico" />
+    <Content Include="Resources\Icons\DiceIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Images\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

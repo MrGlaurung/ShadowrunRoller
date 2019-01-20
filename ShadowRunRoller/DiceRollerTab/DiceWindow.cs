@@ -72,15 +72,11 @@ namespace ShadowRunRoller
             this.fixEverything();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-        }
-
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
             int tbValue;
 
-            if (!int.TryParse(NumberOfDiceBox.Text, out tbValue))
+            if (!string.IsNullOrEmpty(NumberOfDiceBox.Text) && !int.TryParse(NumberOfDiceBox.Text, out tbValue))
             {
                 changeInfo(@"You have to input a number of dice.", true);
                 NumberOfDiceBox.Text = "5";
