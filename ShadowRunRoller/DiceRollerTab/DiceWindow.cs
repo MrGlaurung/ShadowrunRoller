@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using System.Configuration;
+using System.Drawing;
 using ShadowRunRoller.DiceRollerTab;
 
 namespace ShadowRunRoller
@@ -39,15 +40,24 @@ namespace ShadowRunRoller
 
         private void fixEverything()
         {
-            changeInfo(this.Roller.ResultString, this.Roller.SuccessOfRoll);
+            changeInfo(this.Roller.ResultString, !this.Roller.SuccessOfRoll);
             string resultText = this.Roller.NumberResult;
-            if(Verbose.Checked == true) { resultText += " (" + this.Roller.ResultString + " with " + this.Roller.NumberOfOnes + " 1:s rolled)"; }
+            string extraInfo = this.Roller.ResultString + " with " + this.Roller.NumberOfOnes + " 1:s rolled";
+            Color col = Color.Black;
+
+            if (Verbose.Checked == true) { resultText += " (" + extraInfo + ")"; }
+            resultText += ".";
+
+            if(!this.Roller.SuccessOfRoll) { col = Color.Red; }
+            ResultMultilineBox.SelectionColor = col;
             ResultMultilineBox.AppendText(resultText + Environment.NewLine);
+            ResultMultilineBox.ScrollToCaret();
 
             SuccessResultBox.Text = this.Roller.NumberOfSuccesses.ToString();
             FailureResultBox.Text = this.Roller.NumberOfFailures.ToString();
             OnesResultBox.Text = this.Roller.NumberOfOnes.ToString();
-            setStatusLabelText("Roll performed, " + this.Roller.numberOfDice + " dice rolled.");
+
+            setStatusLabelText("Roll performed, " + this.Roller.numberOfDice + " dice rolled. " + extraInfo);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -72,7 +82,12 @@ namespace ShadowRunRoller
             this.fixEverything();
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
+        private void numberOfDiceBox_KeyPressed(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numberOfDiceBox_TextChanged(object sender, EventArgs e)
         {
             int tbValue;
 

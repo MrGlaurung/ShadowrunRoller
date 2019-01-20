@@ -166,9 +166,8 @@
   <ItemGroup>
     <Content Include="DiceIcon.ico" />
     <Content Include="Resources\Icons\DiceIcon.ico" />
+    <Content Include="Resources\Images\Body.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

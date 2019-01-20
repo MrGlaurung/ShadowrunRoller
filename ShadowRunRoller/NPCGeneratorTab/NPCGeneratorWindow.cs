@@ -52,8 +52,9 @@ namespace ShadowRunRoller.NPCGeneratorTab
             tp.UseFading = true;
             tp.AutoPopDelay = 30000;
             tp.ShowAlways = true;
+            tp.ToolTipIcon = ToolTipIcon.Info;
 
-            tp.ToolTipTitle = stat + " - Stat - " + type;
+            tp.ToolTipTitle = stat + " - " + Globals.STAT + " - " + type;
             tp.SetToolTip(theLabel, Globals.STAT_EXPLAINED + Environment.NewLine + Environment.NewLine + explanation);
         }
     }

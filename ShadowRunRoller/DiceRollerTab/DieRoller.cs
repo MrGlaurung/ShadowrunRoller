@@ -24,7 +24,7 @@ namespace ShadowRunRoller.DiceRollerTab
             this.rnd = new Random();
 
             this.ResultString = "";
-            this.SuccessOfRoll = true;
+            this.SuccessOfRoll = false;
             this.numberOfDice = numberOfDice;
             createDice(numberOfDice, edgeRoll);
         }
@@ -73,19 +73,19 @@ namespace ShadowRunRoller.DiceRollerTab
             {
                 if (diceList.Count(x => x.ToInt() > 4) == 0)
                 {
-                    this.ResultString = @"Critical failure!!";
+                    this.ResultString = @"Critical failure";
                     this.SuccessOfRoll = false;
                 }
                 else
                 {
-                    this.ResultString = @"This roll is a Glitch with " + NumberOfSuccesses + " successes.";
+                    this.ResultString = @"This roll is a Glitch with " + NumberOfSuccesses + " successes";
                     this.SuccessOfRoll = true;
                 }
             }
             else
             {
-                this.ResultString = @"You have " + NumberOfSuccesses + " successes.";
-                this.SuccessOfRoll = true;
+                this.ResultString = @"You have " + NumberOfSuccesses + " successes";
+                if(NumberOfSuccesses > 0) { this.SuccessOfRoll = true; }
             }
         }
     }

@@ -16,6 +16,7 @@ namespace ShadowRunRoller.Resources
 
         public const string APPLICATION_LOADED = "Program loaded and started.";
 
+        public const string STAT = "Stat";
         public const string STAT_EXPLAINED =
             "Attributes are the inherent characteristics of your shadowrunner,\n" +
             "the basic abilities they bring to the table. Shadowrunners have a\n" +

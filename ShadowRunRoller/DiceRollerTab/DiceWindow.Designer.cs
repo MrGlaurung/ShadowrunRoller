@@ -1,4 +1,6 @@
-﻿namespace ShadowRunRoller
+﻿using System.Windows.Forms;
+
+namespace ShadowRunRoller
 {
     partial class DiceWindow
     {
@@ -52,7 +54,7 @@
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(108, 35);
-            this.button1.TabIndex = 0;
+            this.button1.TabIndex = 3;
             this.button1.Text = "Roll";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -91,7 +93,7 @@
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(108, 13);
-            this.label1.TabIndex = 3;
+            this.label1.TabStop = false;
             this.label1.Text = "Amount of successes";
             // 
             // label2
@@ -102,7 +104,7 @@
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 13);
-            this.label2.TabIndex = 4;
+            this.label2.TabStop = false;
             this.label2.Text = "Amount of failures";
             // 
             // SuccessResultBox
@@ -113,7 +115,7 @@
             this.SuccessResultBox.Margin = new System.Windows.Forms.Padding(2);
             this.SuccessResultBox.Name = "SuccessResultBox";
             this.SuccessResultBox.Size = new System.Drawing.Size(36, 20);
-            this.SuccessResultBox.TabIndex = 5;
+            this.SuccessResultBox.TabStop = false;
             this.SuccessResultBox.Text = "0";
             this.SuccessResultBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -125,7 +127,7 @@
             this.FailureResultBox.Margin = new System.Windows.Forms.Padding(2);
             this.FailureResultBox.Name = "FailureResultBox";
             this.FailureResultBox.Size = new System.Drawing.Size(36, 20);
-            this.FailureResultBox.TabIndex = 6;
+            this.FailureResultBox.TabStop = false;
             this.FailureResultBox.Text = "0";
             this.FailureResultBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -136,10 +138,11 @@
             this.NumberOfDiceBox.Margin = new System.Windows.Forms.Padding(2);
             this.NumberOfDiceBox.Name = "NumberOfDiceBox";
             this.NumberOfDiceBox.Size = new System.Drawing.Size(45, 37);
-            this.NumberOfDiceBox.TabIndex = 7;
+            this.NumberOfDiceBox.TabIndex = 0;
             this.NumberOfDiceBox.Text = "5";
             this.NumberOfDiceBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.NumberOfDiceBox.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.NumberOfDiceBox.TextChanged += new System.EventHandler(this.numberOfDiceBox_TextChanged);
+            this.NumberOfDiceBox.KeyPress += new KeyPressEventHandler(this.numberOfDiceBox_KeyPressed);
             // 
             // button2
             // 
@@ -148,7 +151,7 @@
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(108, 35);
-            this.button2.TabIndex = 8;
+            this.button2.TabIndex = 4;
             this.button2.Text = "Add exploding d6";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -160,7 +163,7 @@
             this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(108, 35);
-            this.button3.TabIndex = 9;
+            this.button3.TabIndex = 5;
             this.button3.Text = "Add normal d6";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -173,7 +176,7 @@
             this.errorText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.errorText.Name = "errorText";
             this.errorText.Size = new System.Drawing.Size(0, 13);
-            this.errorText.TabIndex = 10;
+            this.errorText.TabStop = false;
             // 
             // successText
             // 
@@ -183,7 +186,7 @@
             this.successText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.successText.Name = "successText";
             this.successText.Size = new System.Drawing.Size(0, 13);
-            this.successText.TabIndex = 11;
+            this.successText.TabStop = false;
             // 
             // OnesResultBox
             // 
@@ -193,7 +196,7 @@
             this.OnesResultBox.Margin = new System.Windows.Forms.Padding(2);
             this.OnesResultBox.Name = "OnesResultBox";
             this.OnesResultBox.Size = new System.Drawing.Size(36, 20);
-            this.OnesResultBox.TabIndex = 14;
+            this.OnesResultBox.TabStop = false;
             this.OnesResultBox.Text = "0";
             this.OnesResultBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -205,7 +208,7 @@
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(72, 13);
-            this.label3.TabIndex = 13;
+            this.label3.TabStop = false;
             this.label3.Text = "Amount of 1:s";
             // 
             // ResultMultilineBox
@@ -217,7 +220,7 @@
             this.ResultMultilineBox.Name = "ResultMultilineBox";
             this.ResultMultilineBox.ReadOnly = true;
             this.ResultMultilineBox.Size = new System.Drawing.Size(284, 342);
-            this.ResultMultilineBox.TabIndex = 15;
+            this.ResultMultilineBox.TabStop = false;
             this.ResultMultilineBox.Text = "";
             // 
             // DiceWindow
