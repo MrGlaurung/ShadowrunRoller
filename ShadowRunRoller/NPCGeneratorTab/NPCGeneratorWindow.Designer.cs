@@ -114,6 +114,8 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(13, 104);
             this.comboBox1.Name = "comboBox1";
@@ -187,6 +189,9 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.textBox9);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.textBox10);
@@ -272,6 +277,7 @@
             // 
             // ReactionStatTextBox
             // 
+            this.ReactionStatTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.ReactionStatTextBox.Location = new System.Drawing.Point(170, 19);
             this.ReactionStatTextBox.MaxLength = 2;
             this.ReactionStatTextBox.Name = "ReactionStatTextBox";
@@ -280,6 +286,7 @@
             // 
             // ReactionStatLabel
             // 
+            this.ReactionStatLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.ReactionStatLabel.AutoSize = true;
             this.ReactionStatLabel.ForeColor = System.Drawing.Color.Maroon;
             this.ReactionStatLabel.Location = new System.Drawing.Point(130, 22);
@@ -290,6 +297,7 @@
             // 
             // textBox3
             // 
+            this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBox3.Location = new System.Drawing.Point(234, 19);
             this.textBox3.MaxLength = 2;
             this.textBox3.Name = "textBox3";
@@ -298,6 +306,7 @@
             // 
             // StrengthStatLabel
             // 
+            this.StrengthStatLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.StrengthStatLabel.AutoSize = true;
             this.StrengthStatLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StrengthStatLabel.ForeColor = System.Drawing.Color.Maroon;
@@ -309,6 +318,7 @@
             // 
             // WillpowerStatTextBox
             // 
+            this.WillpowerStatTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.WillpowerStatTextBox.Location = new System.Drawing.Point(294, 19);
             this.WillpowerStatTextBox.MaxLength = 2;
             this.WillpowerStatTextBox.Name = "WillpowerStatTextBox";
@@ -317,6 +327,7 @@
             // 
             // WillpowerStatLabel
             // 
+            this.WillpowerStatLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.WillpowerStatLabel.AutoSize = true;
             this.WillpowerStatLabel.Location = new System.Drawing.Point(254, 22);
             this.WillpowerStatLabel.Name = "WillpowerStatLabel";
@@ -326,6 +337,7 @@
             // 
             // LogicStatTextBox
             // 
+            this.LogicStatTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LogicStatTextBox.Location = new System.Drawing.Point(356, 19);
             this.LogicStatTextBox.MaxLength = 2;
             this.LogicStatTextBox.Name = "LogicStatTextBox";
@@ -334,6 +346,7 @@
             // 
             // LogicStatLabel
             // 
+            this.LogicStatLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LogicStatLabel.AutoSize = true;
             this.LogicStatLabel.Location = new System.Drawing.Point(316, 22);
             this.LogicStatLabel.Name = "LogicStatLabel";
@@ -343,6 +356,7 @@
             // 
             // IntuitionStatTextBox
             // 
+            this.IntuitionStatTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.IntuitionStatTextBox.Location = new System.Drawing.Point(418, 19);
             this.IntuitionStatTextBox.MaxLength = 2;
             this.IntuitionStatTextBox.Name = "IntuitionStatTextBox";
@@ -351,6 +365,7 @@
             // 
             // IntuitionStatLabel
             // 
+            this.IntuitionStatLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.IntuitionStatLabel.AutoSize = true;
             this.IntuitionStatLabel.Location = new System.Drawing.Point(378, 22);
             this.IntuitionStatLabel.Name = "IntuitionStatLabel";
@@ -360,6 +375,7 @@
             // 
             // textBox4
             // 
+            this.textBox4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBox4.Location = new System.Drawing.Point(294, 45);
             this.textBox4.MaxLength = 2;
             this.textBox4.Name = "textBox4";
@@ -368,6 +384,7 @@
             // 
             // MagicResonanceStatLabel
             // 
+            this.MagicResonanceStatLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.MagicResonanceStatLabel.AutoSize = true;
             this.MagicResonanceStatLabel.ForeColor = System.Drawing.Color.Teal;
             this.MagicResonanceStatLabel.Location = new System.Drawing.Point(254, 48);
@@ -378,6 +395,7 @@
             // 
             // textBox5
             // 
+            this.textBox5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBox5.Location = new System.Drawing.Point(234, 45);
             this.textBox5.MaxLength = 2;
             this.textBox5.Name = "textBox5";
@@ -386,6 +404,7 @@
             // 
             // EssenceStatLabel
             // 
+            this.EssenceStatLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.EssenceStatLabel.AutoSize = true;
             this.EssenceStatLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EssenceStatLabel.ForeColor = System.Drawing.Color.Teal;
@@ -397,6 +416,7 @@
             // 
             // textBox6
             // 
+            this.textBox6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBox6.Location = new System.Drawing.Point(170, 45);
             this.textBox6.MaxLength = 2;
             this.textBox6.Name = "textBox6";
@@ -405,6 +425,7 @@
             // 
             // EdgeCurrentLabel
             // 
+            this.EdgeCurrentLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.EdgeCurrentLabel.AutoSize = true;
             this.EdgeCurrentLabel.ForeColor = System.Drawing.Color.Teal;
             this.EdgeCurrentLabel.Location = new System.Drawing.Point(130, 48);
@@ -451,6 +472,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(316, 48);
             this.label2.Name = "label2";
@@ -460,6 +482,7 @@
             // 
             // textBox2
             // 
+            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox2.Location = new System.Drawing.Point(356, 45);
             this.textBox2.MaxLength = 2;
             this.textBox2.Name = "textBox2";
@@ -469,6 +492,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(378, 48);
             this.label1.Name = "label1";
@@ -478,6 +502,7 @@
             // 
             // textBox1
             // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Location = new System.Drawing.Point(418, 45);
             this.textBox1.MaxLength = 2;
             this.textBox1.Name = "textBox1";
@@ -487,6 +512,7 @@
             // 
             // textBox9
             // 
+            this.textBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox9.Location = new System.Drawing.Point(418, 71);
             this.textBox9.MaxLength = 2;
             this.textBox9.Name = "textBox9";
@@ -496,6 +522,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.SaddleBrown;
@@ -507,6 +534,7 @@
             // 
             // textBox10
             // 
+            this.textBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox10.Location = new System.Drawing.Point(356, 71);
             this.textBox10.MaxLength = 2;
             this.textBox10.Name = "textBox10";
@@ -516,6 +544,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.SaddleBrown;
@@ -527,6 +556,7 @@
             // 
             // textBox11
             // 
+            this.textBox11.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBox11.Location = new System.Drawing.Point(294, 71);
             this.textBox11.MaxLength = 2;
             this.textBox11.Name = "textBox11";
@@ -536,6 +566,7 @@
             // 
             // InitiativeLabel
             // 
+            this.InitiativeLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.InitiativeLabel.AutoSize = true;
             this.InitiativeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InitiativeLabel.ForeColor = System.Drawing.Color.SaddleBrown;
@@ -547,6 +578,7 @@
             // 
             // textBox13
             // 
+            this.textBox13.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBox13.Location = new System.Drawing.Point(170, 71);
             this.textBox13.MaxLength = 2;
             this.textBox13.Name = "textBox13";
@@ -556,6 +588,7 @@
             // 
             // label7
             // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label7.Location = new System.Drawing.Point(130, 74);
