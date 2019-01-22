@@ -113,7 +113,6 @@
     <Compile Include="NPCGeneratorTab\Contact.cs" />
     <Compile Include="NPCGeneratorTab\Cybertech.cs" />
     <Compile Include="NPCGeneratorTab\Equipment.cs" />
-    <Compile Include="NPCGeneratorTab\Generator\FillWindow.cs" />
     <Compile Include="NPCGeneratorTab\NPCGeneratorWindow.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -176,6 +175,8 @@
     <Content Include="Resources\Icons\DiceIcon.ico" />
     <Content Include="Resources\Images\Body.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="NPCGeneratorTab\Generator\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

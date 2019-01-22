@@ -26,46 +26,54 @@ namespace ShadowRunRoller.Resources
 
         public const string STAT = "Stat";
         public const string STAT_EXPLAINED =
-            "Attributes are the inherent characteristics of your shadowrunner,\n" +
-            "the basic abilities they bring to the table. Shadowrunners have a\n" +
-            "numerical rating for each attribute, which is used to help\n" +
-            "determine the amount of dice rolled for tests in the game.\n" +
-            "Attributes fall into three different groups: Physical, Mental,\n" +
-            "and Special. Every character has a rating in each of the Physical\n" +
-            "and Mental attributes, though they may not have ratings in the\n" +
-            "Special attributes. For humans, all attributes are between 1 and 6,\n" +
-            "though certain modifications and qualities can change this. Metatypes\n" +
-            "have different ranges in these attributes.";
+            "Attributes are the inherent characteristics of your\n" +
+            "shadowrunner, the basic abilities they bring to the table.\n" +
+            "Shadowrunners have a numerical rating for each\n" +
+            "attribute, which is used to help determine the amount\n" +
+            "of dice rolled for tests in the game. Attributes fall into\n" +
+            "three different groups: Physical, Mental, and Special.\n" +
+            "Every character has a rating in each of the Physical and\n" +
+            "Mental attributes, though they may not have ratings in\n" +
+            "the Special attributes.\n" +
+            "For humans, all attributes are between 1 and 6,\n" +
+            "though certain modifications and qualities can change\n" +
+            "this. Metatypes have different ranges in these attributes.";
         public const string BODY_EXPLAINED =
             "BODY (BOD) [B]\n" +
-            "Body measures your physical health and resiliency. It affects how\n" +
-            "much damage you can take and stay on your feet, how well you resist\n" +
-            "damage coming your way, your ability to recover from poisons and\n"+
-            "diseases, and things of that nature.";
+            "Body measures your physical health and resiliency.\n" +
+            "It affects how much damage you can take and stay on\n" +
+            "your feet, how well you resist damage coming your way,\n" +
+            "your ability to recover from poisons and diseases, and\n" +
+            "things of that nature.";
         public const string AGILITY_EXPLAINED = 
             "AGILITY (AGI) [A]\n" +
-            "Agility measures things like hand-eye coordination, flexibility,\n" +
-            "nimbleness, and balance.Agility is the most important attribute\n" +
-            "when it comes to scoring hits during combat, as you need to be\n" +
-            "coordinated to land your blows, whether you’re swinging a sword\n" +
-            "or carefully aiming a rifle.It also is critical in non-combat\n" +
-            "situations, such as sneaking quietly past security guards or\n" + 
-            "smoothly lifting a keycard from its secured position.";
+            "Agility measures things like hand-eye coordination,\n" +
+            "flexibility, nimbleness, and balance. Agility is the most\n" + 
+            "important attribute when it comes to scoring hits during\n" +
+            "combat, as you need to be coordinated to land your\n" +
+            "blows, whether you’re swinging a sword or carefully aiming\n" +
+            "a rifle. It also is critical in non-combat situations, such\n" +
+            "as sneaking quietly past security guards or smoothly lifting\n" +
+            "a keycard from its secured position.";
         public const string REACTION_EXPLAINED =
             "REACTION (REA) [R]\n" +
-            "Reaction is about reflexes, awareness, and your character’s\n" +
-            "ability to respond to events happening around them.Reaction\n" +
-            "plays an important role in deciding how soon characters act in\n" +
-            "combat and how skilled they are in avoiding attacks from others.\n" +
-            "It also helps you make that quick turn down a narrow alley on your\n" +
-            "cycle to avoid the howling gangers on your tail.";
+            "Reaction is about reflexes, awareness, and your\n" +
+            "character’s ability to respond to events happening\n" +
+            "around them. Reaction plays an important role in deciding\n" +
+            "how soon characters act in combat and how\n" +
+            "skilled they are in avoiding attacks from others. It\n" +
+            "also helps you make that quick turn down a narrow\n" +
+            "alley on your cycle to avoid the howling gangers on\n" +
+            "your tail.";
         public const string STRENGTH_EXPLAINED =
             "STRENGTH (STR) [S]\n" +
-            "Strength is an indicator of, well, how strong your character is. The\n" +
-            "higher your strength, the more damage you’ll do when you’re raining blows\n" +
-            "down on an opponent, and the more you’ll be able to move or carry when\n" +
-            "there’s stuff that needs to be moved. Or carried. Strength is also\n" +
-            "important with athletic tasks such as climbing, running, and swimming.";
+            "Strength is an indicator of, well, how strong your\n" +
+            "character is. The higher your strength, the more damage\n" +
+            "you’ll do when you’re raining blows down on an opponent,\n" +
+            "and the more you’ll be able to move or carry\n" +
+            "when there’s stuff that needs to be moved. Or carried.\n" +
+            "Strength is also important with athletic tasks such as" +
+            "\nclimbing, running, and swimming.";
         public const string WILLPOWER_EXPLAINED =
             "WILLPOWER (WIL) [W]\n" +
             "Willpower is your character’s desire to push through\n" +
@@ -105,5 +113,99 @@ namespace ShadowRunRoller.Resources
             "Charisma is an important attribute for shamanic\n" +
             "mages, as it helps them resist the damaging Drain from\n" +
             "spells they cast.";
+        public const string EDGE_EXPLAINED =
+            "Edge [E]\n" +
+            "Edge is the ultimate intangible, that certain something\n" +
+            "that provides a boost when you need it, that gets\n" +
+            "you out of a tough spot when the chips are down. It’s not\n" +
+            "used to calculate dice pools; instead, you spend a point\n" +
+            "of Edge to acquire a certain effect. Every character has at\n" +
+            "least one point of Edge, more if they want to take more\n" +
+            "frequent advantage of the boosts it offers.";
+        public const string CURRENT_EDGE_EXPLAINED =
+            "CURRENT EDGE POINTS\n" +
+            "You have some points.";
+        public const string ESSENCE_EXPLAINED =
+            "ESSENCE [ESS]\n" +
+            "Essence is your metahumanity encapsulated in a\n" +
+            "number. In Shadowrun, you have ample opportunities to\n" +
+            "alter your body or push it beyond its normal limits. Such\n" +
+            "actions often have a cost, and they can result in a loss of a\n" +
+            "portion of your metahumanity, which means a loss of Essence\n" +
+            "points. Each character starts with an Essence rating\n" +
+            "of 6, and it acts as a cap on the amount of alterations you\n" +
+            "can adopt. When it’s gone, it doesn’t come back. It also\n" +
+            "affects the Magic and Resonance attributes, as losses in\n" +
+            "Essence are reflected by losses in Magic and Resonance.\n\n" +
+            "While denizens of the Sixth World are accustomed to\n" +
+            "seeing a variety of augmentations and alterations to the\n" +
+            "metahuman form, the “uncanny valley” still exists. The\n" +
+            "uncanny valley is the disconcerting effect that happens\n" +
+            "when people see something that is almost, but not quite,\n" +
+            "metahuman. An animated cartoon with exaggerated\n" +
+            "features looks fine to metahuman eyes, but a computer\n" +
+            "program that closely, but not exactly, replicates human\n" +
+            "appearance is a troubling and unpleasant sight to most\n" +
+            "viewers. This is what happens when people see others\n" +
+            "with augmentations—on some level, people notice there\n" +
+            "is something less (or more) human about that, and they\n" +
+            "respond to it negatively. The change may not be exactly\n" +
+            "visible, but it is in some way noticeable—in one way or\n" +
+            "another, a person has become less human, and on some\n" +
+            "level other people notice this. This is why a character’s Essence\n" +
+            "is included in the calculation of their Social limit.";
+        public const string MAGIC_RESONANCE_EXPLAINED =
+            "MAGIC [MAG]\n" +
+            "If you intend to cast spells or use magic in any way,\n" +
+            "your character needs to have the Magic attribute. Most\n" +
+            "individuals do not have this attribute, meaning their rating\n" +
+            "is zero. Mages, who cast spells, and adepts, who\n" +
+            "channel magic into enhanced physical and mental abilities,\n" +
+            "need this quality. Their Magic rating measures how\n" +
+            "capable they are in the arcane arts and how much power\n" +
+            "they can draw down to help them in their efforts.\n\n" +
+            "RESONANCE [RES]\n" +
+            "Similar to Magic for mages and adepts, Resonance is\n" +
+            "the special attribute for technomancers. Technomancers\n" +
+            "interface with the Matrix using the power of their mind,\n" +
+            "and Resonance measures the strength of their ability to\n" +
+            "interact with and shape that environment.\n" +
+            "Non-technomancers have a zero rating\n" +
+            "for Resonance.";
+        public const string COMPOSURE_EXPLAINED =
+            "COMPOSURE [COM]\n" +
+            "Some situations are tough to deal with, even for hardened\n" +
+            "professionals like shadowrunners. When a character\n" +
+            "is faced with an emotionally overwhelming situation\n" +
+            "there are only two choices. Stay and fight or\n" +
+            "turn into a quivering lump of goo. To find out which\n" +
+            "one happens, make a Willpower + Charisma Test, with\n" +
+            "a threshold based on the severity of the situation.Take\n" +
+            "note that repeating similar situations over and again\n" +
+            "eventually eliminates the need to perform this test.\n" +
+            "Staring down a group of well-armed gangers will be\n" +
+            "scary at first, but after a character does it a few times\n" +
+            "the fear gives way to instinct.";
+        public const string JUDGE_INTENTIONS_EXPLAINED =
+            "Judge Intentions\n" +
+            "";
+        public const string MEMORY_EXPLAINED =
+            "Memory\n" +
+            "";
+        public const string LIFT_CARRY_EXPLAINED =
+            "Lift / Carry\n" +
+            "";
+        public const string MOVE_EXPLAINED =
+            "Move\n" +
+            "";
+        public const string INITIATIVE_EXPLAINED =
+            "Initiative\n" +
+            "";
+        public const string MATRIX_INITIATIVE_EXPLAINED =
+            "Matrix Initiative\n" +
+            "";
+        public const string ASTRAL_INITIATIVE_EXPLAINED =
+            "Astral Initiative\n" +
+            "";
     }
 }

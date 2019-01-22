@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShadowRunRoller.NPCGeneratorTab
 {
-    class Equipment
+    public class Equipment
     {
     }
 }

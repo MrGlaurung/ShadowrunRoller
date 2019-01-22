@@ -7,7 +7,7 @@ using ShadowRunRoller.Resources;
 
 namespace ShadowRunRoller.NPCGeneratorTab
 {
-    class Character
+    public class Character
     {
         public int BodyStat { get; set; }
         public int AgilityStat { get; set; }
