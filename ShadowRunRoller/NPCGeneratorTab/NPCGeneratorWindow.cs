@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Drawing.Text;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 using System.Windows.Forms;
 using ShadowRunRoller.Resources;
 using Label = System.Windows.Forms.Label;
@@ -79,33 +72,53 @@ namespace ShadowRunRoller.NPCGeneratorTab
 
         public void WriteCharInNPCWindow(Character chr)
         {
-            // Fill all the statboxes.
-            BodyStatTextBox.Text = chr.BodyStat.ToString();
-            AgilityStatTextBox.Text = chr.AgilityStat.ToString();
-            ReactionStatTextBox.Text = chr.ReactionStat.ToString();
-            StrengthStatTextBox.Text = chr.StrengthStat.ToString();
-            WillpowerStatTextBox.Text = chr.WillpowerStat.ToString();
-            LogicStatTextBox.Text = chr.LogicStat.ToString();
-            IntuitionStatTextBox.Text = chr.IntuitionStat.ToString();
-            CharismaStatTextBox.Text = chr.CharismaStat.ToString();
+            // Do the simple stuff. This are common bindings to register the values in the character object when they are changed in the window.
+            CharacterNameTextBox.DataBindings.Clear();
+            CharacterNameTextBox.DataBindings.Add("Text", chr, "CharacterName", false, DataSourceUpdateMode.OnPropertyChanged);
+            CharacterAliasTextBox.DataBindings.Clear();
+            CharacterAliasTextBox.DataBindings.Add("Text", chr, "CharacterAlias", false, DataSourceUpdateMode.OnPropertyChanged);
 
-            // Fill up all the special stats.
-            EdgeStatTextBox.Text = chr.EdgeStat.ToString();
-            CurrentEdgePointsTextBox.Text = chr.EdgeCurrentPoints.ToString();
-            EssenceStatTextBox.Text = chr.EssenceStat.ToString();
-            MagicStatTextBox.Text = chr.MagicResonanceStat.ToString();
+            // Bind up the stats.
+            DoDataBinding(BodyStatTextBox, "BodyStat", chr);
+            DoDataBinding(AgilityStatTextBox, "AgilityStat", chr);
+            DoDataBinding(ReactionStatTextBox, "ReactionStat", chr);
+            DoDataBinding(StrengthStatTextBox, "StrengthStat", chr);
+            DoDataBinding(WillpowerStatTextBox, "WillpowerStat", chr);
+            DoDataBinding(LogicStatTextBox, "LogicStat", chr);
+            DoDataBinding(IntuitionStatTextBox, "IntuitionStat", chr);
+            DoDataBinding(CharismaStatTextBox, "CharismaStat", chr);
+            DoDataBinding(EdgeStatTextBox, "EdgeStat", chr);
+            DoDataBinding(EdgeCurrentPointsTextBox, "EdgeCurrentPoints", chr);
+            DoDataBinding(EssenceStatTextBox, "EssenceStat", chr);
+            DoDataBinding(MagicResonanceStatTextBox, "MagicResonanceStat", chr);
 
-            // Fill all the auto-counted boxes.
-            ComposureTextBox.Text = chr.GetComposure().ToString();
-            JudgeIntentionsTextBox.Text = chr.GetJudgeIntentions().ToString();
-            LiftCarryTextBox.Text = chr.GetLiftCarry();
-            MemoryTextBox.Text = chr.GetMemory().ToString();
-            MoveTextBox.Text = chr.GetMovement();
+            // Bind up the autocalculated stuff
+            DoDataBinding(ComposureTextBox, "Composure", chr);
+            DoDataBinding(LiftCarryTextBox, "LiftCarry", chr);
+            DoDataBinding(MoveTextBox, "Move", chr);
+            DoDataBinding(JudgeIntentionsTextBox, "JudgeIntentions", chr);
+            DoDataBinding(MemoryTextBox, "Memory", chr);
 
-            // Initiative... Here we go.
-            InitiativeTextBox.Text = chr.GetInitiative().ToString();
-            MatrixInitiativeTextBox.Text = chr.GetMatrixInitiative().ToString();
-            AstralInitiativeTextBox.Text = chr.GetAstralInitiative().ToString();
+            // Moving on to initiatives.
+            DoDataBinding(InitiativeTextBox, "Initiative", chr);
+            DoDataBinding(MatrixInitiativeTextBox, "MatrixInitiative", chr);
+            DoDataBinding(AstralInitiativeTextBox, "AstralInitiative", chr);
+
+            // Don't forget maximum success limits.
+            DoDataBinding(PhysicalLimitTextBox, "PhysicalLimit", chr);
+            DoDataBinding(MentalLimitTextBox, "MentalLimit", chr);
+            DoDataBinding(SocialLimitTextBox, "SocialLimit", chr);
+
+            // And we top this off with Condition monitors.
+            DoDataBinding(ConditionMonitorTextBox, "ConditionMonitor", chr);
+            DoDataBinding(StunMonitorTextBox, "StunMonitor", chr);
+        }
+
+        public void DoDataBinding(TextBox tb, string valueName, Character chr)
+        {
+            tb.Text = chr.GetType().GetProperty(valueName).GetValue(chr, null).ToString();
+            tb.DataBindings.Clear();
+            tb.DataBindings.Add("Text", chr, valueName, false, DataSourceUpdateMode.OnPropertyChanged);
         }
 
         private void Label_MouseEnter(object sender, EventArgs e)

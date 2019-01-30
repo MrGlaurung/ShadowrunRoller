@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NPCGeneratorWindow));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ChooseNPC = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -39,12 +40,42 @@
             this.ClassComboBox = new System.Windows.Forms.ComboBox();
             this.RaceComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.SocialLimitTextBox = new System.Windows.Forms.TextBox();
+            this.SocialLimitLabel = new System.Windows.Forms.Label();
+            this.MentalLimitTextBox = new System.Windows.Forms.TextBox();
+            this.MentalLimitLabel = new System.Windows.Forms.Label();
+            this.PhysicalLimitTextBox = new System.Windows.Forms.TextBox();
+            this.PhysicalLimitLabel = new System.Windows.Forms.Label();
+            this.StunMonitorTextBox = new System.Windows.Forms.TextBox();
+            this.StunMonitorLabel = new System.Windows.Forms.Label();
+            this.ConditionMonitorTextBox = new System.Windows.Forms.TextBox();
+            this.CharacterAliasLabel = new System.Windows.Forms.Label();
+            this.ConditionMonitorLabel = new System.Windows.Forms.Label();
+            this.CharacterAliasTextBox = new System.Windows.Forms.TextBox();
+            this.CharacterNameLabel = new System.Windows.Forms.Label();
+            this.CharacterNameTextBox = new System.Windows.Forms.TextBox();
+            this.CharacterSummaryLabel = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.InitiativeGroupBox = new System.Windows.Forms.GroupBox();
             this.AstralInitiativeTextBox = new System.Windows.Forms.TextBox();
-            this.AstralInitiativeLabel = new System.Windows.Forms.Label();
-            this.MatrixInitiativeTextBox = new System.Windows.Forms.TextBox();
-            this.MatrixInitiativeLabel = new System.Windows.Forms.Label();
-            this.InitiativeTextBox = new System.Windows.Forms.TextBox();
             this.InitiativeLabel = new System.Windows.Forms.Label();
+            this.MatrixInitiativeLabel = new System.Windows.Forms.Label();
+            this.MatrixInitiativeTextBox = new System.Windows.Forms.TextBox();
+            this.AstralInitiativeLabel = new System.Windows.Forms.Label();
+            this.InitiativeTextBox = new System.Windows.Forms.TextBox();
             this.MoveTextBox = new System.Windows.Forms.TextBox();
             this.MoveLabel = new System.Windows.Forms.Label();
             this.LiftCarryTextBox = new System.Windows.Forms.TextBox();
@@ -55,11 +86,11 @@
             this.JudgeIntentionsLabel = new System.Windows.Forms.Label();
             this.ComposureTextBox = new System.Windows.Forms.TextBox();
             this.ComposureLabel = new System.Windows.Forms.Label();
-            this.MagicStatTextBox = new System.Windows.Forms.TextBox();
+            this.MagicResonanceStatTextBox = new System.Windows.Forms.TextBox();
             this.MagicResonanceStatLabel = new System.Windows.Forms.Label();
             this.EssenceStatTextBox = new System.Windows.Forms.TextBox();
             this.EssenceStatLabel = new System.Windows.Forms.Label();
-            this.CurrentEdgePointsTextBox = new System.Windows.Forms.TextBox();
+            this.EdgeCurrentPointsTextBox = new System.Windows.Forms.TextBox();
             this.EdgeCurrentLabel = new System.Windows.Forms.Label();
             this.EdgeStatTextBox = new System.Windows.Forms.TextBox();
             this.EdgeStatLabel = new System.Windows.Forms.Label();
@@ -79,11 +110,10 @@
             this.AgilityStatLabel = new System.Windows.Forms.Label();
             this.BodyStatTextBox = new System.Windows.Forms.TextBox();
             this.BodyStatLabel = new System.Windows.Forms.Label();
-            this.InitiativeGroupBox = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.InitiativeGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -197,8 +227,17 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.groupBox4);
+            this.groupBox2.Controls.Add(this.StunMonitorTextBox);
+            this.groupBox2.Controls.Add(this.StunMonitorLabel);
+            this.groupBox2.Controls.Add(this.ConditionMonitorTextBox);
+            this.groupBox2.Controls.Add(this.CharacterAliasLabel);
+            this.groupBox2.Controls.Add(this.ConditionMonitorLabel);
+            this.groupBox2.Controls.Add(this.CharacterAliasTextBox);
+            this.groupBox2.Controls.Add(this.CharacterNameLabel);
+            this.groupBox2.Controls.Add(this.CharacterNameTextBox);
+            this.groupBox2.Controls.Add(this.CharacterSummaryLabel);
+            this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.InitiativeGroupBox);
             this.groupBox2.Controls.Add(this.MoveTextBox);
             this.groupBox2.Controls.Add(this.MoveLabel);
@@ -210,11 +249,11 @@
             this.groupBox2.Controls.Add(this.JudgeIntentionsLabel);
             this.groupBox2.Controls.Add(this.ComposureTextBox);
             this.groupBox2.Controls.Add(this.ComposureLabel);
-            this.groupBox2.Controls.Add(this.MagicStatTextBox);
+            this.groupBox2.Controls.Add(this.MagicResonanceStatTextBox);
             this.groupBox2.Controls.Add(this.MagicResonanceStatLabel);
             this.groupBox2.Controls.Add(this.EssenceStatTextBox);
             this.groupBox2.Controls.Add(this.EssenceStatLabel);
-            this.groupBox2.Controls.Add(this.CurrentEdgePointsTextBox);
+            this.groupBox2.Controls.Add(this.EdgeCurrentPointsTextBox);
             this.groupBox2.Controls.Add(this.EdgeCurrentLabel);
             this.groupBox2.Controls.Add(this.EdgeStatTextBox);
             this.groupBox2.Controls.Add(this.EdgeStatLabel);
@@ -241,6 +280,325 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Character info";
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.SocialLimitTextBox);
+            this.groupBox4.Controls.Add(this.SocialLimitLabel);
+            this.groupBox4.Controls.Add(this.MentalLimitTextBox);
+            this.groupBox4.Controls.Add(this.MentalLimitLabel);
+            this.groupBox4.Controls.Add(this.PhysicalLimitTextBox);
+            this.groupBox4.Controls.Add(this.PhysicalLimitLabel);
+            this.groupBox4.Location = new System.Drawing.Point(229, 274);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(209, 31);
+            this.groupBox4.TabIndex = 55;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Limits";
+            // 
+            // SocialLimitTextBox
+            // 
+            this.SocialLimitTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.SocialLimitTextBox.Location = new System.Drawing.Point(178, 9);
+            this.SocialLimitTextBox.MaxLength = 2;
+            this.SocialLimitTextBox.Name = "SocialLimitTextBox";
+            this.SocialLimitTextBox.ReadOnly = true;
+            this.SocialLimitTextBox.Size = new System.Drawing.Size(20, 20);
+            this.SocialLimitTextBox.TabIndex = 31;
+            // 
+            // SocialLimitLabel
+            // 
+            this.SocialLimitLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.SocialLimitLabel.AutoSize = true;
+            this.SocialLimitLabel.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.SocialLimitLabel.Location = new System.Drawing.Point(137, 15);
+            this.SocialLimitLabel.Name = "SocialLimitLabel";
+            this.SocialLimitLabel.Size = new System.Drawing.Size(36, 13);
+            this.SocialLimitLabel.TabIndex = 30;
+            this.SocialLimitLabel.Text = "Social";
+            // 
+            // MentalLimitTextBox
+            // 
+            this.MentalLimitTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.MentalLimitTextBox.Location = new System.Drawing.Point(115, 9);
+            this.MentalLimitTextBox.MaxLength = 2;
+            this.MentalLimitTextBox.Name = "MentalLimitTextBox";
+            this.MentalLimitTextBox.ReadOnly = true;
+            this.MentalLimitTextBox.Size = new System.Drawing.Size(20, 20);
+            this.MentalLimitTextBox.TabIndex = 29;
+            // 
+            // MentalLimitLabel
+            // 
+            this.MentalLimitLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.MentalLimitLabel.AutoSize = true;
+            this.MentalLimitLabel.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.MentalLimitLabel.Location = new System.Drawing.Point(76, 15);
+            this.MentalLimitLabel.Name = "MentalLimitLabel";
+            this.MentalLimitLabel.Size = new System.Drawing.Size(39, 13);
+            this.MentalLimitLabel.TabIndex = 28;
+            this.MentalLimitLabel.Text = "Mental";
+            // 
+            // PhysicalLimitTextBox
+            // 
+            this.PhysicalLimitTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.PhysicalLimitTextBox.Location = new System.Drawing.Point(53, 9);
+            this.PhysicalLimitTextBox.MaxLength = 2;
+            this.PhysicalLimitTextBox.Name = "PhysicalLimitTextBox";
+            this.PhysicalLimitTextBox.ReadOnly = true;
+            this.PhysicalLimitTextBox.Size = new System.Drawing.Size(20, 20);
+            this.PhysicalLimitTextBox.TabIndex = 27;
+            // 
+            // PhysicalLimitLabel
+            // 
+            this.PhysicalLimitLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.PhysicalLimitLabel.AutoSize = true;
+            this.PhysicalLimitLabel.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.PhysicalLimitLabel.Location = new System.Drawing.Point(6, 15);
+            this.PhysicalLimitLabel.Name = "PhysicalLimitLabel";
+            this.PhysicalLimitLabel.Size = new System.Drawing.Size(46, 13);
+            this.PhysicalLimitLabel.TabIndex = 26;
+            this.PhysicalLimitLabel.Text = "Physical";
+            // 
+            // StunMonitorTextBox
+            // 
+            this.StunMonitorTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.StunMonitorTextBox.Location = new System.Drawing.Point(201, 123);
+            this.StunMonitorTextBox.MaxLength = 2;
+            this.StunMonitorTextBox.Name = "StunMonitorTextBox";
+            this.StunMonitorTextBox.ReadOnly = true;
+            this.StunMonitorTextBox.Size = new System.Drawing.Size(20, 20);
+            this.StunMonitorTextBox.TabIndex = 54;
+            // 
+            // StunMonitorLabel
+            // 
+            this.StunMonitorLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.StunMonitorLabel.AutoSize = true;
+            this.StunMonitorLabel.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.StunMonitorLabel.Location = new System.Drawing.Point(134, 126);
+            this.StunMonitorLabel.Name = "StunMonitorLabel";
+            this.StunMonitorLabel.Size = new System.Drawing.Size(67, 13);
+            this.StunMonitorLabel.TabIndex = 53;
+            this.StunMonitorLabel.Text = "Stun Monitor";
+            // 
+            // ConditionMonitorTextBox
+            // 
+            this.ConditionMonitorTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ConditionMonitorTextBox.Location = new System.Drawing.Point(201, 97);
+            this.ConditionMonitorTextBox.MaxLength = 2;
+            this.ConditionMonitorTextBox.Name = "ConditionMonitorTextBox";
+            this.ConditionMonitorTextBox.ReadOnly = true;
+            this.ConditionMonitorTextBox.Size = new System.Drawing.Size(20, 20);
+            this.ConditionMonitorTextBox.TabIndex = 52;
+            // 
+            // CharacterAliasLabel
+            // 
+            this.CharacterAliasLabel.AutoSize = true;
+            this.CharacterAliasLabel.Location = new System.Drawing.Point(6, 180);
+            this.CharacterAliasLabel.Name = "CharacterAliasLabel";
+            this.CharacterAliasLabel.Size = new System.Drawing.Size(32, 13);
+            this.CharacterAliasLabel.TabIndex = 50;
+            this.CharacterAliasLabel.Text = "Alias:";
+            // 
+            // ConditionMonitorLabel
+            // 
+            this.ConditionMonitorLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ConditionMonitorLabel.AutoSize = true;
+            this.ConditionMonitorLabel.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.ConditionMonitorLabel.Location = new System.Drawing.Point(134, 100);
+            this.ConditionMonitorLabel.Name = "ConditionMonitorLabel";
+            this.ConditionMonitorLabel.Size = new System.Drawing.Size(66, 13);
+            this.ConditionMonitorLabel.TabIndex = 51;
+            this.ConditionMonitorLabel.Text = "Condition M.";
+            // 
+            // CharacterAliasTextBox
+            // 
+            this.CharacterAliasTextBox.Location = new System.Drawing.Point(50, 177);
+            this.CharacterAliasTextBox.Name = "CharacterAliasTextBox";
+            this.CharacterAliasTextBox.Size = new System.Drawing.Size(171, 20);
+            this.CharacterAliasTextBox.TabIndex = 49;
+            // 
+            // CharacterNameLabel
+            // 
+            this.CharacterNameLabel.AutoSize = true;
+            this.CharacterNameLabel.Location = new System.Drawing.Point(6, 154);
+            this.CharacterNameLabel.Name = "CharacterNameLabel";
+            this.CharacterNameLabel.Size = new System.Drawing.Size(38, 13);
+            this.CharacterNameLabel.TabIndex = 48;
+            this.CharacterNameLabel.Text = "Name:";
+            // 
+            // CharacterNameTextBox
+            // 
+            this.CharacterNameTextBox.Location = new System.Drawing.Point(50, 151);
+            this.CharacterNameTextBox.Name = "CharacterNameTextBox";
+            this.CharacterNameTextBox.Size = new System.Drawing.Size(171, 20);
+            this.CharacterNameTextBox.TabIndex = 47;
+            // 
+            // CharacterSummaryLabel
+            // 
+            this.CharacterSummaryLabel.AutoSize = true;
+            this.CharacterSummaryLabel.Location = new System.Drawing.Point(6, 212);
+            this.CharacterSummaryLabel.Name = "CharacterSummaryLabel";
+            this.CharacterSummaryLabel.Size = new System.Drawing.Size(10, 13);
+            this.CharacterSummaryLabel.TabIndex = 46;
+            this.CharacterSummaryLabel.Text = "-";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.button5);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.button6);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.button4);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.button3);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.button2);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Location = new System.Drawing.Point(229, 151);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(208, 123);
+            this.groupBox3.TabIndex = 45;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Full information";
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(107, 96);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 53;
+            this.label5.Text = "Spells";
+            // 
+            // button5
+            // 
+            this.button5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
+            this.button5.Location = new System.Drawing.Point(169, 87);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(31, 30);
+            this.button5.TabIndex = 54;
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 96);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(49, 13);
+            this.label6.TabIndex = 51;
+            this.label6.Text = "Contacts";
+            // 
+            // button6
+            // 
+            this.button6.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
+            this.button6.Location = new System.Drawing.Point(68, 87);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(31, 30);
+            this.button6.TabIndex = 52;
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(107, 60);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 13);
+            this.label4.TabIndex = 49;
+            this.label4.Text = "Cybertech";
+            // 
+            // button4
+            // 
+            this.button4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
+            this.button4.Location = new System.Drawing.Point(169, 51);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(31, 30);
+            this.button4.TabIndex = 50;
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(107, 24);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(47, 13);
+            this.label3.TabIndex = 47;
+            this.label3.Text = "Qualities";
+            // 
+            // button3
+            // 
+            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.Location = new System.Drawing.Point(169, 15);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(31, 30);
+            this.button3.TabIndex = 48;
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 60);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 13);
+            this.label2.TabIndex = 45;
+            this.label2.Text = "Equipment";
+            // 
+            // button2
+            // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.Location = new System.Drawing.Point(68, 51);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(31, 30);
+            this.button2.TabIndex = 46;
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 13);
+            this.label1.TabIndex = 43;
+            this.label1.Text = "Full skilltree";
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(68, 15);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(31, 30);
+            this.button1.TabIndex = 44;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // InitiativeGroupBox
+            // 
+            this.InitiativeGroupBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.InitiativeGroupBox.Controls.Add(this.AstralInitiativeTextBox);
+            this.InitiativeGroupBox.Controls.Add(this.InitiativeLabel);
+            this.InitiativeGroupBox.Controls.Add(this.MatrixInitiativeLabel);
+            this.InitiativeGroupBox.Controls.Add(this.MatrixInitiativeTextBox);
+            this.InitiativeGroupBox.Controls.Add(this.AstralInitiativeLabel);
+            this.InitiativeGroupBox.Controls.Add(this.InitiativeTextBox);
+            this.InitiativeGroupBox.Location = new System.Drawing.Point(229, 99);
+            this.InitiativeGroupBox.Name = "InitiativeGroupBox";
+            this.InitiativeGroupBox.Size = new System.Drawing.Size(209, 44);
+            this.InitiativeGroupBox.TabIndex = 42;
+            this.InitiativeGroupBox.TabStop = false;
+            this.InitiativeGroupBox.Text = "Initiative";
+            // 
             // AstralInitiativeTextBox
             // 
             this.AstralInitiativeTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -251,28 +609,18 @@
             this.AstralInitiativeTextBox.Size = new System.Drawing.Size(20, 20);
             this.AstralInitiativeTextBox.TabIndex = 41;
             // 
-            // AstralInitiativeLabel
+            // InitiativeLabel
             // 
-            this.AstralInitiativeLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.AstralInitiativeLabel.AutoSize = true;
-            this.AstralInitiativeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AstralInitiativeLabel.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.AstralInitiativeLabel.Location = new System.Drawing.Point(138, 20);
-            this.AstralInitiativeLabel.Name = "AstralInitiativeLabel";
-            this.AstralInitiativeLabel.Size = new System.Drawing.Size(39, 13);
-            this.AstralInitiativeLabel.TabIndex = 40;
-            this.AstralInitiativeLabel.Text = "Astral";
-            this.AstralInitiativeLabel.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
-            // 
-            // MatrixInitiativeTextBox
-            // 
-            this.MatrixInitiativeTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.MatrixInitiativeTextBox.Location = new System.Drawing.Point(116, 17);
-            this.MatrixInitiativeTextBox.MaxLength = 2;
-            this.MatrixInitiativeTextBox.Name = "MatrixInitiativeTextBox";
-            this.MatrixInitiativeTextBox.ReadOnly = true;
-            this.MatrixInitiativeTextBox.Size = new System.Drawing.Size(20, 20);
-            this.MatrixInitiativeTextBox.TabIndex = 39;
+            this.InitiativeLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.InitiativeLabel.AutoSize = true;
+            this.InitiativeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InitiativeLabel.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.InitiativeLabel.Location = new System.Drawing.Point(14, 20);
+            this.InitiativeLabel.Name = "InitiativeLabel";
+            this.InitiativeLabel.Size = new System.Drawing.Size(25, 13);
+            this.InitiativeLabel.TabIndex = 36;
+            this.InitiativeLabel.Text = "Init";
+            this.InitiativeLabel.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
             // 
             // MatrixInitiativeLabel
             // 
@@ -287,6 +635,29 @@
             this.MatrixInitiativeLabel.Text = "Matix";
             this.MatrixInitiativeLabel.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
             // 
+            // MatrixInitiativeTextBox
+            // 
+            this.MatrixInitiativeTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.MatrixInitiativeTextBox.Location = new System.Drawing.Point(116, 17);
+            this.MatrixInitiativeTextBox.MaxLength = 2;
+            this.MatrixInitiativeTextBox.Name = "MatrixInitiativeTextBox";
+            this.MatrixInitiativeTextBox.ReadOnly = true;
+            this.MatrixInitiativeTextBox.Size = new System.Drawing.Size(20, 20);
+            this.MatrixInitiativeTextBox.TabIndex = 39;
+            // 
+            // AstralInitiativeLabel
+            // 
+            this.AstralInitiativeLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.AstralInitiativeLabel.AutoSize = true;
+            this.AstralInitiativeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AstralInitiativeLabel.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.AstralInitiativeLabel.Location = new System.Drawing.Point(138, 20);
+            this.AstralInitiativeLabel.Name = "AstralInitiativeLabel";
+            this.AstralInitiativeLabel.Size = new System.Drawing.Size(39, 13);
+            this.AstralInitiativeLabel.TabIndex = 40;
+            this.AstralInitiativeLabel.Text = "Astral";
+            this.AstralInitiativeLabel.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
+            // 
             // InitiativeTextBox
             // 
             this.InitiativeTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -296,19 +667,6 @@
             this.InitiativeTextBox.ReadOnly = true;
             this.InitiativeTextBox.Size = new System.Drawing.Size(20, 20);
             this.InitiativeTextBox.TabIndex = 37;
-            // 
-            // InitiativeLabel
-            // 
-            this.InitiativeLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.InitiativeLabel.AutoSize = true;
-            this.InitiativeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InitiativeLabel.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.InitiativeLabel.Location = new System.Drawing.Point(14, 20);
-            this.InitiativeLabel.Name = "InitiativeLabel";
-            this.InitiativeLabel.Size = new System.Drawing.Size(25, 13);
-            this.InitiativeLabel.TabIndex = 36;
-            this.InitiativeLabel.Text = "Init";
-            this.InitiativeLabel.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
             // 
             // MoveTextBox
             // 
@@ -422,14 +780,14 @@
             this.ComposureLabel.Text = "Composure";
             this.ComposureLabel.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
             // 
-            // MagicStatTextBox
+            // MagicResonanceStatTextBox
             // 
-            this.MagicStatTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.MagicStatTextBox.Location = new System.Drawing.Point(418, 44);
-            this.MagicStatTextBox.MaxLength = 2;
-            this.MagicStatTextBox.Name = "MagicStatTextBox";
-            this.MagicStatTextBox.Size = new System.Drawing.Size(20, 20);
-            this.MagicStatTextBox.TabIndex = 23;
+            this.MagicResonanceStatTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.MagicResonanceStatTextBox.Location = new System.Drawing.Point(418, 44);
+            this.MagicResonanceStatTextBox.MaxLength = 2;
+            this.MagicResonanceStatTextBox.Name = "MagicResonanceStatTextBox";
+            this.MagicResonanceStatTextBox.Size = new System.Drawing.Size(20, 20);
+            this.MagicResonanceStatTextBox.TabIndex = 23;
             // 
             // MagicResonanceStatLabel
             // 
@@ -465,14 +823,14 @@
             this.EssenceStatLabel.Text = "Essen";
             this.EssenceStatLabel.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
             // 
-            // CurrentEdgePointsTextBox
+            // EdgeCurrentPointsTextBox
             // 
-            this.CurrentEdgePointsTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.CurrentEdgePointsTextBox.Location = new System.Drawing.Point(418, 19);
-            this.CurrentEdgePointsTextBox.MaxLength = 2;
-            this.CurrentEdgePointsTextBox.Name = "CurrentEdgePointsTextBox";
-            this.CurrentEdgePointsTextBox.Size = new System.Drawing.Size(20, 20);
-            this.CurrentEdgePointsTextBox.TabIndex = 19;
+            this.EdgeCurrentPointsTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.EdgeCurrentPointsTextBox.Location = new System.Drawing.Point(418, 19);
+            this.EdgeCurrentPointsTextBox.MaxLength = 2;
+            this.EdgeCurrentPointsTextBox.Name = "EdgeCurrentPointsTextBox";
+            this.EdgeCurrentPointsTextBox.Size = new System.Drawing.Size(20, 20);
+            this.EdgeCurrentPointsTextBox.TabIndex = 19;
             // 
             // EdgeCurrentLabel
             // 
@@ -673,39 +1031,6 @@
             this.BodyStatLabel.Text = "[B]ody";
             this.BodyStatLabel.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
             // 
-            // InitiativeGroupBox
-            // 
-            this.InitiativeGroupBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.InitiativeGroupBox.Controls.Add(this.AstralInitiativeTextBox);
-            this.InitiativeGroupBox.Controls.Add(this.InitiativeLabel);
-            this.InitiativeGroupBox.Controls.Add(this.MatrixInitiativeLabel);
-            this.InitiativeGroupBox.Controls.Add(this.MatrixInitiativeTextBox);
-            this.InitiativeGroupBox.Controls.Add(this.AstralInitiativeLabel);
-            this.InitiativeGroupBox.Controls.Add(this.InitiativeTextBox);
-            this.InitiativeGroupBox.Location = new System.Drawing.Point(229, 99);
-            this.InitiativeGroupBox.Name = "InitiativeGroupBox";
-            this.InitiativeGroupBox.Size = new System.Drawing.Size(209, 44);
-            this.InitiativeGroupBox.TabIndex = 42;
-            this.InitiativeGroupBox.TabStop = false;
-            this.InitiativeGroupBox.Text = "Initiative";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(305, 160);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 13);
-            this.label1.TabIndex = 43;
-            this.label1.Text = "Full skilltree";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(372, 149);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(37, 44);
-            this.button1.TabIndex = 44;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // NPCGeneratorWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -719,6 +1044,10 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.InitiativeGroupBox.ResumeLayout(false);
             this.InitiativeGroupBox.PerformLayout();
             this.ResumeLayout(false);
@@ -756,11 +1085,11 @@
         private System.Windows.Forms.Label JudgeIntentionsLabel;
         private System.Windows.Forms.TextBox ComposureTextBox;
         private System.Windows.Forms.Label ComposureLabel;
-        private System.Windows.Forms.TextBox MagicStatTextBox;
+        private System.Windows.Forms.TextBox MagicResonanceStatTextBox;
         private System.Windows.Forms.Label MagicResonanceStatLabel;
         private System.Windows.Forms.TextBox EssenceStatTextBox;
         private System.Windows.Forms.Label EssenceStatLabel;
-        private System.Windows.Forms.TextBox CurrentEdgePointsTextBox;
+        private System.Windows.Forms.TextBox EdgeCurrentPointsTextBox;
         private System.Windows.Forms.Label EdgeCurrentLabel;
         private System.Windows.Forms.TextBox EdgeStatTextBox;
         private System.Windows.Forms.Label EdgeStatLabel;
@@ -781,5 +1110,32 @@
         private System.Windows.Forms.GroupBox InitiativeGroupBox;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label CharacterSummaryLabel;
+        private System.Windows.Forms.Label CharacterAliasLabel;
+        private System.Windows.Forms.TextBox CharacterAliasTextBox;
+        private System.Windows.Forms.Label CharacterNameLabel;
+        private System.Windows.Forms.TextBox CharacterNameTextBox;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.TextBox SocialLimitTextBox;
+        private System.Windows.Forms.Label SocialLimitLabel;
+        private System.Windows.Forms.TextBox MentalLimitTextBox;
+        private System.Windows.Forms.Label MentalLimitLabel;
+        private System.Windows.Forms.TextBox PhysicalLimitTextBox;
+        private System.Windows.Forms.Label PhysicalLimitLabel;
+        private System.Windows.Forms.TextBox StunMonitorTextBox;
+        private System.Windows.Forms.Label StunMonitorLabel;
+        private System.Windows.Forms.TextBox ConditionMonitorTextBox;
+        private System.Windows.Forms.Label ConditionMonitorLabel;
     }
 }
