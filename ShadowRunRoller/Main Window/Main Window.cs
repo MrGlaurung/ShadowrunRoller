@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using ShadowRunRoller.DiceRollerTab;
+using ShadowRunRoller.NPCGeneratorTab;
 using ShadowRunRoller.Resources;
 
 namespace ShadowRunRoller.Main_Window
@@ -15,14 +8,17 @@ namespace ShadowRunRoller.Main_Window
     public partial class Main_Window : Form
     {
         private TextBoxBase _currentBox;
+        // Create a random engine in the main window and use that one
+        // everywhere to get as randomized numbers as possible.
+        private Random rnd = new Random();
         
         // TODO: It seems that ctrl+v/c/x don't work. I got he menu items to work but not the keybindings. I need to fix that.
         public Main_Window()
         {
             InitializeComponent();
-            MainWindowTab1.Controls.Add(new DiceWindow(MainWindowTooltipTextStripLeft));
+            MainWindowTab1.Controls.Add(new DiceWindow(rnd, MainWindowTooltipTextStripLeft));
             MainWindowTab1.Controls[0].Anchor = ( AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right );
-            MainWindowTab2.Controls.Add(new NPCGeneratorTab.NPCGeneratorWindow(MainWindowTooltipTextStripLeft));
+            MainWindowTab2.Controls.Add(new NPCGeneratorWindow(rnd, MainWindowTooltipTextStripLeft));
             MainWindowTab2.Controls[0].Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
             MainWindowTooltipTextStripLeft.Text = Globals.APPLICATION_LOADED;
         }

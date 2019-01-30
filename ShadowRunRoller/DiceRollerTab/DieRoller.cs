@@ -12,36 +12,36 @@ namespace ShadowRunRoller.DiceRollerTab
         public int NumberOfSuccesses { get; private set; }
         public int NumberOfFailures { get; private set; }
         public int NumberOfOnes { get; private set; }
-        public int numberOfDice { get; set; }
+        public int NumberOfDice { get; set; }
 
-        private Random rnd { get; set; }
-        private List<Dice> diceList { get; set; }
+        private Random Rnd { get; set; }
+        private List<Dice> DiceList { get; set; }
 
         public DieRoller() : this(1, false) { }
 
         public DieRoller(int numberOfDice, bool edgeRoll)
         {
-            this.rnd = new Random();
+            this.Rnd = new Random();
 
             this.ResultString = "";
             this.SuccessOfRoll = false;
-            this.numberOfDice = numberOfDice;
-            createDice(numberOfDice, edgeRoll);
+            this.NumberOfDice = numberOfDice;
+            CreateDice(numberOfDice, edgeRoll);
         }
 
-        private void createDice(int numberOfDice, bool edgeRoll)
+        private void CreateDice(int numberOfDice, bool edgeRoll)
         {
-            this.diceList = new List<Dice>();
+            this.DiceList = new List<Dice>();
 
             for (int i = 0; i < numberOfDice; i++)
             {
                 Dice oneDie = new Dice(edgeRoll);
-                if (!oneDie.doRoll(rnd))
+                if (!oneDie.DoRoll(Rnd))
                 {
                     throw new ApplicationException("Catastrophic failure with Dice.");
                 }
 
-                diceList.Add(oneDie);
+                DiceList.Add(oneDie);
             }
 
             SumUp(numberOfDice);
@@ -49,29 +49,29 @@ namespace ShadowRunRoller.DiceRollerTab
 
         public void SumUp(int numberOfDice, Dice die)
         {
-            this.diceList.Add(die);
+            this.DiceList.Add(die);
             this.SumUp(numberOfDice);
         }
 
         public void SumUp(int numberOfDice)
         {
-            this.NumberResult = String.Join(", ", this.diceList.Select(x => x.ToString()));
+            this.NumberResult = String.Join(", ", this.DiceList.Select(x => x.ToString()));
 
-            checkResults(numberOfDice);
+            CheckResults(numberOfDice);
         }
 
-        private void checkResults(int numberOfDice)
+        private void CheckResults(int numberOfDice)
         {
-            this.numberOfDice = numberOfDice;
+            this.NumberOfDice = numberOfDice;
             int halfOfDice = numberOfDice / 2;
 
-            this.NumberOfSuccesses = diceList.Sum(x => x.Successes);
-            this.NumberOfFailures = diceList.Count(x => x.ToInt() < 5);
-            this.NumberOfOnes = diceList.Count(x => x.ToInt() == 1);
+            this.NumberOfSuccesses = DiceList.Sum(x => x.Successes);
+            this.NumberOfFailures = DiceList.Count(x => x.ToInt() < 5);
+            this.NumberOfOnes = DiceList.Count(x => x.ToInt() == 1);
 
-            if (diceList.Count(x => x.ToInt() == 1) > halfOfDice)
+            if (DiceList.Count(x => x.ToInt() == 1) > halfOfDice)
             {
-                if (diceList.Count(x => x.ToInt() > 4) == 0)
+                if (DiceList.Count(x => x.ToInt() > 4) == 0)
                 {
                     this.ResultString = @"Critical failure";
                     this.SuccessOfRoll = false;

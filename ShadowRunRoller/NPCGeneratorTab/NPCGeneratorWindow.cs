@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Reflection;
 using System.Windows.Forms;
 using ShadowRunRoller.Resources;
 using Label = System.Windows.Forms.Label;
@@ -10,11 +9,37 @@ namespace ShadowRunRoller.NPCGeneratorTab
     {
         private ToolStripStatusLabel MainStatusLabel;
         private ToolTip tp;
+        private Random rnd;
+        private Character _CurrentlyShownCharacter;
+        public Character CurrentlyShownCharacter { get { return this._CurrentlyShownCharacter; } set { this._CurrentlyShownCharacter = value; WriteCharInNPCWindow(this._CurrentlyShownCharacter); } }
 
-        public NPCGeneratorWindow(ToolStripStatusLabel StatusLabel = null)
+        public NPCGeneratorWindow(Random rand, ToolStripStatusLabel StatusLabel = null)
         {
             InitializeComponent();
             if (StatusLabel != null) { MainStatusLabel = StatusLabel; }
+
+            // Populate comboboxes.
+            SetStatusLabelText(Globals.COMBOBOX_GENERATION);
+            SetupComboBoxes(Globals.NPC_POWER_NAMES, PowerComboBox);
+            PowerComboBox.SelectedIndex = 0;
+            SetupComboBoxes(Globals.NPC_RACE_NAMES, RaceComboBox);
+            SetupComboBoxes(Globals.NPC_CLASS_NAMES, ClassComboBox);
+
+            SetStatusLabelText(Globals.NEW_EMPTY_CHAR_DONE);
+            this.CurrentlyShownCharacter = new Character();
+
+            SetStatusLabelText(Globals.FETCHING_RANDOM);
+            this.rnd = rand;
+        }
+
+        private void SetupComboBoxes(string[] StringArrayWithTextStrings, ComboBox ComboBoxToAddItemsTo)
+        {
+            for (int i = 0; i < StringArrayWithTextStrings.Length; i++)
+            {
+                ComboBoxToAddItemsTo.DisplayMember = "Text";
+                ComboBoxToAddItemsTo.ValueMember = "Value";
+                ComboBoxToAddItemsTo.Items.Add(new { Text = StringArrayWithTextStrings[i], Value = i });
+            }
         }
 
         private void SetStatusLabelText(string text)
@@ -51,23 +76,48 @@ namespace ShadowRunRoller.NPCGeneratorTab
 
         private void GenerateButton_Click(object sender, EventArgs e)
         {
+            if (this.CurrentlyShownCharacter != null)
+            {
+                if (string.IsNullOrEmpty(this.CurrentlyShownCharacter.CharacterAlias))
+                {
+                    DialogResult dialogResult = MessageBox.Show(Globals.LOSTCHAR_BODY, Globals.LOSTCHAR_HEADLINE, MessageBoxButtons.OKCancel);
+                    if (dialogResult == DialogResult.Cancel)
+                    {
+                        return;
+                    }
+                }
+                else
+                {
+                    // Store character in our lovely vault.
+                }
+            }
+
             Character chr = new Character
             {
-                BodyStat = 42,
-                AgilityStat = 42,
-                ReactionStat = 42,
-                StrengthStat = 42,
-                WillpowerStat = 42,
-                LogicStat = 42,
-                IntuitionStat = 42,
-                CharismaStat = 42,
-                EdgeStat = 42,
-                EdgeCurrentPoints = 17,
-                EssenceStat = 42,
-                MagicResonanceStat = 42
+                BodyStat = RandomValue(((dynamic)this.PowerComboBox.SelectedItem).Value, true),
+                AgilityStat = RandomValue(((dynamic)this.PowerComboBox.SelectedItem).Value, true),
+                ReactionStat = RandomValue(((dynamic)this.PowerComboBox.SelectedItem).Value, true),
+                StrengthStat = RandomValue(((dynamic)this.PowerComboBox.SelectedItem).Value, true),
+                WillpowerStat = RandomValue(((dynamic)this.PowerComboBox.SelectedItem).Value, true),
+                LogicStat = RandomValue(((dynamic)this.PowerComboBox.SelectedItem).Value, true),
+                IntuitionStat = RandomValue(((dynamic)this.PowerComboBox.SelectedItem).Value, true),
+                CharismaStat = RandomValue(((dynamic)this.PowerComboBox.SelectedItem).Value, true),
+                EdgeStat = RandomValue(((dynamic)this.PowerComboBox.SelectedItem).Value, true),
+                EdgeCurrentPoints = RandomValue(((dynamic)this.PowerComboBox.SelectedItem).Value, true),
+                EssenceStat = RandomValue(((dynamic)this.PowerComboBox.SelectedItem).Value, true),
+                MagicResonanceStat = RandomValue(((dynamic)this.PowerComboBox.SelectedItem).Value, true)
             };
 
-            WriteCharInNPCWindow(chr);
+            SetStatusLabelText(Globals.NEW_RANDOM_CHAR_DONE);
+            this.CurrentlyShownCharacter = chr;
+        }
+
+        private int RandomValue(dynamic CharacterStrength, bool IsPrimary)
+        {
+            int AddedPrimary = IsPrimary ? 1 : 0;
+            double HalfCalculation = (double)this.rnd.Next(1, 3 + AddedPrimary) * Globals.NPC_POWER_MULTIPLIER[CharacterStrength] * (double)((double)this.rnd.Next(70000, 83337)/100000);
+
+           return HalfCalculation < 1.0 ? 1 : (int)Math.Round(HalfCalculation);
         }
 
         public void WriteCharInNPCWindow(Character chr)
@@ -126,31 +176,31 @@ namespace ShadowRunRoller.NPCGeneratorTab
             switch ((sender as Label).Name)
             {
                 case "BodyStatLabel":
-                    AssignToolTip("Body - STAT - Physical", "", Globals.STAT_EXPLAINED + Environment.NewLine + Environment.NewLine + Globals.BODY_EXPLAINED, BodyStatLabel);
+                    AssignToolTip(Globals.BODYSTAT_HEADLINE, "", Globals.STAT_EXPLAINED + Environment.NewLine + Environment.NewLine + Globals.BODY_EXPLAINED, BodyStatLabel);
                     break;
                 case "AgilityStatLabel":
-                    AssignToolTip("Agility - STAT - Physical", "", Globals.STAT_EXPLAINED + Environment.NewLine + Environment.NewLine + Globals.AGILITY_EXPLAINED, AgilityStatLabel);
+                    AssignToolTip(Globals.AGILITYSTAT_HEADLINE, "", Globals.STAT_EXPLAINED + Environment.NewLine + Environment.NewLine + Globals.AGILITY_EXPLAINED, AgilityStatLabel);
                     break;
                 case "ReactionStatLabel":
-                    AssignToolTip("Reaction - STAT - Physical", "", Globals.STAT_EXPLAINED + Environment.NewLine + Environment.NewLine + Globals.REACTION_EXPLAINED, ReactionStatLabel);
+                    AssignToolTip(Globals.REACTIONSTAT_HEADLINE, "", Globals.STAT_EXPLAINED + Environment.NewLine + Environment.NewLine + Globals.REACTION_EXPLAINED, ReactionStatLabel);
                     break;
                 case "StrengthStatLabel":
-                    AssignToolTip("Strength - STAT - Physical", "", Globals.STAT_EXPLAINED + Environment.NewLine + Environment.NewLine + Globals.STRENGTH_EXPLAINED, StrengthStatLabel);
+                    AssignToolTip(Globals.STRENGTHSTAT_HEADLINE, "", Globals.STAT_EXPLAINED + Environment.NewLine + Environment.NewLine + Globals.STRENGTH_EXPLAINED, StrengthStatLabel);
                     break;
                 case "WillpowerStatLabel":
-                    AssignToolTip("Willpower - STAT - Mental", "", Globals.STAT_EXPLAINED + Environment.NewLine + Environment.NewLine + Globals.WILLPOWER_EXPLAINED, WillpowerStatLabel);
+                    AssignToolTip(Globals.WILLPOWERSTAT_HEADLINE, "", Globals.STAT_EXPLAINED + Environment.NewLine + Environment.NewLine + Globals.WILLPOWER_EXPLAINED, WillpowerStatLabel);
                     break;
                 case "LogicStatLabel":
-                    AssignToolTip("Logic - STAT - Mental", "", Globals.STAT_EXPLAINED + Environment.NewLine + Environment.NewLine + Globals.LOGIC_EXPLAINED, LogicStatLabel);
+                    AssignToolTip(Globals.LOGICSTAT_HEADLINE, "", Globals.STAT_EXPLAINED + Environment.NewLine + Environment.NewLine + Globals.LOGIC_EXPLAINED, LogicStatLabel);
                     break;
                 case "IntuitionStatLabel":
-                    AssignToolTip("Intuition - STAT - Mental", "", Globals.STAT_EXPLAINED + Environment.NewLine + Environment.NewLine + Globals.INTUITION_EXPLAINED, IntuitionStatLabel);
+                    AssignToolTip(Globals.INTUITIONSTAT_HEADLINE, "", Globals.STAT_EXPLAINED + Environment.NewLine + Environment.NewLine + Globals.INTUITION_EXPLAINED, IntuitionStatLabel);
                     break;
                 case "CharismaStatLabel":
-                    AssignToolTip("Charisma - STAT - Mental", "", Globals.STAT_EXPLAINED + Environment.NewLine + Environment.NewLine + Globals.CHARISMA_EXPLAINED, CharismaStatLabel);
+                    AssignToolTip(Globals.CHARISMASTAT_HEADLINE, "", Globals.STAT_EXPLAINED + Environment.NewLine + Environment.NewLine + Globals.CHARISMA_EXPLAINED, CharismaStatLabel);
                     break;
                 case "EdgeStatLabel":
-                    AssignToolTip("Edge - STAT - Special", "", Globals.STAT_EXPLAINED + Environment.NewLine + Environment.NewLine + Globals.EDGE_EXPLAINED, EdgeStatLabel);
+                    AssignToolTip(Globals.EDGESTAT_HEADLINE, "", Globals.STAT_EXPLAINED + Environment.NewLine + Environment.NewLine + Globals.EDGE_EXPLAINED, EdgeStatLabel);
                     break;
                 case "EdgeCurrentLabel":
                     AssignToolTip("Edge Current Points", "", Globals.CURRENT_EDGE_EXPLAINED, EdgeCurrentLabel);
@@ -177,13 +227,13 @@ namespace ShadowRunRoller.NPCGeneratorTab
                     AssignToolTip("Movement - Calculated Value", "", Globals.MOVE_EXPLAINED, MoveLabel);
                     break;
                 case "InitiativeLabel":
-                    AssignToolTip("Initiative", "", Globals.INITIATIVE_EXPLAINED, InitiativeLabel);
+                    AssignToolTip("Initiative - Calculated Value", "", Globals.INITIATIVE_GENERAL_EXPLAINED + Environment.NewLine + Environment.NewLine + Globals.INITIATIVE_EXPLAINED, InitiativeLabel);
                     break;
                 case "MatrixInitiativeLabel":
-                    AssignToolTip("Matrix Initiative", "", Globals.MATRIX_INITIATIVE_EXPLAINED, MatrixInitiativeLabel);
+                    AssignToolTip("Matrix Initiative - Calculated Value", "", Globals.INITIATIVE_GENERAL_EXPLAINED + Environment.NewLine + Environment.NewLine + Globals.MATRIX_INITIATIVE_EXPLAINED, MatrixInitiativeLabel);
                     break;
                 case "AstralInitiativeLabel":
-                    AssignToolTip("Astral Initiative", "", Globals.ASTRAL_INITIATIVE_EXPLAINED, AstralInitiativeLabel);
+                    AssignToolTip("Astral Initiative - Calculated Value", "", Globals.INITIATIVE_GENERAL_EXPLAINED + Environment.NewLine + Environment.NewLine + Globals.ASTRAL_INITIATIVE_EXPLAINED, AstralInitiativeLabel);
                     break;
             }
         }

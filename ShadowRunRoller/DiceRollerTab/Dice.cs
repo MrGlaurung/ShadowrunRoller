@@ -28,7 +28,7 @@ namespace ShadowRunRoller.DiceRollerTab
             return Result;
         }
 
-        public bool doRoll(Random rnd)
+        public bool DoRoll(Random rnd)
         {
             if (this.Rolled)
             {

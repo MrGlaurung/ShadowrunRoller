@@ -1,29 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 
 namespace ShadowRunRoller.Resources
 {
     static class Globals
     {
-        public const string APPLICATION_NAME = "Shadowrun GM Tool";
+        // This file contains both important variables and translations.
+        // On top here are the variables. The rest is only text I use in the application
+        // that can easily be translated to another language (NOT FRENCH!) Q 190130
         public static readonly string APPLICATION_VERSION = Application.ProductVersion;
-
-        public const string APPLICATION_HELP =
-            "This is a Shadowrun GM tool to help you with your tasks as a GM. Nothing in this product is 100% rule correct, apart from dice rolling.";
-
-        public const string APPLICATION_LOADED = "Program loaded and started.";
-
         public enum RACE
         {
-            Human = 1, Elf, Dwarf, Orc, Troll
+            Human = 0, Elf, Dwarf, Orc, Troll
         }
+        public static readonly string[] NPC_RACE_NAMES = {"Human", "Elf", "Dwarf", "Orc", "Troll"};
+        public enum CLASS
+        {
+            StreetSamurai = 0
+        }
+        public static readonly string[] NPC_CLASS_NAMES = { "Street Samurai" };
+        public enum NPCPOWER
+        {
+            Soddy = 0, BelowAverage, Average, AboveAverage, Strong, Powerful, Mastermind
+        }
+        public static readonly string[] NPC_POWER_NAMES = { "Soddy", "Below Average", "Average", "Above Average", "Strong", "Powerful", "Mastermind" };
+        public static readonly double[] NPC_POWER_MULTIPLIER = { 0.5, 0.8, 1, 2.158, 2.5, 3, 4.5 };
 
+        public const string APPLICATION_NAME = "Shadowrun GM Tool";
+        public const string APPLICATION_HELP =
+            "This is a Shadowrun GM tool to help you with your tasks as a GM.\n" +
+            "The NPC rolling will never give you a perfectly legal char according\n" +
+            "to the rules. There might be a bit too high in one stat or a bit too\n" +
+            "many points spent here or there.\n" +
+            "\n" +
+            "But it'll get you an NPC fast, smooth and simple and you can modify any\n" +
+            "stat you don't like in a blink of an eye.\n" +
+            "\n" +
+            "This program is published under GPL by Anders Liden from Gothenburg.\n" +
+            "I hope you enjoy it.\n";
+        public const string NEW_EMPTY_CHAR_DONE = "Empty NPC created for your enjoyment.";
+        public const string NEW_RANDOM_CHAR_DONE = "New random character created.";
+        public const string COMBOBOX_GENERATION = "Generating info in comboboxes.";
+        public const string FETCHING_RANDOM = "Fetching random from main window.";
+        public const string APPLICATION_LOADED = "Program loaded and started.";
+        public const string LOSTCHAR_HEADLINE = "Current character will be lost!";
+        public const string LOSTCHAR_BODY = "Your current visible character will be lost if you press OK.\n\n" +
+                                            "The only thing you need to do to keep your current character\n" +
+                                            "as one of the characters in memory is to type in an alias.\n\n" +
+                                            "You can press cancel now and enter an alias before you create\n" +
+                                            "a new character, or you can press OK and loose your current char.";
         public const string STAT = "Stat";
         public const string STAT_EXPLAINED =
             "Attributes are the inherent characteristics of your\n" +
@@ -38,6 +63,7 @@ namespace ShadowRunRoller.Resources
             "For humans, all attributes are between 1 and 6,\n" +
             "though certain modifications and qualities can change\n" +
             "this. Metatypes have different ranges in these attributes.";
+        public const string BODYSTAT_HEADLINE = "Body - STAT - Physical";
         public const string BODY_EXPLAINED =
             "BODY (BOD) [B]\n" +
             "Body measures your physical health and resiliency.\n" +
@@ -45,6 +71,7 @@ namespace ShadowRunRoller.Resources
             "your feet, how well you resist damage coming your way,\n" +
             "your ability to recover from poisons and diseases, and\n" +
             "things of that nature.";
+        public const string AGILITYSTAT_HEADLINE = "Agility - STAT - Physical";
         public const string AGILITY_EXPLAINED = 
             "AGILITY (AGI) [A]\n" +
             "Agility measures things like hand-eye coordination,\n" +
@@ -55,6 +82,7 @@ namespace ShadowRunRoller.Resources
             "a rifle. It also is critical in non-combat situations, such\n" +
             "as sneaking quietly past security guards or smoothly lifting\n" +
             "a keycard from its secured position.";
+        public const string REACTIONSTAT_HEADLINE = "Agility - STAT - Physical";
         public const string REACTION_EXPLAINED =
             "REACTION (REA) [R]\n" +
             "Reaction is about reflexes, awareness, and your\n" +
@@ -65,6 +93,7 @@ namespace ShadowRunRoller.Resources
             "also helps you make that quick turn down a narrow\n" +
             "alley on your cycle to avoid the howling gangers on\n" +
             "your tail.";
+        public const string STRENGTHSTAT_HEADLINE = "Strength - STAT - Physical";
         public const string STRENGTH_EXPLAINED =
             "STRENGTH (STR) [S]\n" +
             "Strength is an indicator of, well, how strong your\n" +
@@ -74,6 +103,7 @@ namespace ShadowRunRoller.Resources
             "when there’s stuff that needs to be moved. Or carried.\n" +
             "Strength is also important with athletic tasks such as" +
             "\nclimbing, running, and swimming.";
+        public const string WILLPOWERSTAT_HEADLINE = "Willpower - STAT - Mental";
         public const string WILLPOWER_EXPLAINED =
             "WILLPOWER (WIL) [W]\n" +
             "Willpower is your character’s desire to push through\n" +
@@ -82,6 +112,7 @@ namespace ShadowRunRoller.Resources
             "Whether you’re testing yourself against a toxic wilderness\n" +
             "or a pack of leather-clad orks with crowbars, Willpower\n" +
             "will help you make it through.";
+        public const string LOGICSTAT_HEADLINE = "Logic - STAT - Mental";
         public const string LOGIC_EXPLAINED =
             "LOGIC (LOG) [L]\n" +
             "The Logic attribute measures the cold, calculating\n" +
@@ -93,6 +124,7 @@ namespace ShadowRunRoller.Resources
             "Deckers also find Logic extremely useful, as it helps\n" +
             "them develop the attacks and counterattacks that are\n" +
             "part of their online battles.";
+        public const string INTUITIONSTAT_HEADLINE = "Intuition - STAT - Mental";
         public const string INTUITION_EXPLAINED =
             "INTUITION (INT) [I]\n" +
             "Intuition is the voice of your gut, the instinct that\n" +
@@ -100,6 +132,7 @@ namespace ShadowRunRoller.Resources
             "out. Intuition helps you anticipate ambushes, notice that\n" +
             "something is amiss or out of place, and stay on the trail\n" +
             "of someone you’re pursuing.";
+        public const string CHARISMASTAT_HEADLINE = "Charisma - STAT - Mental";
         public const string CHARISMA_EXPLAINED =
             "CHARISMA (CHA) [C]\n" +
             "Charisma is your force of personality, the persuasiveness\n" +
@@ -113,6 +146,7 @@ namespace ShadowRunRoller.Resources
             "Charisma is an important attribute for shamanic\n" +
             "mages, as it helps them resist the damaging Drain from\n" +
             "spells they cast.";
+        public const string EDGESTAT_HEADLINE = "Edge - STAT - Special";
         public const string EDGE_EXPLAINED =
             "Edge [E]\n" +
             "Edge is the ultimate intangible, that certain something\n" +
@@ -123,8 +157,11 @@ namespace ShadowRunRoller.Resources
             "least one point of Edge, more if they want to take more\n" +
             "frequent advantage of the boosts it offers.";
         public const string CURRENT_EDGE_EXPLAINED =
-            "CURRENT EDGE POINTS\n" +
-            "You have some points.";
+            "Current [E]dge points\n" +
+            "These are your current edge points that you can\n." +
+            "freely use. If you use an edge this value will decline\n" +
+            "if your burn an edge both this value and your stat will\n" +
+            "decline.";
         public const string ESSENCE_EXPLAINED =
             "ESSENCE [ESS]\n" +
             "Essence is your metahumanity encapsulated in a\n" +
@@ -188,24 +225,101 @@ namespace ShadowRunRoller.Resources
             "the fear gives way to instinct.";
         public const string JUDGE_INTENTIONS_EXPLAINED =
             "Judge Intentions\n" +
-            "";
+            "Reading another person is also a matter of instinct. A\n" +
+            "character can use their instincts to guess at the intentions\n" +
+            "of another person or to gauge how much they can\n" +
+            "trust someone.Make an Opposed Intuition + Charisma\n" +
+            "Test against the target’s Willpower + Charisma.This is\n" +
+            "not an exact science. A successful test doesn’t mean\n" +
+            "the target will never betray you (intentions have been\n" +
+            "known to change), and deceptive characters can gain\n" +
+            "another’s confidence easily.This primarily serves as a\n" +
+            "benchmark or gut instinct about how much you can\n" +
+            "trust the person you are dealing with.";
         public const string MEMORY_EXPLAINED =
             "Memory\n" +
-            "";
+            "While there are numerous mnemonic devices, and even a\n" +
+            "few select pieces of bioware, designed for remembering\n" +
+            "information, memory is not a skill. If a character needs\n" +
+            "to recall information make a Logic + Willpower Test. Use\n" +
+            "the Knowledge Skill Table to determine the threshold. If a\n" +
+            "character actively tries to memorize information, make a\n" +
+            "Logic + Willpower Test at the time of memorization. Each\n" +
+            "hit adds a dice to the Recall Test later on.\n" +
+            "Glitches can have a devastating effect on memory.\n" +
+            "A glitch means the character misremembers some portion\n" +
+            "of the information, such as order of numbers in a\n" +
+            "passcode. A critical glitch means the character has completely\n" +
+            "fooled himself into believing and thus remembering\n" +
+            "something that never actually happened.";
         public const string LIFT_CARRY_EXPLAINED =
             "Lift / Carry\n" +
-            "";
+            "The baseline for lifting weight is 15 kilograms per\n" +
+            "point of Strength. Anything more than that requires a\n" +
+            "Strength + Body Test. Each hit increases the max weight\n" +
+            "lifted by 15 kilograms. Lifting weight above your head,\n" +
+            "as with a clean & jerk, is more difficult. The baseline for\n" +
+            "lifting weight above the head is 5 kilograms per point\n" +
+            "Strength. Each hit on the Lifting Test increases the maximum\n" +
+            "weight you can lift by 5 kilograms.\n" +
+            "Carrying weight is significantly different than lifting\n" +
+            "weight. Characters can carry Strength x 10 kilograms in\n" +
+            "gear without effort. Additional weight requires a Lifting\n" +
+            "Test. Each hit increases the maximum by 10 kilograms.";
         public const string MOVE_EXPLAINED =
             "Move\n" +
-            "";
+            "Getting from one place to another, especially from one\n" +
+            "piece of cover to another or closing the distance on an opponent,\n" +
+            "is important. Characters in Shadowrun have three\n" +
+            "types of movement: Walking, Running, and Sprinting.\n" +
+            "A character’s movement for an entire Combat Turn\n" +
+            "(meaning total movement for all Initiative Passes, not\n" +
+            "for each Initiative Pass) is based on their Run rate, which\n" +
+            "is determined by metatype. Walk rate determines the\n" +
+            "farthest a character can move during a Combat Turn before\n" +
+            "they are considered to be Running.\n" +
+            "It’s important to point out that “run” does not mean\n" +
+            "bolt as fast as you can; that’s sprinting. Think of running as\n" +
+            "a trained combat hustle or a jog, something to get you to\n" +
+            "another point quickly but still leave you able to perform\n" +
+            "other actions, albeit with a penalty. Sprinting is exactly\n" +
+            "that, running as fast as you can from point A to point B.";
+        public const string INITIATIVE_GENERAL_EXPLAINED =
+            "Generally regarding Initiative\n" +
+            "Initiative determines the order in which characters act,\n" +
+            "as well as how often they act during a single Combat\n" +
+            "Turn. Initiative is based on three factors: Initiative Attribute,\n" +
+            "Initiative Score, and Initiative Dice.";
         public const string INITIATIVE_EXPLAINED =
             "Initiative\n" +
-            "";
+            "The Initiative Attribute is a derived attribute\n" +
+            "used to measure the speed, perceptiveness, and\n" +
+            "reaction rate of a combatant. See the Initiative\n" +
+            "Attribute Chart to determine Initiative attributes\n" +
+            "for different types of combatants (Physical, Astral,\n" +
+            "Matrix, or Rigging) and their Base Initiative Die.\n\n" +
+            "To determine a character’s Initiative Score, make an\n" +
+            "Initiative Test rolling the character’s Initiative Dice and\n" +
+            "adding the total to your Initiative attribute—this total is\n" +
+            "your Initiative Score. Edge may be used on this test to\n" +
+            "roll the maximum of 5D6 for a single Combat Turn. The\n" +
+            "gamemaster records the score for each character, from\n" +
+            "highest to lowest. The character with the highest score\n" +
+            "goes first and the others follow in descending order\n" +
+            "during each Initiative Pass.\n" +
+            "If there is a tied Initiative Score use ERIC (Edge, Reaction,\n" +
+            "Intuition, Coin toss) to break the tie, comparing\n" +
+            "Attributes in that order, with the character with the higher\n" +
+            "Attribute going first. If you’re still tied after comparing\n" +
+            "all three tie-breaker Attributes, flip a coin. Alternately, at\n" +
+            "the gamemaster’s discretion, both characters can act simultaneously.";
         public const string MATRIX_INITIATIVE_EXPLAINED =
             "Matrix Initiative\n" +
-            "";
+            "This value is used when fighting in the Matrix.\n" +
+            "In all other aspects, see Initiative.";
         public const string ASTRAL_INITIATIVE_EXPLAINED =
             "Astral Initiative\n" +
-            "";
+            "This value is used when fighting astrally.\n" +
+            "In all other aspects, see Initiative.";
     }
 }

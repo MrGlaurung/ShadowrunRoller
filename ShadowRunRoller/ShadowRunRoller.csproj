@@ -174,7 +174,6 @@
   <ItemGroup>
     <Content Include="DiceIcon.ico" />
     <None Include="Resources\Images\OpenWindow.png" />
-    <None Include="Resources\download.png" />
     <Content Include="Resources\Icons\DiceIcon.ico" />
   </ItemGroup>
   <ItemGroup>

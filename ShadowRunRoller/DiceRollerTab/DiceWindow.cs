@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Windows.Forms;
-using System.Configuration;
 using System.Drawing;
 using ShadowRunRoller.DiceRollerTab;
 
@@ -11,15 +7,16 @@ namespace ShadowRunRoller
 {
     public partial class DiceWindow : UserControl
     {
-        private Random rnd = new Random();
+        private Random rnd;
         private ToolStripStatusLabel MainStatusLabel;
 
         private DieRoller Roller { get; set; }
 
-        public DiceWindow(ToolStripStatusLabel StatusLabel = null)
+        public DiceWindow(Random rand, ToolStripStatusLabel StatusLabel = null)
         {
             InitializeComponent();
             if(StatusLabel != null) { MainStatusLabel = StatusLabel; }
+            this.rnd = rand;
         }
 
         private void SetStatusLabelText(string text)
@@ -57,7 +54,7 @@ namespace ShadowRunRoller
             FailureResultBox.Text = this.Roller.NumberOfFailures.ToString();
             OnesResultBox.Text = this.Roller.NumberOfOnes.ToString();
 
-            SetStatusLabelText("Roll performed, " + this.Roller.numberOfDice + " dice rolled. " + extraInfo);
+            SetStatusLabelText("Roll performed, " + this.Roller.NumberOfDice + " dice rolled. " + extraInfo);
         }
 
         private void Button2_Click(object sender, EventArgs e)
@@ -75,9 +72,9 @@ namespace ShadowRunRoller
         private void OneMoreDie(bool exploding)
         {
             Dice myDie = new Dice(exploding);
-            myDie.doRoll(rnd);
+            myDie.DoRoll(rnd);
 
-            Roller.SumUp(Roller.numberOfDice + 1, myDie);
+            Roller.SumUp(Roller.NumberOfDice + 1, myDie);
 
             this.FixEverything();
         }
