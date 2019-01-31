@@ -24,7 +24,7 @@ namespace ShadowRunRoller.Resources
             Soddy = 0, BelowAverage, Average, AboveAverage, Strong, Powerful, Mastermind
         }
         public static readonly string[] NPC_POWER_NAMES = { "Soddy", "Below Average", "Average", "Above Average", "Strong", "Powerful", "Mastermind" };
-        public static readonly double[] NPC_POWER_MULTIPLIER = { 0.5, 0.8, 1, 2.158, 2.5, 3, 4.5 };
+        public static readonly int[,] NPC_POWER_MULTIPLIER = { {1, 2}, {1, 3}, {2, 6}, {4, 9}, {7, 12}, {10, 15}, {13, 18} };
 
         public const string APPLICATION_NAME = "Shadowrun GM Tool";
         public const string APPLICATION_HELP =

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using ShadowRunRoller.Resources;
 using Label = System.Windows.Forms.Label;
@@ -30,6 +32,26 @@ namespace ShadowRunRoller.NPCGeneratorTab
 
             SetStatusLabelText(Globals.FETCHING_RANDOM);
             this.rnd = rand;
+
+            // This is a debug part to check how the results will be depending on which min or max you have
+            // in stats for the different character strengths. It's the function I used to create the excel
+            // page included in the project.
+            // Set a breakpoint at the end of the foreach loop and examine the variable "myresults" to view
+            // the distribution of results.
+            //Dictionary<string, Dictionary<int, int>> myresults = new Dictionary<string, Dictionary<int, int>>();
+            //int[] str = {0, 1, 2, 3, 4, 5, 6};
+            //foreach (int n in str)
+            //{
+            //    Dictionary<int, int> mydict = new Dictionary<int, int>();
+            //    for (int i = 0; i < 1000000; i++)
+            //    {
+            //        int newrnd = RandomValue(n, false);
+            //        if(mydict.ContainsKey(newrnd)) { mydict[newrnd] += 1; }
+            //        else { mydict.Add(newrnd, 1); }
+            //    }
+
+            //    myresults.Add(Globals.NPC_POWER_NAMES[n], mydict.OrderBy(f => f.Key).ToDictionary(x => x.Key, x => x.Value));
+            //}
         }
 
         private void SetupComboBoxes(string[] StringArrayWithTextStrings, ComboBox ComboBoxToAddItemsTo)
@@ -76,7 +98,7 @@ namespace ShadowRunRoller.NPCGeneratorTab
 
         private void GenerateButton_Click(object sender, EventArgs e)
         {
-            if (this.CurrentlyShownCharacter != null)
+            if (this.CurrentlyShownCharacter != null && this.CurrentlyShownCharacter.WorthSaving())
             {
                 if (string.IsNullOrEmpty(this.CurrentlyShownCharacter.CharacterAlias))
                 {
@@ -114,10 +136,15 @@ namespace ShadowRunRoller.NPCGeneratorTab
 
         private int RandomValue(dynamic CharacterStrength, bool IsPrimary)
         {
-            int AddedPrimary = IsPrimary ? 1 : 0;
-            double HalfCalculation = (double)this.rnd.Next(1, 3 + AddedPrimary) * Globals.NPC_POWER_MULTIPLIER[CharacterStrength] * (double)((double)this.rnd.Next(70000, 83337)/100000);
+            int total = 0;
+            int addition = IsPrimary ? (int)Math.Round((double)Globals.NPC_POWER_MULTIPLIER[(int)CharacterStrength, 0] * .10, MidpointRounding.AwayFromZero) : 0;
 
-           return HalfCalculation < 1.0 ? 1 : (int)Math.Round(HalfCalculation);
+            for (int i = 0; i < 5; i++)
+            {
+                total += this.rnd.Next(Globals.NPC_POWER_MULTIPLIER[(int)CharacterStrength, 0] + addition, ( Globals.NPC_POWER_MULTIPLIER[(int)CharacterStrength, 1] + 1 + addition ) );
+            }
+
+            return (int)Math.Round((double)total/5,0);
         }
 
         public void WriteCharInNPCWindow(Character chr)

@@ -54,5 +54,17 @@ namespace ShadowRunRoller.NPCGeneratorTab
         {
             return 0;
         }
+
+        public bool WorthSaving()
+        {
+            if (BodyStat + AgilityStat + IntuitionStat + StrengthStat + WillpowerStat + LogicStat + ReactionStat +
+                CharismaStat + EssenceStat == 0 && Skills == null && Contacts == null && Qualities == null &&
+                Equipments == null && Cybertechs == null && Spells == null && string.IsNullOrEmpty(CharacterName)
+                && string.IsNullOrEmpty(CharacterAlias))
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
