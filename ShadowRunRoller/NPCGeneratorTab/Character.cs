@@ -6,6 +6,8 @@ namespace ShadowRunRoller.NPCGeneratorTab
 {
     public class Character
     {
+        private Guid _Id;
+        public Guid Id { get { return _Id; } private set { _Id = value; } }
         public string CharacterName { get; set; }
         public string CharacterAlias { get; set; }
         public int BodyStat { get; set; }
@@ -50,6 +52,17 @@ namespace ShadowRunRoller.NPCGeneratorTab
         public string LiftCarry { get { return (this.StrengthStat * 15).ToString() + "/" + (this.StrengthStat * 10).ToString(); } set { return; } }
         public string Move { get { string sprint = "2m per hit"; if (0 == Globals.RACE.Dwarf || 0 == Globals.RACE.Troll) { sprint = "1m per hit"; } return (this.AgilityStat * 2).ToString() + "/" + (this.AgilityStat * 4).ToString() + "/" + sprint; } set { return; } }
 
+        public Character()
+        {
+            this.Id = Guid.NewGuid();
+            this.Skills = new List<Skill>();
+            this.Contacts = new List<Contact>();
+            this.Qualities = new List<Quality>();
+            this.Equipments = new List<Equipment>();
+            this.Cybertechs = new List<Cybertech>();
+            this.Spells = new List<Spells>();
+        }
+
         public int GetCyberwareBonus(string stat)
         {
             return 0;
@@ -57,14 +70,19 @@ namespace ShadowRunRoller.NPCGeneratorTab
 
         public bool WorthSaving()
         {
-            if (BodyStat + AgilityStat + IntuitionStat + StrengthStat + WillpowerStat + LogicStat + ReactionStat +
-                CharismaStat + EssenceStat == 0 && Skills == null && Contacts == null && Qualities == null &&
-                Equipments == null && Cybertechs == null && Spells == null && string.IsNullOrEmpty(CharacterName)
-                && string.IsNullOrEmpty(CharacterAlias))
+            if (CheckSum() == "0")
             {
                 return false;
             }
+
             return true;
+        }
+
+        public string CheckSum()
+        {
+            return (BodyStat + AgilityStat + IntuitionStat + StrengthStat + WillpowerStat + ReactionStat + LogicStat +
+                    CharismaStat + EssenceStat + EdgeStat + EdgeCurrentPoints + MagicResonanceStat).ToString() +
+                   CharacterAlias + CharacterName;
         }
     }
 }

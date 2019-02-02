@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.TrashButton = new System.Windows.Forms.Button();
             this.ChooseNPC = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.CharactersInVaultComboBox = new System.Windows.Forms.ComboBox();
             this.GenerateButton = new System.Windows.Forms.Button();
             this.PowerLabel = new System.Windows.Forms.Label();
             this.PowerComboBox = new System.Windows.Forms.ComboBox();
@@ -57,11 +58,17 @@
             this.CharacterSummaryLabel = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.InitiativeGroupBox = new System.Windows.Forms.GroupBox();
             this.AstralInitiativeTextBox = new System.Windows.Forms.TextBox();
             this.InitiativeLabel = new System.Windows.Forms.Label();
@@ -103,12 +110,7 @@
             this.AgilityStatLabel = new System.Windows.Forms.Label();
             this.BodyStatTextBox = new System.Windows.Forms.TextBox();
             this.BodyStatLabel = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.StoreButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -120,8 +122,10 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.StoreButton);
+            this.groupBox1.Controls.Add(this.TrashButton);
             this.groupBox1.Controls.Add(this.ChooseNPC);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.CharactersInVaultComboBox);
             this.groupBox1.Controls.Add(this.GenerateButton);
             this.groupBox1.Controls.Add(this.PowerLabel);
             this.groupBox1.Controls.Add(this.PowerComboBox);
@@ -136,6 +140,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Choose type";
             // 
+            // TrashButton
+            // 
+            this.TrashButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TrashButton.Location = new System.Drawing.Point(281, 108);
+            this.TrashButton.Name = "TrashButton";
+            this.TrashButton.Size = new System.Drawing.Size(61, 33);
+            this.TrashButton.TabIndex = 9;
+            this.TrashButton.Text = "Trash";
+            this.TrashButton.UseVisualStyleBackColor = true;
+            this.TrashButton.Click += new System.EventHandler(this.TrashButton_Click);
+            // 
             // ChooseNPC
             // 
             this.ChooseNPC.AutoSize = true;
@@ -145,22 +160,23 @@
             this.ChooseNPC.TabIndex = 8;
             this.ChooseNPC.Text = "Choose loaded NPC";
             // 
-            // comboBox1
+            // CharactersInVaultComboBox
             // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.CharactersInVaultComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(13, 104);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(236, 21);
-            this.comboBox1.TabIndex = 7;
+            this.CharactersInVaultComboBox.FormattingEnabled = true;
+            this.CharactersInVaultComboBox.Location = new System.Drawing.Point(13, 104);
+            this.CharactersInVaultComboBox.Name = "CharactersInVaultComboBox";
+            this.CharactersInVaultComboBox.Size = new System.Drawing.Size(236, 21);
+            this.CharactersInVaultComboBox.TabIndex = 7;
+            this.CharactersInVaultComboBox.SelectedIndexChanged += new System.EventHandler(this.CharactersInVaultComboBox_SelectedIndexChanged);
             // 
             // GenerateButton
             // 
             this.GenerateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.GenerateButton.Location = new System.Drawing.Point(281, 89);
+            this.GenerateButton.Location = new System.Drawing.Point(281, 70);
             this.GenerateButton.Name = "GenerateButton";
-            this.GenerateButton.Size = new System.Drawing.Size(121, 36);
+            this.GenerateButton.Size = new System.Drawing.Size(121, 33);
             this.GenerateButton.TabIndex = 6;
             this.GenerateButton.Text = "Generate New NPC";
             this.GenerateButton.UseVisualStyleBackColor = true;
@@ -472,6 +488,16 @@
             this.label5.TabIndex = 53;
             this.label5.Text = "Spells";
             // 
+            // button5
+            // 
+            this.button5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button5.Image = global::ShadowRunRoller.Properties.Resources.OpenWindow1;
+            this.button5.Location = new System.Drawing.Point(169, 87);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(31, 30);
+            this.button5.TabIndex = 54;
+            this.button5.UseVisualStyleBackColor = true;
+            // 
             // label6
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -481,6 +507,16 @@
             this.label6.Size = new System.Drawing.Size(49, 13);
             this.label6.TabIndex = 51;
             this.label6.Text = "Contacts";
+            // 
+            // button6
+            // 
+            this.button6.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button6.Image = global::ShadowRunRoller.Properties.Resources.OpenWindow1;
+            this.button6.Location = new System.Drawing.Point(68, 87);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(31, 30);
+            this.button6.TabIndex = 52;
+            this.button6.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -492,6 +528,16 @@
             this.label4.TabIndex = 49;
             this.label4.Text = "Cybertech";
             // 
+            // button4
+            // 
+            this.button4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button4.Image = global::ShadowRunRoller.Properties.Resources.OpenWindow1;
+            this.button4.Location = new System.Drawing.Point(169, 51);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(31, 30);
+            this.button4.TabIndex = 50;
+            this.button4.UseVisualStyleBackColor = true;
+            // 
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -501,6 +547,16 @@
             this.label3.Size = new System.Drawing.Size(47, 13);
             this.label3.TabIndex = 47;
             this.label3.Text = "Qualities";
+            // 
+            // button3
+            // 
+            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button3.Image = global::ShadowRunRoller.Properties.Resources.OpenWindow1;
+            this.button3.Location = new System.Drawing.Point(169, 15);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(31, 30);
+            this.button3.TabIndex = 48;
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -512,6 +568,16 @@
             this.label2.TabIndex = 45;
             this.label2.Text = "Equipment";
             // 
+            // button2
+            // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button2.Image = global::ShadowRunRoller.Properties.Resources.OpenWindow1;
+            this.button2.Location = new System.Drawing.Point(68, 51);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(31, 30);
+            this.button2.TabIndex = 46;
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -521,6 +587,16 @@
             this.label1.Size = new System.Drawing.Size(61, 13);
             this.label1.TabIndex = 43;
             this.label1.Text = "Full skilltree";
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button1.Image = global::ShadowRunRoller.Properties.Resources.OpenWindow1;
+            this.button1.Location = new System.Drawing.Point(68, 15);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(31, 30);
+            this.button1.TabIndex = 44;
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // InitiativeGroupBox
             // 
@@ -970,65 +1046,16 @@
             this.BodyStatLabel.Text = "[B]ody";
             this.BodyStatLabel.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
             // 
-            // button5
+            // StoreButton
             // 
-            this.button5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button5.Image = global::ShadowRunRoller.Properties.Resources.OpenWindow1;
-            this.button5.Location = new System.Drawing.Point(169, 87);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(31, 30);
-            this.button5.TabIndex = 54;
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button6.Image = global::ShadowRunRoller.Properties.Resources.OpenWindow1;
-            this.button6.Location = new System.Drawing.Point(68, 87);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(31, 30);
-            this.button6.TabIndex = 52;
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button4.Image = global::ShadowRunRoller.Properties.Resources.OpenWindow1;
-            this.button4.Location = new System.Drawing.Point(169, 51);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(31, 30);
-            this.button4.TabIndex = 50;
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button3.Image = global::ShadowRunRoller.Properties.Resources.OpenWindow1;
-            this.button3.Location = new System.Drawing.Point(169, 15);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(31, 30);
-            this.button3.TabIndex = 48;
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button2.Image = global::ShadowRunRoller.Properties.Resources.OpenWindow1;
-            this.button2.Location = new System.Drawing.Point(68, 51);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(31, 30);
-            this.button2.TabIndex = 46;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button1.Image = global::ShadowRunRoller.Properties.Resources.OpenWindow1;
-            this.button1.Location = new System.Drawing.Point(68, 15);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(31, 30);
-            this.button1.TabIndex = 44;
-            this.button1.UseVisualStyleBackColor = true;
+            this.StoreButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.StoreButton.Location = new System.Drawing.Point(344, 108);
+            this.StoreButton.Name = "StoreButton";
+            this.StoreButton.Size = new System.Drawing.Size(61, 33);
+            this.StoreButton.TabIndex = 10;
+            this.StoreButton.Text = "Store";
+            this.StoreButton.UseVisualStyleBackColor = true;
+            this.StoreButton.Click += new System.EventHandler(this.StoreButton_Click);
             // 
             // NPCGeneratorWindow
             // 
@@ -1064,7 +1091,7 @@
         private System.Windows.Forms.ComboBox ClassComboBox;
         private System.Windows.Forms.ComboBox RaceComboBox;
         private System.Windows.Forms.Label ChooseNPC;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox CharactersInVaultComboBox;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label BodyStatLabel;
         private System.Windows.Forms.TextBox BodyStatTextBox;
@@ -1136,5 +1163,7 @@
         private System.Windows.Forms.Label StunMonitorLabel;
         private System.Windows.Forms.TextBox ConditionMonitorTextBox;
         private System.Windows.Forms.Label ConditionMonitorLabel;
+        private System.Windows.Forms.Button TrashButton;
+        private System.Windows.Forms.Button StoreButton;
     }
 }

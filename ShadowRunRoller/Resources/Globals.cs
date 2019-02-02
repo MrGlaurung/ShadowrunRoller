@@ -43,12 +43,20 @@ namespace ShadowRunRoller.Resources
         public const string COMBOBOX_GENERATION = "Generating info in comboboxes.";
         public const string FETCHING_RANDOM = "Fetching random from main window.";
         public const string APPLICATION_LOADED = "Program loaded and started.";
-        public const string LOSTCHAR_HEADLINE = "Current character will be lost!";
+        public const string CHAR_DIALOG_HEADLINE = "Current character will be lost!";
         public const string LOSTCHAR_BODY = "Your current visible character will be lost if you press OK.\n\n" +
                                             "The only thing you need to do to keep your current character\n" +
                                             "as one of the characters in memory is to type in an alias.\n\n" +
                                             "You can press cancel now and enter an alias before you create\n" +
                                             "a new character, or you can press OK and loose your current char.";
+        public const string TRASHCHAR_BODY = "You are about to remove this character from both your current\n" +
+                                             "characters and from the character window.\n\n" +
+                                             "Do you want to do this?";
+        public const string ILLEGAL_CHARACTER_HEADLINE = "You have to give your Character an Alias.";
+        public const string ILLEGAL_CHARACTER_BODY = "You have to give your Character an alias minimum.\n" +
+                                                     "If you don't there will be no way to tell them apart.\n" +
+                                                     "I seriously do suggest that you also give your Character\n" +
+                                                     "a name, but that's really not neccessary for just goons.";
         public const string STAT = "Stat";
         public const string STAT_EXPLAINED =
             "Attributes are the inherent characteristics of your\n" +

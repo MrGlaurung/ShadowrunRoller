@@ -2,16 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using ShadowRunRoller.Exceptions;
 using ShadowRunRoller.Resources;
+using ShadowRunRoller.NPCGeneratorTab.CharacterVault;
+using ShadowRunRoller.NPCGeneratorTab.Generator;
 using Label = System.Windows.Forms.Label;
 
 namespace ShadowRunRoller.NPCGeneratorTab
 {
     public partial class NPCGeneratorWindow : UserControl
     {
-        private ToolStripStatusLabel MainStatusLabel;
         private ToolTip tp;
         private Random rnd;
+        private ToolStripStatusLabel MainStatusLabel;
+        private CharacterStorage ChrVault;
+        private GeneratorEngine CharacterEngine;
         private Character _CurrentlyShownCharacter;
         public Character CurrentlyShownCharacter { get { return this._CurrentlyShownCharacter; } set { this._CurrentlyShownCharacter = value; WriteCharInNPCWindow(this._CurrentlyShownCharacter); } }
 
@@ -27,8 +32,12 @@ namespace ShadowRunRoller.NPCGeneratorTab
             SetupComboBoxes(Globals.NPC_RACE_NAMES, RaceComboBox);
             SetupComboBoxes(Globals.NPC_CLASS_NAMES, ClassComboBox);
 
+            ChrVault = new CharacterStorage();;
+
             SetStatusLabelText(Globals.NEW_EMPTY_CHAR_DONE);
             this.CurrentlyShownCharacter = new Character();
+
+            CharacterEngine = new GeneratorEngine(rand, StatusLabel);
 
             SetStatusLabelText(Globals.FETCHING_RANDOM);
             this.rnd = rand;
@@ -96,108 +105,6 @@ namespace ShadowRunRoller.NPCGeneratorTab
             tp.SetToolTip(theLabel, explanation);
         }
 
-        private void GenerateButton_Click(object sender, EventArgs e)
-        {
-            if (this.CurrentlyShownCharacter != null && this.CurrentlyShownCharacter.WorthSaving())
-            {
-                if (string.IsNullOrEmpty(this.CurrentlyShownCharacter.CharacterAlias))
-                {
-                    DialogResult dialogResult = MessageBox.Show(Globals.LOSTCHAR_BODY, Globals.LOSTCHAR_HEADLINE, MessageBoxButtons.OKCancel);
-                    if (dialogResult == DialogResult.Cancel)
-                    {
-                        return;
-                    }
-                }
-                else
-                {
-                    // Store character in our lovely vault.
-                }
-            }
-
-            Character chr = new Character
-            {
-                BodyStat = RandomValue(((dynamic)this.PowerComboBox.SelectedItem).Value, true),
-                AgilityStat = RandomValue(((dynamic)this.PowerComboBox.SelectedItem).Value, true),
-                ReactionStat = RandomValue(((dynamic)this.PowerComboBox.SelectedItem).Value, true),
-                StrengthStat = RandomValue(((dynamic)this.PowerComboBox.SelectedItem).Value, true),
-                WillpowerStat = RandomValue(((dynamic)this.PowerComboBox.SelectedItem).Value, true),
-                LogicStat = RandomValue(((dynamic)this.PowerComboBox.SelectedItem).Value, true),
-                IntuitionStat = RandomValue(((dynamic)this.PowerComboBox.SelectedItem).Value, true),
-                CharismaStat = RandomValue(((dynamic)this.PowerComboBox.SelectedItem).Value, true),
-                EdgeStat = RandomValue(((dynamic)this.PowerComboBox.SelectedItem).Value, true),
-                EdgeCurrentPoints = RandomValue(((dynamic)this.PowerComboBox.SelectedItem).Value, true),
-                EssenceStat = RandomValue(((dynamic)this.PowerComboBox.SelectedItem).Value, true),
-                MagicResonanceStat = RandomValue(((dynamic)this.PowerComboBox.SelectedItem).Value, true)
-            };
-
-            SetStatusLabelText(Globals.NEW_RANDOM_CHAR_DONE);
-            this.CurrentlyShownCharacter = chr;
-        }
-
-        private int RandomValue(dynamic CharacterStrength, bool IsPrimary)
-        {
-            int total = 0;
-            int addition = IsPrimary ? (int)Math.Round((double)Globals.NPC_POWER_MULTIPLIER[(int)CharacterStrength, 0] * .10, MidpointRounding.AwayFromZero) : 0;
-
-            for (int i = 0; i < 5; i++)
-            {
-                total += this.rnd.Next(Globals.NPC_POWER_MULTIPLIER[(int)CharacterStrength, 0] + addition, ( Globals.NPC_POWER_MULTIPLIER[(int)CharacterStrength, 1] + 1 + addition ) );
-            }
-
-            return (int)Math.Round((double)total/5,0);
-        }
-
-        public void WriteCharInNPCWindow(Character chr)
-        {
-            // Do the simple stuff. This are common bindings to register the values in the character object when they are changed in the window.
-            CharacterNameTextBox.DataBindings.Clear();
-            CharacterNameTextBox.DataBindings.Add("Text", chr, "CharacterName", false, DataSourceUpdateMode.OnPropertyChanged);
-            CharacterAliasTextBox.DataBindings.Clear();
-            CharacterAliasTextBox.DataBindings.Add("Text", chr, "CharacterAlias", false, DataSourceUpdateMode.OnPropertyChanged);
-
-            // Bind up the stats.
-            DoDataBinding(BodyStatTextBox, "BodyStat", chr);
-            DoDataBinding(AgilityStatTextBox, "AgilityStat", chr);
-            DoDataBinding(ReactionStatTextBox, "ReactionStat", chr);
-            DoDataBinding(StrengthStatTextBox, "StrengthStat", chr);
-            DoDataBinding(WillpowerStatTextBox, "WillpowerStat", chr);
-            DoDataBinding(LogicStatTextBox, "LogicStat", chr);
-            DoDataBinding(IntuitionStatTextBox, "IntuitionStat", chr);
-            DoDataBinding(CharismaStatTextBox, "CharismaStat", chr);
-            DoDataBinding(EdgeStatTextBox, "EdgeStat", chr);
-            DoDataBinding(EdgeCurrentPointsTextBox, "EdgeCurrentPoints", chr);
-            DoDataBinding(EssenceStatTextBox, "EssenceStat", chr);
-            DoDataBinding(MagicResonanceStatTextBox, "MagicResonanceStat", chr);
-
-            // Bind up the autocalculated stuff
-            DoDataBinding(ComposureTextBox, "Composure", chr);
-            DoDataBinding(LiftCarryTextBox, "LiftCarry", chr);
-            DoDataBinding(MoveTextBox, "Move", chr);
-            DoDataBinding(JudgeIntentionsTextBox, "JudgeIntentions", chr);
-            DoDataBinding(MemoryTextBox, "Memory", chr);
-
-            // Moving on to initiatives.
-            DoDataBinding(InitiativeTextBox, "Initiative", chr);
-            DoDataBinding(MatrixInitiativeTextBox, "MatrixInitiative", chr);
-            DoDataBinding(AstralInitiativeTextBox, "AstralInitiative", chr);
-
-            // Don't forget maximum success limits.
-            DoDataBinding(PhysicalLimitTextBox, "PhysicalLimit", chr);
-            DoDataBinding(MentalLimitTextBox, "MentalLimit", chr);
-            DoDataBinding(SocialLimitTextBox, "SocialLimit", chr);
-
-            // And we top this off with Condition monitors.
-            DoDataBinding(ConditionMonitorTextBox, "ConditionMonitor", chr);
-            DoDataBinding(StunMonitorTextBox, "StunMonitor", chr);
-        }
-
-        public void DoDataBinding(TextBox tb, string valueName, Character chr)
-        {
-            tb.Text = chr.GetType().GetProperty(valueName).GetValue(chr, null).ToString();
-            tb.DataBindings.Clear();
-            tb.DataBindings.Add("Text", chr, valueName, false, DataSourceUpdateMode.OnPropertyChanged);
-        }
-
         private void Label_MouseEnter(object sender, EventArgs e)
         {
             switch ((sender as Label).Name)
@@ -263,6 +170,109 @@ namespace ShadowRunRoller.NPCGeneratorTab
                     AssignToolTip("Astral Initiative - Calculated Value", "", Globals.INITIATIVE_GENERAL_EXPLAINED + Environment.NewLine + Environment.NewLine + Globals.ASTRAL_INITIATIVE_EXPLAINED, AstralInitiativeLabel);
                     break;
             }
+        }
+
+        public void WriteCharInNPCWindow(Character chr)
+        {
+            FixVault(chr);
+
+            // Do the simple stuff. This are common bindings to register the values in the character object when they are changed in the window.
+            CharacterNameTextBox.DataBindings.Clear();
+            CharacterNameTextBox.DataBindings.Add("Text", chr, "CharacterName", false, DataSourceUpdateMode.OnPropertyChanged);
+            CharacterAliasTextBox.DataBindings.Clear();
+            CharacterAliasTextBox.DataBindings.Add("Text", chr, "CharacterAlias", false, DataSourceUpdateMode.OnPropertyChanged);
+
+            // Bind up the stats.
+            DoDataBinding(BodyStatTextBox, "BodyStat", chr);
+            DoDataBinding(AgilityStatTextBox, "AgilityStat", chr);
+            DoDataBinding(ReactionStatTextBox, "ReactionStat", chr);
+            DoDataBinding(StrengthStatTextBox, "StrengthStat", chr);
+            DoDataBinding(WillpowerStatTextBox, "WillpowerStat", chr);
+            DoDataBinding(LogicStatTextBox, "LogicStat", chr);
+            DoDataBinding(IntuitionStatTextBox, "IntuitionStat", chr);
+            DoDataBinding(CharismaStatTextBox, "CharismaStat", chr);
+            DoDataBinding(EdgeStatTextBox, "EdgeStat", chr);
+            DoDataBinding(EdgeCurrentPointsTextBox, "EdgeCurrentPoints", chr);
+            DoDataBinding(EssenceStatTextBox, "EssenceStat", chr);
+            DoDataBinding(MagicResonanceStatTextBox, "MagicResonanceStat", chr);
+
+            // Bind up the autocalculated stuff
+            DoDataBinding(ComposureTextBox, "Composure", chr);
+            DoDataBinding(LiftCarryTextBox, "LiftCarry", chr);
+            DoDataBinding(MoveTextBox, "Move", chr);
+            DoDataBinding(JudgeIntentionsTextBox, "JudgeIntentions", chr);
+            DoDataBinding(MemoryTextBox, "Memory", chr);
+
+            // Moving on to initiatives.
+            DoDataBinding(InitiativeTextBox, "Initiative", chr);
+            DoDataBinding(MatrixInitiativeTextBox, "MatrixInitiative", chr);
+            DoDataBinding(AstralInitiativeTextBox, "AstralInitiative", chr);
+
+            // Don't forget maximum success limits.
+            DoDataBinding(PhysicalLimitTextBox, "PhysicalLimit", chr);
+            DoDataBinding(MentalLimitTextBox, "MentalLimit", chr);
+            DoDataBinding(SocialLimitTextBox, "SocialLimit", chr);
+
+            // And we top this off with Condition monitors.
+            DoDataBinding(ConditionMonitorTextBox, "ConditionMonitor", chr);
+            DoDataBinding(StunMonitorTextBox, "StunMonitor", chr);
+        }
+
+        public void FixVault(Character chr)
+        {
+            CharactersInVaultComboBox.Items.Clear();
+
+            Dictionary<Guid, string> AllChars = ChrVault.GetAllCharsId();
+            foreach (Guid gu in AllChars.Keys)
+            {
+                CharactersInVaultComboBox.DisplayMember = "Text";
+                CharactersInVaultComboBox.ValueMember = "Value";
+                CharactersInVaultComboBox.Items.Add(new { Text = AllChars[gu], Value = gu });
+            }
+        }
+
+        public void DoDataBinding(TextBox tb, string valueName, Character chr)
+        {
+            tb.Text = chr.GetType().GetProperty(valueName).GetValue(chr, null).ToString();
+            tb.DataBindings.Clear();
+            tb.DataBindings.Add("Text", chr, valueName, false, DataSourceUpdateMode.OnPropertyChanged);
+        }
+
+        private void GenerateButton_Click(object sender, EventArgs e)
+        {
+            this.CurrentlyShownCharacter = this.CharacterEngine.GenerateNewChar(this.ChrVault, this.CurrentlyShownCharacter, (int)((dynamic)this.PowerComboBox.SelectedItem).Value);
+
+            WriteCharInNPCWindow(this.CurrentlyShownCharacter);
+        }
+
+        private void TrashButton_Click(object sender, EventArgs e)
+        {
+            CurrentlyShownCharacter = CharacterEngine.TrashCharacter(ChrVault, CurrentlyShownCharacter);
+
+            WriteCharInNPCWindow(this.CurrentlyShownCharacter);
+        }
+
+        private void StoreButton_Click(object sender, EventArgs e)
+        {
+            CharacterEngine.StoreCharacter(ChrVault, CurrentlyShownCharacter);
+
+            WriteCharInNPCWindow(this.CurrentlyShownCharacter);
+        }
+
+        private void CharactersInVaultComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Character fetched = ChrVault.FetchCharacter((Guid)((dynamic)this.CharactersInVaultComboBox.SelectedItem).Value);
+            if (CurrentlyShownCharacter.WorthSaving())
+            {
+                if (fetched != null && CurrentlyShownCharacter.CheckSum() !=
+                    ChrVault.FetchCharacter(CurrentlyShownCharacter.Id).CheckSum())
+                {
+                    CharacterEngine.StoreCharacter(ChrVault, CurrentlyShownCharacter);
+                }
+            }
+
+            CurrentlyShownCharacter = fetched;
+            WriteCharInNPCWindow(fetched);
         }
     }
 }

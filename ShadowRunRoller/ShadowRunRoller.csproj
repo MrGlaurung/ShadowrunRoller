@@ -103,6 +103,7 @@
     <Compile Include="DiceRollerTab\DiceWindow.Designer.cs">
       <DependentUpon>DiceWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Exceptions\IllegalCharacterException.cs" />
     <Compile Include="Main Window\Main Window.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,9 +111,11 @@
       <DependentUpon>Main Window.cs</DependentUpon>
     </Compile>
     <Compile Include="NPCGeneratorTab\Character.cs" />
+    <Compile Include="NPCGeneratorTab\CharacterVault\CharacterStorage.cs" />
     <Compile Include="NPCGeneratorTab\Contact.cs" />
     <Compile Include="NPCGeneratorTab\Cybertech.cs" />
     <Compile Include="NPCGeneratorTab\Equipment.cs" />
+    <Compile Include="NPCGeneratorTab\Generator\GeneratorEngine.cs" />
     <Compile Include="NPCGeneratorTab\NPCGeneratorWindow.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -178,7 +181,6 @@
     <Content Include="Resources\Icons\DiceIcon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="NPCGeneratorTab\Generator\" />
     <Folder Include="Resources\Repository\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
