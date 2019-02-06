@@ -10,14 +10,19 @@ namespace ShadowRunRoller.NPCGeneratorTab.CharacterVault
 {
     class CharacterStorage
     {
+        #region Properties
         private List<Character> CharactersInVault { get; set; }
-        public List<Character> CharsInVault { get{ return CharactersInVault;} set{ return; } }
+        public List<Character> CharsInVault { get{ return CharactersInVault; } set{ return; } }
+        #endregion
 
+        #region Constructors
         public CharacterStorage()
         {
             CharactersInVault = new List<Character>();
         }
+        #endregion
 
+        #region Class Functions
         public bool RemoveChar(Guid CharIdToRemove)
         {
             if(!CharactersInVault.Select(x => x.Id == CharIdToRemove).Any()) { return false; }
@@ -31,7 +36,7 @@ namespace ShadowRunRoller.NPCGeneratorTab.CharacterVault
             if(CharToAdd.Id == null || string.IsNullOrEmpty(CharToAdd.CharacterAlias)) { throw new IllegalCharacterException("Character not filled in correctly. ID or Alias missing."); }
 
             // First kill so we can update is already present.
-            if (CharactersInVault.Contains(CharToAdd))
+            if (CharactersInVault.Any(x => x.Id == CharToAdd.Id))
             {
                 this.RemoveChar(CharToAdd.Id);
             }
@@ -56,5 +61,6 @@ namespace ShadowRunRoller.NPCGeneratorTab.CharacterVault
         {
             return this.CharsInVault.Select(x => x.Id == gu).Any();
         }
+        #endregion
     }
 }

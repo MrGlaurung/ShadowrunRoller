@@ -12,6 +12,7 @@ namespace ShadowRunRoller.NPCGeneratorTab
 {
     public partial class NPCGeneratorWindow : UserControl
     {
+        #region Properties
         private ToolTip tp;
         private Random rnd;
         private ToolStripStatusLabel MainStatusLabel;
@@ -19,7 +20,9 @@ namespace ShadowRunRoller.NPCGeneratorTab
         private GeneratorEngine CharacterEngine;
         private Character _CurrentlyShownCharacter;
         public Character CurrentlyShownCharacter { get { return this._CurrentlyShownCharacter; } set { this._CurrentlyShownCharacter = value; WriteCharInNPCWindow(this._CurrentlyShownCharacter); } }
+        #endregion
 
+        #region Constructors
         public NPCGeneratorWindow(Random rand, ToolStripStatusLabel StatusLabel = null)
         {
             InitializeComponent();
@@ -62,7 +65,9 @@ namespace ShadowRunRoller.NPCGeneratorTab
             //    myresults.Add(Globals.NPC_POWER_NAMES[n], mydict.OrderBy(f => f.Key).ToDictionary(x => x.Key, x => x.Value));
             //}
         }
+        #endregion
 
+        #region Internal Class Functions
         private void SetupComboBoxes(string[] StringArrayWithTextStrings, ComboBox ComboBoxToAddItemsTo)
         {
             for (int i = 0; i < StringArrayWithTextStrings.Length; i++)
@@ -172,6 +177,54 @@ namespace ShadowRunRoller.NPCGeneratorTab
             }
         }
 
+        private void DoDataBinding(TextBox tb, string valueName, Character chr)
+        {
+            tb.Text = chr.GetType().GetProperty(valueName).GetValue(chr, null).ToString();
+            tb.DataBindings.Clear();
+            tb.DataBindings.Add("Text", chr, valueName, false, DataSourceUpdateMode.OnPropertyChanged);
+        }
+
+        private void GenerateButton_Click(object sender, EventArgs e)
+        {
+            this.CurrentlyShownCharacter = this.CharacterEngine.GenerateNewChar(this.ChrVault, this.CurrentlyShownCharacter, (int)((dynamic)this.PowerComboBox.SelectedItem).Value);
+
+            WriteCharInNPCWindow(this.CurrentlyShownCharacter);
+        }
+
+        private void TrashButton_Click(object sender, EventArgs e)
+        {
+            CurrentlyShownCharacter = CharacterEngine.TrashCharacter(ChrVault, CurrentlyShownCharacter);
+
+            WriteCharInNPCWindow(this.CurrentlyShownCharacter);
+        }
+
+        private void StoreButton_Click(object sender, EventArgs e)
+        {
+            CharacterEngine.StoreCharacter(ChrVault, new Character(CurrentlyShownCharacter));
+
+            WriteCharInNPCWindow(this.CurrentlyShownCharacter);
+        }
+
+        private void CharactersInVaultComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Character fetched = ChrVault.FetchCharacter((Guid)((dynamic)this.CharactersInVaultComboBox.SelectedItem).Value);
+            if (fetched == null)
+
+                if (CurrentlyShownCharacter.WorthSaving())
+                {
+                    if (fetched != null && CurrentlyShownCharacter.CheckSum() !=
+                        ChrVault.FetchCharacter(CurrentlyShownCharacter.Id).CheckSum())
+                    {
+                        CharacterEngine.StoreCharacter(ChrVault, new Character(CurrentlyShownCharacter));
+                    }
+                }
+
+            CurrentlyShownCharacter = new Character(fetched);
+            WriteCharInNPCWindow(CurrentlyShownCharacter);
+        }
+        #endregion
+
+        #region Class Functions
         public void WriteCharInNPCWindow(Character chr)
         {
             FixVault(chr);
@@ -230,49 +283,6 @@ namespace ShadowRunRoller.NPCGeneratorTab
                 CharactersInVaultComboBox.Items.Add(new { Text = AllChars[gu], Value = gu });
             }
         }
-
-        public void DoDataBinding(TextBox tb, string valueName, Character chr)
-        {
-            tb.Text = chr.GetType().GetProperty(valueName).GetValue(chr, null).ToString();
-            tb.DataBindings.Clear();
-            tb.DataBindings.Add("Text", chr, valueName, false, DataSourceUpdateMode.OnPropertyChanged);
-        }
-
-        private void GenerateButton_Click(object sender, EventArgs e)
-        {
-            this.CurrentlyShownCharacter = this.CharacterEngine.GenerateNewChar(this.ChrVault, this.CurrentlyShownCharacter, (int)((dynamic)this.PowerComboBox.SelectedItem).Value);
-
-            WriteCharInNPCWindow(this.CurrentlyShownCharacter);
-        }
-
-        private void TrashButton_Click(object sender, EventArgs e)
-        {
-            CurrentlyShownCharacter = CharacterEngine.TrashCharacter(ChrVault, CurrentlyShownCharacter);
-
-            WriteCharInNPCWindow(this.CurrentlyShownCharacter);
-        }
-
-        private void StoreButton_Click(object sender, EventArgs e)
-        {
-            CharacterEngine.StoreCharacter(ChrVault, CurrentlyShownCharacter);
-
-            WriteCharInNPCWindow(this.CurrentlyShownCharacter);
-        }
-
-        private void CharactersInVaultComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Character fetched = ChrVault.FetchCharacter((Guid)((dynamic)this.CharactersInVaultComboBox.SelectedItem).Value);
-            if (CurrentlyShownCharacter.WorthSaving())
-            {
-                if (fetched != null && CurrentlyShownCharacter.CheckSum() !=
-                    ChrVault.FetchCharacter(CurrentlyShownCharacter.Id).CheckSum())
-                {
-                    CharacterEngine.StoreCharacter(ChrVault, CurrentlyShownCharacter);
-                }
-            }
-
-            CurrentlyShownCharacter = fetched;
-            WriteCharInNPCWindow(fetched);
-        }
+        #endregion
     }
 }

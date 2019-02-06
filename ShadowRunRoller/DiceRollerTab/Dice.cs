@@ -4,11 +4,14 @@ namespace ShadowRunRoller.DiceRollerTab
 {
     class Dice
     {
+        #region Properties
         private bool Exploding { get; set; }
         private Int32 Result { get; set; }
         private bool Rolled { get; set; }
         public int Successes { get; private set; }
+        #endregion
 
+        #region Constructors
         public Dice(bool isExploding)
         {
             this.Exploding = isExploding;
@@ -17,17 +20,9 @@ namespace ShadowRunRoller.DiceRollerTab
         }
 
         public Dice() : this(false) { }
+        #endregion
 
-        public override string ToString()
-        {
-            return Result.ToString();
-        }
-
-        public int ToInt()
-        {
-            return Result;
-        }
-
+        #region Class Functions
         public bool DoRoll(Random rnd)
         {
             if (this.Rolled)
@@ -50,5 +45,18 @@ namespace ShadowRunRoller.DiceRollerTab
 
             return true;
         }
+        #endregion
+
+        #region Overloaded functions
+        public override string ToString()
+        {
+            return Result.ToString();
+        }
+
+        public int ToInt()
+        {
+            return Result;
+        }
+        #endregion
     }
 }

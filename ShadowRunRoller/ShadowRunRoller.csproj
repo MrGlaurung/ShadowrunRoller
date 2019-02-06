@@ -104,6 +104,7 @@
       <DependentUpon>DiceWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Exceptions\IllegalCharacterException.cs" />
+    <Compile Include="Exceptions\IllegalMessageBoxTypeException.cs" />
     <Compile Include="Main Window\Main Window.cs">
       <SubType>Form</SubType>
     </Compile>

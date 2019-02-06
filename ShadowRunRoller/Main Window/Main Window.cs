@@ -7,12 +7,15 @@ namespace ShadowRunRoller.Main_Window
 {
     public partial class Main_Window : Form
     {
+        #region Properties
         private TextBoxBase _currentBox;
         // Create a random engine in the main window and use that one
         // everywhere to get as randomized numbers as possible.
         private Random rnd = new Random();
-        
+        #endregion
+
         // TODO: It seems that ctrl+v/c/x don't work. I got he menu items to work but not the keybindings. I need to fix that.
+        #region Constrcutors
         public Main_Window()
         {
             InitializeComponent();
@@ -22,7 +25,9 @@ namespace ShadowRunRoller.Main_Window
             MainWindowTab2.Controls[0].Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
             MainWindowTooltipTextStripLeft.Text = Globals.APPLICATION_LOADED;
         }
+        #endregion
 
+        #region Private Class Functions
         private void VersionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show(Globals.APPLICATION_HELP, Globals.APPLICATION_NAME + " " + Globals.APPLICATION_VERSION);
@@ -114,5 +119,6 @@ namespace ShadowRunRoller.Main_Window
 
             this._currentBox.Text = string.Empty;
         }
+        #endregion
     }
 }

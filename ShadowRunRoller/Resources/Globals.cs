@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace ShadowRunRoller.Resources
 {
-    static class Globals
+    public static class Globals
     {
         // This file contains both important variables and translations.
         // On top here are the variables. The rest is only text I use in the application

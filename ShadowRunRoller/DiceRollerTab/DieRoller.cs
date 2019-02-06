@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 
 namespace ShadowRunRoller.DiceRollerTab
 {
     class DieRoller
     {
+        #region Properties
         public string ResultString { get; private set; }
         public bool SuccessOfRoll { get; private set; }
         public string NumberResult { get; private set; }
@@ -13,12 +15,11 @@ namespace ShadowRunRoller.DiceRollerTab
         public int NumberOfFailures { get; private set; }
         public int NumberOfOnes { get; private set; }
         public int NumberOfDice { get; set; }
-
         private Random Rnd { get; set; }
         private List<Dice> DiceList { get; set; }
+        #endregion
 
-        public DieRoller() : this(1, false) { }
-
+        #region Constructors
         public DieRoller(int numberOfDice, bool edgeRoll)
         {
             this.Rnd = new Random();
@@ -29,6 +30,10 @@ namespace ShadowRunRoller.DiceRollerTab
             CreateDice(numberOfDice, edgeRoll);
         }
 
+        public DieRoller() : this(1, false) { }
+        #endregion
+
+        #region Private Class Functions
         private void CreateDice(int numberOfDice, bool edgeRoll)
         {
             this.DiceList = new List<Dice>();
@@ -45,19 +50,6 @@ namespace ShadowRunRoller.DiceRollerTab
             }
 
             SumUp(numberOfDice);
-        }
-
-        public void SumUp(int numberOfDice, Dice die)
-        {
-            this.DiceList.Add(die);
-            this.SumUp(numberOfDice);
-        }
-
-        public void SumUp(int numberOfDice)
-        {
-            this.NumberResult = String.Join(", ", this.DiceList.Select(x => x.ToString()));
-
-            CheckResults(numberOfDice);
         }
 
         private void CheckResults(int numberOfDice)
@@ -85,8 +77,24 @@ namespace ShadowRunRoller.DiceRollerTab
             else
             {
                 this.ResultString = @"You have " + NumberOfSuccesses + " successes";
-                if(NumberOfSuccesses > 0) { this.SuccessOfRoll = true; }
+                if (NumberOfSuccesses > 0) { this.SuccessOfRoll = true; }
             }
         }
+        #endregion
+
+        #region Class Functions
+        public void SumUp(int numberOfDice, Dice die)
+        {
+            this.DiceList.Add(die);
+            this.SumUp(numberOfDice);
+        }
+
+        public void SumUp(int numberOfDice)
+        {
+            this.NumberResult = String.Join(", ", this.DiceList.Select(x => x.ToString()));
+
+            CheckResults(numberOfDice);
+        }
+        #endregion
     }
 }

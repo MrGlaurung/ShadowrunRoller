@@ -12,15 +12,20 @@ namespace ShadowRunRoller.NPCGeneratorTab.Generator
 {
     class GeneratorEngine
     {
+        #region Properties
         private Random MyRandom { get; set; }
         private ToolStripStatusLabel MainStatusLabel;
+        #endregion
 
+        #region Constructors
         public GeneratorEngine(Random rnd, ToolStripStatusLabel StatusLabel = null)
         {
             this.MyRandom = rnd;
             if (StatusLabel != null) { MainStatusLabel = StatusLabel; }
         }
+        #endregion
 
+        #region Private Class Functions
         private void SetStatusLabelText(string text)
         {
             if (MainStatusLabel != null)
@@ -29,6 +34,56 @@ namespace ShadowRunRoller.NPCGeneratorTab.Generator
             }
         }
 
+        private bool NPCWindowMsgBox(string body, string headline, MessageBoxButtons msgButtons)
+        {
+            switch (msgButtons)
+            {
+                case MessageBoxButtons.OKCancel:
+                    return MessageBox.Show(body, headline, msgButtons) != DialogResult.Cancel;
+                case MessageBoxButtons.OK:
+                    return MessageBox.Show(body, headline, msgButtons) == DialogResult.OK;
+            }
+
+            throw new IllegalMessageBoxTypeException("MessageBoxType not supported");
+        }
+
+        private bool SaveCharacter(CharacterStorage Vault, Character CurrentChr, bool TrashMe = false)
+        {
+            if (CurrentChr != null && CurrentChr.WorthSaving())
+            {
+                if (string.IsNullOrEmpty(CurrentChr.CharacterAlias) && !TrashMe && !NPCWindowMsgBox(Globals.LOSTCHAR_BODY, Globals.CHAR_DIALOG_HEADLINE, MessageBoxButtons.OKCancel))
+                {
+                    return false;
+                }
+                else if (TrashMe && !NPCWindowMsgBox(Globals.LOSTCHAR_BODY, Globals.CHAR_DIALOG_HEADLINE, MessageBoxButtons.OKCancel))
+                {
+                    return false;
+                }
+                else
+                {
+                    Character StoreChar = CurrentChr;
+                    StoreCharacter(Vault, StoreChar);
+                }
+            }
+
+            return true;
+        }
+
+        private int RandomValue(dynamic CharacterStrength, bool IsPrimary)
+        {
+            int total = 0;
+            int addition = IsPrimary ? (int)Math.Round((double)Globals.NPC_POWER_MULTIPLIER[(int)CharacterStrength, 0] * .10, MidpointRounding.AwayFromZero) : 0;
+
+            for (int i = 0; i < 5; i++)
+            {
+                total += this.MyRandom.Next(Globals.NPC_POWER_MULTIPLIER[(int)CharacterStrength, 0] + addition, (Globals.NPC_POWER_MULTIPLIER[(int)CharacterStrength, 1] + 1 + addition));
+            }
+
+            return (int)Math.Round((double)total / 5, 0);
+        }
+        #endregion
+
+        #region Class Functions
         public Character GenerateNewChar(CharacterStorage Vault, Character CurrentChr, int ChrPower)
         {
             if(!SaveCharacter(Vault, CurrentChr)) { return CurrentChr; }
@@ -54,49 +109,6 @@ namespace ShadowRunRoller.NPCGeneratorTab.Generator
             return chr;
         }
 
-        private bool SaveCharacter(CharacterStorage Vault, Character CurrentChr, bool TrashMe = false)
-        {
-            if (CurrentChr != null && CurrentChr.WorthSaving())
-            {
-                if (string.IsNullOrEmpty(CurrentChr.CharacterAlias) && !TrashMe)
-                {
-                    DialogResult dialogResult = MessageBox.Show(Globals.LOSTCHAR_BODY, Globals.CHAR_DIALOG_HEADLINE, MessageBoxButtons.OKCancel);
-                    if (dialogResult == DialogResult.Cancel)
-                    {
-                        return false;
-                    }
-                }
-                else if (TrashMe)
-                {
-                    DialogResult dialogResult = MessageBox.Show(Globals.TRASHCHAR_BODY, Globals.CHAR_DIALOG_HEADLINE, MessageBoxButtons.OKCancel);
-                    if (dialogResult == DialogResult.Cancel)
-                    {
-                        return false;
-                    }
-                }
-                else
-                {
-                    Character StoreChar = CurrentChr;
-                    StoreCharacter(Vault, StoreChar);
-                }
-            }
-
-            return true;
-        }
-
-        private int RandomValue(dynamic CharacterStrength, bool IsPrimary)
-        {
-            int total = 0;
-            int addition = IsPrimary ? (int)Math.Round((double)Globals.NPC_POWER_MULTIPLIER[(int)CharacterStrength, 0] * .10, MidpointRounding.AwayFromZero) : 0;
-
-            for (int i = 0; i < 5; i++)
-            {
-                total += this.MyRandom.Next(Globals.NPC_POWER_MULTIPLIER[(int)CharacterStrength, 0] + addition, (Globals.NPC_POWER_MULTIPLIER[(int)CharacterStrength, 1] + 1 + addition));
-            }
-
-            return (int)Math.Round((double)total / 5, 0);
-        }
-
         public Character TrashCharacter(CharacterStorage Vault, Character TrashableCharacter)
         {
             if (!SaveCharacter(Vault, TrashableCharacter)) { return TrashableCharacter; }
@@ -113,8 +125,10 @@ namespace ShadowRunRoller.NPCGeneratorTab.Generator
             }
             catch (IllegalCharacterException ex)
             {
-                MessageBox.Show(Globals.ILLEGAL_CHARACTER_BODY + "\n\n" + ex, Globals.ILLEGAL_CHARACTER_HEADLINE);
+                NPCWindowMsgBox(Globals.ILLEGAL_CHARACTER_BODY + "\n\n" + ex, Globals.ILLEGAL_CHARACTER_HEADLINE,
+                    MessageBoxButtons.OK);
             }
         }
+        #endregion
     }
 }
