@@ -7,18 +7,23 @@ namespace ShadowRunRoller
 {
     public partial class DiceWindow : UserControl
     {
+        #region Properties
         private Random rnd;
         private ToolStripStatusLabel MainStatusLabel;
-
         private DieRoller Roller { get; set; }
+        #endregion
 
+        // TODO: Change the function name FixEverything()
+        #region Constructors
         public DiceWindow(Random rand, ToolStripStatusLabel StatusLabel = null)
         {
             InitializeComponent();
             if(StatusLabel != null) { MainStatusLabel = StatusLabel; }
             this.rnd = rand;
         }
+        #endregion
 
+        #region Private Class Functions
         private void SetStatusLabelText(string text)
         {
             if (MainStatusLabel != null)
@@ -110,5 +115,6 @@ namespace ShadowRunRoller
                 successText.Text = newInfo;
             }
         }
+        #endregion
     }
 }
