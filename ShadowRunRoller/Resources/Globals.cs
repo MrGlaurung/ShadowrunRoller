@@ -1,5 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace ShadowRunRoller.Resources
 {

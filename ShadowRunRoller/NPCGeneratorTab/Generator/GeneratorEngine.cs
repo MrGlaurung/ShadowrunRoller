@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ShadowRunRoller.Exceptions;
 using ShadowRunRoller.NPCGeneratorTab.CharacterVault;
@@ -47,7 +43,7 @@ namespace ShadowRunRoller.NPCGeneratorTab.Generator
             throw new IllegalMessageBoxTypeException("MessageBoxType not supported");
         }
 
-        private bool SaveCharacter(CharacterStorage Vault, Character CurrentChr, bool TrashMe = false)
+        private bool SaveCharacter(CharacterStorage Vault, Character.Character CurrentChr, bool TrashMe = false)
         {
             if (CurrentChr != null && CurrentChr.WorthSaving())
             {
@@ -61,7 +57,7 @@ namespace ShadowRunRoller.NPCGeneratorTab.Generator
                 }
                 else
                 {
-                    Character StoreChar = CurrentChr;
+                    Character.Character StoreChar = CurrentChr;
                     StoreCharacter(Vault, StoreChar);
                 }
             }
@@ -84,11 +80,11 @@ namespace ShadowRunRoller.NPCGeneratorTab.Generator
         #endregion
 
         #region Class Functions
-        public Character GenerateNewChar(CharacterStorage Vault, Character CurrentChr, int ChrPower)
+        public Character.Character GenerateNewChar(CharacterStorage Vault, Character.Character CurrentChr, int ChrPower)
         {
             if(!SaveCharacter(Vault, CurrentChr)) { return CurrentChr; }
 
-            Character chr = new Character
+            Character.Character chr = new Character.Character
             {
                 BodyStat = RandomValue(ChrPower, true),
                 AgilityStat = RandomValue(ChrPower, true),
@@ -109,15 +105,15 @@ namespace ShadowRunRoller.NPCGeneratorTab.Generator
             return chr;
         }
 
-        public Character TrashCharacter(CharacterStorage Vault, Character TrashableCharacter)
+        public Character.Character TrashCharacter(CharacterStorage Vault, Character.Character TrashableCharacter)
         {
             if (!SaveCharacter(Vault, TrashableCharacter)) { return TrashableCharacter; }
 
             Vault.RemoveChar(TrashableCharacter.Id);
-            return new Character();
+            return new Character.Character();
         }
 
-        public void StoreCharacter(CharacterStorage Vault, Character StoreThisChr)
+        public void StoreCharacter(CharacterStorage Vault, Character.Character StoreThisChr)
         {
             try
             {

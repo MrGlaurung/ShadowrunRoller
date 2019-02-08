@@ -13,7 +13,6 @@ namespace ShadowRunRoller
         private DieRoller Roller { get; set; }
         #endregion
 
-        // TODO: Change the function name FixEverything()
         #region Constructors
         public DiceWindow(Random rand, ToolStripStatusLabel StatusLabel = null)
         {
@@ -37,10 +36,10 @@ namespace ShadowRunRoller
             ChangeInfo(@"", true);
             this.Roller = new DieRoller(Int32.Parse(NumberOfDiceBox.Text), EdgeRollCheckbox.Checked);
 
-            this.FixEverything();
+            this.ShowResult();
         }
 
-        private void FixEverything()
+        private void ShowResult()
         {
             ChangeInfo(this.Roller.ResultString, !this.Roller.SuccessOfRoll);
             string resultText = this.Roller.NumberResult;
@@ -62,13 +61,13 @@ namespace ShadowRunRoller
             SetStatusLabelText("Roll performed, " + this.Roller.NumberOfDice + " dice rolled. " + extraInfo);
         }
 
-        private void Button2_Click(object sender, EventArgs e)
+        private void AddExplodingDieButton_Click(object sender, EventArgs e)
         {
             // Add exploding die
             this.OneMoreDie(true);
         }
 
-        private void Button3_Click(object sender, EventArgs e)
+        private void AddNormalDieButton_Click(object sender, EventArgs e)
         {
             // Add un-exploding die
             this.OneMoreDie(false);
@@ -81,12 +80,7 @@ namespace ShadowRunRoller
 
             Roller.SumUp(Roller.NumberOfDice + 1, myDie);
 
-            this.FixEverything();
-        }
-
-        private void NumberOfDiceBox_KeyPressed(object sender, EventArgs e)
-        {
-
+            this.ShowResult();
         }
 
         private void NumberOfDiceBox_TextChanged(object sender, EventArgs e)

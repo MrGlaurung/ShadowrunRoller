@@ -1,4 +1,4 @@
-﻿namespace ShadowRunRoller.NPCGeneratorTab
+﻿namespace ShadowRunRoller.NPCGeneratorTab.Character
 {
     public class Skill
     {

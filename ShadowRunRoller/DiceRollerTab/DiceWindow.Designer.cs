@@ -38,8 +38,8 @@ namespace ShadowRunRoller
             this.SuccessResultBox = new System.Windows.Forms.TextBox();
             this.FailureResultBox = new System.Windows.Forms.TextBox();
             this.NumberOfDiceBox = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.AddExplodingDieButton = new System.Windows.Forms.Button();
+            this.AddNormalDieButton = new System.Windows.Forms.Button();
             this.errorText = new System.Windows.Forms.Label();
             this.successText = new System.Windows.Forms.Label();
             this.OnesResultBox = new System.Windows.Forms.TextBox();
@@ -93,7 +93,7 @@ namespace ShadowRunRoller
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(108, 13);
-            this.label1.TabStop = false;
+            this.label1.TabIndex = 9;
             this.label1.Text = "Amount of successes";
             // 
             // label2
@@ -104,7 +104,7 @@ namespace ShadowRunRoller
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 13);
-            this.label2.TabStop = false;
+            this.label2.TabIndex = 8;
             this.label2.Text = "Amount of failures";
             // 
             // SuccessResultBox
@@ -115,6 +115,7 @@ namespace ShadowRunRoller
             this.SuccessResultBox.Margin = new System.Windows.Forms.Padding(2);
             this.SuccessResultBox.Name = "SuccessResultBox";
             this.SuccessResultBox.Size = new System.Drawing.Size(36, 20);
+            this.SuccessResultBox.TabIndex = 7;
             this.SuccessResultBox.TabStop = false;
             this.SuccessResultBox.Text = "0";
             this.SuccessResultBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -127,6 +128,7 @@ namespace ShadowRunRoller
             this.FailureResultBox.Margin = new System.Windows.Forms.Padding(2);
             this.FailureResultBox.Name = "FailureResultBox";
             this.FailureResultBox.Size = new System.Drawing.Size(36, 20);
+            this.FailureResultBox.TabIndex = 6;
             this.FailureResultBox.TabStop = false;
             this.FailureResultBox.Text = "0";
             this.FailureResultBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -142,31 +144,30 @@ namespace ShadowRunRoller
             this.NumberOfDiceBox.Text = "5";
             this.NumberOfDiceBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.NumberOfDiceBox.TextChanged += new System.EventHandler(this.NumberOfDiceBox_TextChanged);
-            this.NumberOfDiceBox.KeyPress += new KeyPressEventHandler(this.NumberOfDiceBox_KeyPressed);
             // 
-            // button2
+            // AddExplodingDieButton
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(331, 83);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(108, 35);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Add exploding d6";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            this.AddExplodingDieButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddExplodingDieButton.Location = new System.Drawing.Point(331, 83);
+            this.AddExplodingDieButton.Margin = new System.Windows.Forms.Padding(2);
+            this.AddExplodingDieButton.Name = "AddExplodingDieButton";
+            this.AddExplodingDieButton.Size = new System.Drawing.Size(108, 35);
+            this.AddExplodingDieButton.TabIndex = 4;
+            this.AddExplodingDieButton.Text = "Add exploding d6";
+            this.AddExplodingDieButton.UseVisualStyleBackColor = true;
+            this.AddExplodingDieButton.Click += new System.EventHandler(this.AddExplodingDieButton_Click);
             // 
-            // button3
+            // AddNormalDieButton
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(331, 140);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(108, 35);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "Add normal d6";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.Button3_Click);
+            this.AddNormalDieButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddNormalDieButton.Location = new System.Drawing.Point(331, 140);
+            this.AddNormalDieButton.Margin = new System.Windows.Forms.Padding(2);
+            this.AddNormalDieButton.Name = "AddNormalDieButton";
+            this.AddNormalDieButton.Size = new System.Drawing.Size(108, 35);
+            this.AddNormalDieButton.TabIndex = 5;
+            this.AddNormalDieButton.Text = "Add normal d6";
+            this.AddNormalDieButton.UseVisualStyleBackColor = true;
+            this.AddNormalDieButton.Click += new System.EventHandler(this.AddNormalDieButton_Click);
             // 
             // errorText
             // 
@@ -176,7 +177,7 @@ namespace ShadowRunRoller
             this.errorText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.errorText.Name = "errorText";
             this.errorText.Size = new System.Drawing.Size(0, 13);
-            this.errorText.TabStop = false;
+            this.errorText.TabIndex = 4;
             // 
             // successText
             // 
@@ -186,7 +187,7 @@ namespace ShadowRunRoller
             this.successText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.successText.Name = "successText";
             this.successText.Size = new System.Drawing.Size(0, 13);
-            this.successText.TabStop = false;
+            this.successText.TabIndex = 3;
             // 
             // OnesResultBox
             // 
@@ -196,6 +197,7 @@ namespace ShadowRunRoller
             this.OnesResultBox.Margin = new System.Windows.Forms.Padding(2);
             this.OnesResultBox.Name = "OnesResultBox";
             this.OnesResultBox.Size = new System.Drawing.Size(36, 20);
+            this.OnesResultBox.TabIndex = 1;
             this.OnesResultBox.TabStop = false;
             this.OnesResultBox.Text = "0";
             this.OnesResultBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -208,7 +210,7 @@ namespace ShadowRunRoller
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(72, 13);
-            this.label3.TabStop = false;
+            this.label3.TabIndex = 2;
             this.label3.Text = "Amount of 1:s";
             // 
             // ResultMultilineBox
@@ -220,6 +222,7 @@ namespace ShadowRunRoller
             this.ResultMultilineBox.Name = "ResultMultilineBox";
             this.ResultMultilineBox.ReadOnly = true;
             this.ResultMultilineBox.Size = new System.Drawing.Size(284, 342);
+            this.ResultMultilineBox.TabIndex = 0;
             this.ResultMultilineBox.TabStop = false;
             this.ResultMultilineBox.Text = "";
             // 
@@ -232,8 +235,8 @@ namespace ShadowRunRoller
             this.Controls.Add(this.label3);
             this.Controls.Add(this.successText);
             this.Controls.Add(this.errorText);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.AddNormalDieButton);
+            this.Controls.Add(this.AddExplodingDieButton);
             this.Controls.Add(this.NumberOfDiceBox);
             this.Controls.Add(this.FailureResultBox);
             this.Controls.Add(this.SuccessResultBox);
@@ -261,8 +264,8 @@ namespace ShadowRunRoller
         private System.Windows.Forms.TextBox SuccessResultBox;
         private System.Windows.Forms.TextBox FailureResultBox;
         private System.Windows.Forms.TextBox NumberOfDiceBox;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button AddExplodingDieButton;
+        private System.Windows.Forms.Button AddNormalDieButton;
         private System.Windows.Forms.Label errorText;
         private System.Windows.Forms.Label successText;
         private System.Windows.Forms.TextBox OnesResultBox;

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 using ShadowRunRoller.Exceptions;
 
 namespace ShadowRunRoller.NPCGeneratorTab.CharacterVault
@@ -11,14 +8,14 @@ namespace ShadowRunRoller.NPCGeneratorTab.CharacterVault
     class CharacterStorage
     {
         #region Properties
-        private List<Character> CharactersInVault { get; set; }
-        public List<Character> CharsInVault { get{ return CharactersInVault; } set{ return; } }
+        private List<Character.Character> CharactersInVault { get; set; }
+        public List<Character.Character> CharsInVault { get{ return CharactersInVault; } set{ return; } }
         #endregion
 
         #region Constructors
         public CharacterStorage()
         {
-            CharactersInVault = new List<Character>();
+            CharactersInVault = new List<Character.Character>();
         }
         #endregion
 
@@ -31,7 +28,7 @@ namespace ShadowRunRoller.NPCGeneratorTab.CharacterVault
             return true;
         }
 
-        public bool AddChar(Character CharToAdd)
+        public bool AddChar(Character.Character CharToAdd)
         {
             if(CharToAdd.Id == null || string.IsNullOrEmpty(CharToAdd.CharacterAlias)) { throw new IllegalCharacterException("Character not filled in correctly. ID or Alias missing."); }
 
@@ -50,7 +47,7 @@ namespace ShadowRunRoller.NPCGeneratorTab.CharacterVault
             return ( from f in CharactersInVault select new {f.Id, f.CharacterAlias} ).ToDictionary(x => x.Id, x => x.CharacterAlias);
         }
 
-        public Character FetchCharacter(Guid gu)
+        public Character.Character FetchCharacter(Guid gu)
         {
             if (!this.Contains(gu)) return null;
 

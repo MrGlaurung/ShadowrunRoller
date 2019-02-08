@@ -28,36 +28,10 @@ namespace ShadowRunRoller.Main_Window
         #endregion
 
         #region Private Class Functions
-        private void VersionToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(Globals.APPLICATION_HELP, Globals.APPLICATION_NAME + " " + Globals.APPLICATION_VERSION);
-        }
-
-        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void DiceRollerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MainWindowTabControl.SelectedTab = MainWindowTab1;
-        }
-
-        private void NPCGeneratorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MainWindowTabControl.SelectedTab = MainWindowTab2;
-        }
-
-        // Enable and disable items as appropriate.
-        private void EditToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
-        {
-            FixEditMenuItems();
-        }
-
         private void FixEditMenuItems()
         {
             Control controlObj = ActiveControl;
-            if(controlObj is UserControl) { controlObj = (controlObj as UserControl).ActiveControl; }
+            if (controlObj is UserControl) { controlObj = (controlObj as UserControl).ActiveControl; }
 
             // First disable all commands, the user cannot do anything Muahhahah!.
             copyToolStripMenuItem.Enabled = false;
@@ -85,6 +59,34 @@ namespace ShadowRunRoller.Main_Window
             if (controlObj is UserControl) { controlObj = (controlObj as UserControl).ActiveControl; }
 
             return this._currentBox != null && this._currentBox == controlObj as TextBoxBase;
+        }
+        #endregion
+
+        #region Events
+        private void VersionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(Globals.APPLICATION_HELP, Globals.APPLICATION_NAME + " " + Globals.APPLICATION_VERSION);
+        }
+
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void DiceRollerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MainWindowTabControl.SelectedTab = MainWindowTab1;
+        }
+
+        private void NPCGeneratorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MainWindowTabControl.SelectedTab = MainWindowTab2;
+        }
+
+        // Enable and disable items as appropriate.
+        private void EditToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
+        {
+            FixEditMenuItems();
         }
 
         private void CutToolStripMenuItem_Click(object sender, EventArgs e)
