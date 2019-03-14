@@ -6,6 +6,10 @@ different strengths. On top of that I got the idea to also have many characters 
 outline for those chars with initative and so on and being able to check off each character as they are performing
 their actions in a combat round.
 
+I have some trouble "stealing" the xml-files of skills, spells and other things from Chummer (which I plan to do).
+Importing them into the project have proved much more difficult than I imagined.
+I'll work on this as soon as I have more time, but as of now (190314) I'm a bit busy in RL.
+
 These are the thought basic milestones:
 
 * [DONE] Create a program where you can roll a number of D6 Shadowrun style.
