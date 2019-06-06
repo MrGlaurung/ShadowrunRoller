@@ -1,13 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.136
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowRunRoller", "ShadowRunRoller.csproj", "{CEB977E0-F913-486E-86DF-DB0F7911603A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToastWindow", "..\ToastWindow\ToastWindow.csproj", "{C5C611B0-7C71-4A5D-A5B0-D123FFC15925}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShadowRunTestProject", "..\ShadowRunTestProject\ShadowRunTestProject.csproj", "{A9ACFBA9-DD5A-4807-AEBA-4034E436FC60}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +15,6 @@ Global
 		{CEB977E0-F913-486E-86DF-DB0F7911603A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEB977E0-F913-486E-86DF-DB0F7911603A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEB977E0-F913-486E-86DF-DB0F7911603A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C5C611B0-7C71-4A5D-A5B0-D123FFC15925}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C5C611B0-7C71-4A5D-A5B0-D123FFC15925}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C5C611B0-7C71-4A5D-A5B0-D123FFC15925}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C5C611B0-7C71-4A5D-A5B0-D123FFC15925}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A9ACFBA9-DD5A-4807-AEBA-4034E436FC60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A9ACFBA9-DD5A-4807-AEBA-4034E436FC60}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A9ACFBA9-DD5A-4807-AEBA-4034E436FC60}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A9ACFBA9-DD5A-4807-AEBA-4034E436FC60}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
